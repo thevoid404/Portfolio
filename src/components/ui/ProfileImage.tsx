@@ -43,7 +43,7 @@ export function ProfileImage({ className, priority = false }: ProfileImageProps)
             <p className="mt-4 px-6 text-center text-xs text-zinc-500">
               Add your photo at{" "}
               <code className="rounded bg-white/5 px-1.5 py-0.5 text-zinc-400">
-                public/profile.jpg
+               public/profile.jpg
               </code>
             </p>
           </div>

@@ -49,10 +49,10 @@ export type Testimonial = {
 export const siteConfig = {
   name: "Ashraf Uddin Anas",
   title: "Full Stack Developer",
-  email: "hello@ashrafanas.dev",
+  email: "anasahmed4484@gmail.com",
   location: "Dhaka, Bangladesh",
   intro:
-    "I build scalable, modern, high-performance web applications with exceptional user experiences.",
+    "I build scalable, modern, high-performance web applications with ensured security.",
   about: {
     headline: "Engineering digital experiences with precision and intent.",
     story: [
@@ -66,9 +66,9 @@ export const siteConfig = {
     ],
   },
   social: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    twitter: "https://twitter.com",
+    github: "https://github.com/thevoid404",
+    linkedin: "https://www.linkedin.com/in/ashraf-uddin-ahmed-anas/",
+    twitter: "https://x.com/anas_ahmes4484",
   },
   resume: {
     file: "/resume.pdf",
