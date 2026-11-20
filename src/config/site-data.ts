@@ -25,11 +25,12 @@ export type Project = {
   metrics: { label: string; value: string }[];
   gradient: string;
   accent: string;
+  glowColor?: string;
+  featuredSpan?: "wide" | "medium" | "standard";
+  previewImage?: string;
   link?: string;
   github?: string;
-  /** Drop your Kaggle notebook URL here */
   kaggleUrl?: string;
-  /** Drop your certificate or credential URL here */
   certificateUrl?: string;
 };
 
@@ -39,14 +40,34 @@ export type Milestone = {
   company: string;
   period: string;
   location: string;
+  status: "Active" | "Achievement";
+  accent: string;
   description: string;
   highlights: string[];
+  kaggleUrl?: string;
+  certificateUrl?: string;
 };
 
 export type ProcessStep = {
   id: string;
   step: string;
   title: string;
+  description: string;
+};
+
+export type ResearchFrontier = {
+  id: string;
+  title: string;
+  status: "Exploring" | "Deep Curiosity";
+  summary: string;
+  centralQuestion: string;
+  motif: "chip" | "constellation" | "quantum";
+};
+
+export type EngineeringCraft = {
+  id: string;
+  title: string;
+  status: "Active Practice";
   description: string;
 };
 
@@ -71,20 +92,37 @@ export const siteConfig = {
   email: "anasahmed4484@gmail.com",
   location: "Dhaka, Bangladesh",
   intro:
-    "I start with real problems, not frameworks—building scalable web systems and agentic AI workflows with Next.js, NestJS, and LangGraph.",
+    "Building resilient web platforms and autonomous AI systems—from refined interfaces down to distributed backends.",
 
   hero: {
     availabilityBadge: "Available for engineering roles & select builds",
   },
 
+  activeVentures: [
+    {
+      name: "Aria",
+      role: "Co-Founder · Autonomous AI & Commerce Ops",
+      accent: "#10b981",
+      dotColor: "bg-emerald-400",
+      link: "https://aria-autonomous-agent-puce.vercel.app/",
+    },
+    {
+      name: "Nexus Studio",
+      role: "Co-Founder · Digital Product & Web Agency",
+      accent: "#14b8a6",
+      dotColor: "bg-teal-400",
+      link: "https://digital-agency-gamma-lac.vercel.app/",
+    },
+  ],
+
   profile: {
     image: "/profile.jpg",
     alt: "Ashraf Uddin Anas — Full Stack & Applied AI Engineer",
     tagline: "Full-Stack & Applied AI Engineer",
-    bio: "Final-year CSE student building full-stack web products and AI agent systems. I care less about chasing frameworks and more about understanding the problem deeply enough to build what actually works.",
+    bio: "Final-year CSE student building full-stack web products and AI agent systems. Focused on software architecture, resilient backends, and reliable autonomous workflows.",
     highlights: [
       "Full-Stack & AI Systems",
-      "Open to internships & roles",
+      "Open to engineering roles",
       "Based in Dhaka, Bangladesh",
     ],
   },
@@ -96,6 +134,13 @@ export const siteConfig = {
     status: "Final-Year Undergraduate",
     cgpa: "3.86 / 4.00",
     location: "Dhaka, Bangladesh",
+    subtitle: "Formal computer science education and academic track.",
+    hsc: {
+      college: "Dr. Mahbubur Rahman Mollah College",
+      program: "Higher Secondary (HSC) · Science",
+      gpa: "GPA 5.00 / 5.00",
+      location: "Dhaka, Bangladesh",
+    },
     summary:
       "Final-year Computer Science & Engineering undergraduate at Southeast University, focusing on backend systems, distributed architectures, and applied AI agent workflows alongside academic coursework.",
     focusAreas: [
@@ -104,16 +149,15 @@ export const siteConfig = {
       "Applied AI & ML",
       "Database Architecture",
     ],
-    // Real academic and competition highlights (replacing dummy semester updates/exams)
     highlights: [
       {
-        title: "Final-Year CSE Track",
+        title: "Final-Year CSE Curriculum",
         badge: "Academic Track",
         detail:
           "Advanced study and practical coursework in software engineering, distributed systems, and scalable backend architecture.",
       },
       {
-        title: "Applied AI & Systems Engineering",
+        title: "Applied Systems & AI Engineering",
         badge: "Specialization",
         detail:
           "Designing multi-agent orchestration, reliable tool-calling workflows, and containerized backend microservices.",
@@ -121,10 +165,10 @@ export const siteConfig = {
     ] as AcademicHighlight[],
     milestones: [
       {
-        title: "IEEE Datathon — 4th Place Finalist",
-        badge: "National Finalist",
+        title: "Undergraduate CSE Foundation",
+        badge: "Southeast University",
         detail:
-          "Competed under IEEE, engineering machine learning pipelines, predictive modeling, and feature analysis under strict time limits.",
+          "Maintaining a 3.86 CGPA with deep technical focus in database architecture, computer networking, and system design.",
       },
     ] as AcademicHighlight[],
   },
@@ -134,14 +178,13 @@ export const siteConfig = {
       "I’m more interested in understanding a problem than rushing to look like I have the answer.",
     story: [
       "I’m Ashraf Uddin Ahmed Anas—a final-year Computer Science & Engineering student at Southeast University in Dhaka.",
-      "Most of how I think about software didn’t come from chasing frameworks; it came from sitting with messy, real-world problems until they actually made sense. Moving from MERN into structured backend and AI systems taught me something simple: good engineering is mostly empathy. When you genuinely understand the friction someone is dealing with, the right architecture starts revealing itself.",
+      "Most of how I think about software didn’t come from chasing frameworks; it came from sitting with messy, real-world problems until they actually made sense. Moving from monolithic stacks into structured backend and AI systems taught me something simple: good engineering is mostly empathy. When you genuinely understand the friction someone is dealing with, the right architecture starts revealing itself.",
       "I don’t tie my identity to a single stack. If something is genuinely worth building, I’d rather learn whatever the problem asks for than force every idea into what I already know.",
     ],
-    // 3 honest, verified metrics
     stats: [
-      { label: "CSE CGPA", value: "3.86" },
-      { label: "IEEE Datathon Finalist", value: "4th" },
-      { label: "Web + Agentic AI", value: "Full-Stack" },
+      { label: "Active Ventures", value: "2" },
+      { label: "Web & Agentic AI", value: "Full-Stack" },
+      { label: "Production Tech", value: "17+" },
     ],
   },
 
@@ -160,44 +203,61 @@ export const siteConfig = {
     headline: "Technical Curiosities & Research",
     description:
       "Areas of genuine technical depth, active exploration, and engineering curiosity.",
-    items: [
+    frontiers: [
       {
-        id: "1",
-        title: "Agentic AI & LLM Orchestration",
-        description:
-          "LangChain, LangGraph, LangSmith, and building reliable, deterministic tool-calling workflows that solve real business friction.",
-      },
-      {
-        id: "2",
+        id: "edge-ai",
         title: "Edge AI",
-        description:
-          "Exploring efficient model inference, quantization, and running intelligence under strict memory and hardware constraints.",
+        status: "Exploring",
+        summary:
+          "Running efficient inference, quantization, and intelligence under strict memory and hardware constraints.",
+        centralQuestion:
+          "How small can a model get before it loses genuine reasoning?",
+        motif: "chip",
       },
       {
-        id: "3",
+        id: "federated-learning",
         title: "Federated Learning",
-        description:
-          "Exploring decentralized, privacy-preserving machine learning paradigms where models train across distributed nodes without raw data transfer.",
+        status: "Exploring",
+        summary:
+          "Decentralized, privacy-preserving training where distributed nodes learn collaboratively without raw data transfer.",
+        centralQuestion:
+          "How can intelligence improve globally while sensitive data stays strictly local?",
+        motif: "constellation",
       },
       {
-        id: "4",
+        id: "quantum-physics",
         title: "Quantum Physics",
+        status: "Deep Curiosity",
+        summary:
+          "Studying superposition, entanglement, and how quantum principles reshape our limits of computation.",
+        centralQuestion:
+          "What happens to algorithmic complexity when computation leaves classical bits behind?",
+        motif: "quantum",
+      },
+    ] as ResearchFrontier[],
+    crafts: [
+      {
+        id: "agentic-ai",
+        title: "Agentic AI & LLM Orchestration",
+        status: "Active Practice",
         description:
-          "Deep intellectual curiosity in quantum mechanics, superposition, entanglement, and their future computational implications.",
+          "LangChain, LangGraph, LangSmith, and deterministic tool-calling workflows built for real operations.",
       },
       {
-        id: "5",
+        id: "real-time-systems",
         title: "Real-Time Backend Systems",
+        status: "Active Practice",
         description:
-          "Engineering resilient, event-driven backends using NestJS, Socket.io, Redis caching, Docker, and PostgreSQL architectures.",
+          "Resilient, event-driven architectures powered by NestJS, Socket.io, Redis, Docker, and PostgreSQL.",
       },
       {
-        id: "6",
+        id: "interactive-web",
         title: "Interactive Web Engineering",
+        status: "Active Practice",
         description:
-          "Crafting fluid, tactile digital interfaces using Next.js, TypeScript, and high-performance GSAP motion design.",
+          "Tactile, high-performance interfaces engineered with Next.js, TypeScript, and fluid GSAP motion.",
       },
-    ] as InterestItem[],
+    ] as EngineeringCraft[],
   },
 
   nav: [
@@ -205,7 +265,7 @@ export const siteConfig = {
     { label: "Academics", href: "#academics" },
     { label: "About", href: "#about" },
     { label: "Work", href: "#projects" },
-    { label: "Journey", href: "#experience" },
+    { label: "Ventures", href: "#experience" },
     { label: "Interests", href: "#interests" },
     { label: "Contact", href: "#contact" },
   ],
@@ -235,20 +295,23 @@ export const techSkills: TechSkill[] = [
 ];
 
 /* =============================================================================
- * VERIFIED PROJECTS (Selected Work)
+ * VERIFIED PROJECTS (Featured Work with Asymmetric Highlighting)
  * ============================================================================= */
 export const projects: Project[] = [
   {
     id: "aria",
     slug: "aria",
     title: "Aria",
-    tagline: "Autonomous AI Customer Support & Operations System",
+    tagline: "Autonomous AI Customer Support & Commerce Ops",
     description:
-      "Autonomous AI customer support & commerce operations system with real-time WebSocket workflows and deterministic validation.",
+      "Autonomous AI support and commerce operations platform engineered with real-time WebSockets and deterministic order validation.",
     longDescription:
       "Aria is an autonomous agentic system built to handle end-to-end customer support and commerce operations with deterministic reliability. Built on Next.js and NestJS, Aria combines real-time bidirectional WebSocket event streams with multi-agent orchestration powered by LangChain, LangGraph, and LangSmith. The system uses Redis for real-time state caching, PostgreSQL for persistent operational data, and containerized Docker environments for reproducible multi-service execution.",
-    role: "Full-Stack Developer (frontend, backend, database & AI orchestration)",
+    role: "Co-Founder & Full-Stack Engineer",
     year: "2025",
+    featuredSpan: "wide",
+    glowColor: "rgba(139, 92, 246, 0.28)",
+    previewImage: "/images/projects/aria.png",
     tags: [
       "Next.js",
       "NestJS",
@@ -265,8 +328,8 @@ export const projects: Project[] = [
       { label: "Real-Time Protocol", value: "Socket.io" },
       { label: "State & Cache", value: "Redis + PG" },
     ],
-    gradient: "from-violet-950/80 via-indigo-900/40 to-charcoal-950",
-    accent: "#8b5cf6",
+    gradient: "from-emerald-950/80 via-teal-900/40 to-charcoal-950",
+    accent: "#10b981",
     link: "https://aria-autonomous-agent-puce.vercel.app/",
     github: "https://github.com/thevoid404/Aria",
   },
@@ -276,154 +339,187 @@ export const projects: Project[] = [
     title: "AudioLux",
     tagline: "Modern Full-Stack Audio E-Commerce Platform",
     description:
-      "Modern full-stack audio e-commerce and product showcase platform engineered for clean UX and fast browsing.",
+      "Full-stack audio commerce storefront built for crisp product discovery and seamless checkout.",
     longDescription:
       "AudioLux is a high-performance audio equipment e-commerce and showcase platform crafted for audiophiles and producers. Built with Next.js, React, and TypeScript on the frontend paired with a modular Node.js backend and optimized database schema, AudioLux delivers instantaneous catalog filtering, responsive product showcases, fluid shopping cart interactions, and optimized media delivery.",
     role: "Full-Stack Contributor (frontend, backend & database)",
     year: "2024",
-    tags: ["Next.js", "React", "TypeScript", "Node.js", "Database"],
+    featuredSpan: "standard",
+    glowColor: "rgba(20, 184, 166, 0.25)",
+    previewImage: "/images/projects/audiolux.png",
+    tags: ["Next.js", "NestJS", "PostgreSQL", "TypeScript", "Firebase"],
     metrics: [
       { label: "Browsing Flow", value: "Sub-second UX" },
       { label: "Architecture", value: "Next.js Full-Stack" },
-      { label: "Data Layer", value: "Optimized DB" },
+      { label: "Data Layer", value: "PostgreSQL DB" },
     ],
-    gradient: "from-cyan-950/80 via-teal-900/30 to-charcoal-950",
-    accent: "#22d3ee",
+    gradient: "from-teal-950/80 via-slate-900/40 to-charcoal-950",
+    accent: "#14b8a6",
     link: "https://audiolux-web.vercel.app/",
     github: "https://github.com/thevoid404",
   },
   {
-    id: "digital-agency",
-    slug: "digital-agency",
-    title: "Digital Agency",
-    tagline: "High-Craft Interactive Agency Platform",
+    id: "nexus-studio",
+    slug: "nexus-studio",
+    title: "Nexus Studio",
+    tagline: "High-Craft Digital Product & Web Agency Platform",
     description:
-      "High-craft agency web platform built with responsive layouts and refined motion design.",
+      "High-craft digital agency platform designed with responsive layouts and fluid motion.",
     longDescription:
-      "A design-forward digital agency web platform engineered to demonstrate high-craft interactive web engineering. The application leverages Next.js, React, and Tailwind CSS along with advanced GSAP timeline orchestration and scroll-triggered animations to deliver tactile, cinematic browsing without sacrificing Lighthouse performance or accessibility.",
-    role: "Frontend Engineer",
+      "Nexus Studio is our digital product studio web platform engineered to demonstrate high-craft interactive web engineering. The application leverages Next.js, React, and Tailwind CSS along with advanced GSAP timeline orchestration and scroll-triggered animations to deliver tactile, cinematic browsing without sacrificing Lighthouse performance or accessibility.",
+    role: "Co-Founder & Frontend Engineer",
     year: "2024",
-    tags: ["Next.js", "React", "Tailwind CSS", "GSAP"],
+    featuredSpan: "medium",
+    glowColor: "rgba(52, 211, 153, 0.25)",
+    previewImage: "/images/projects/nexus-studio.png",
+    tags: ["Next.js", "Tailwind CSS", "GSAP", "React"],
     metrics: [
       { label: "Motion Engine", value: "GSAP" },
       { label: "Design Craft", value: "Fluid Motion" },
       { label: "Performance", value: "Optimized" },
     ],
-    gradient: "from-indigo-950/80 via-purple-900/30 to-charcoal-950",
-    accent: "#6366f1",
+    gradient: "from-emerald-950/80 via-teal-950/40 to-charcoal-950",
+    accent: "#10b981",
     link: "https://digital-agency-gamma-lac.vercel.app/",
     github: "https://github.com/thevoid404",
   },
   {
-    id: "ieee-datathon",
-    slug: "ieee-ml-datathon",
-    title: "IEEE ML Datathon (4th Place Finalist)",
-    tagline: "National Machine Learning Competition Entry",
+    id: "creators-vault",
+    slug: "creators-vault",
+    title: "Creators Vault",
+    tagline: "Intelligent Digital Asset Management Workspace",
     description:
-      "Competition entry under IEEE: built end-to-end machine learning pipelines and data-driven solutions to secure 4th place nationwide.",
+      "Intelligent digital asset workspace with semantic search and cross-project relationship tracking.",
     longDescription:
-      "Competitive machine learning entry for the national IEEE Datathon. Designed and deployed comprehensive data preprocessing, feature engineering pipelines, exploratory data analysis, and predictive model ensembles under strict competition time constraints. Placed 4th nationwide among competitive engineering teams.",
-    role: "Machine Learning Finalist",
-    year: "2024",
-    tags: ["Python", "Machine Learning", "Data Analysis", "Kaggle"],
+      "An intelligent digital asset management workspace for creators, designers and developers. Collect, organize, connect and search every digital asset you work with — uploads, pasted URLs, marketplace purchases, code snippets, fonts — in one place, with relationship tracking (\"used in the AudioLux dashboard\") and search by meaning, not just filename.",
+    role: "Creator & Full-Stack Engineer",
+    year: "2025",
+    featuredSpan: "standard",
+    glowColor: "rgba(245, 158, 11, 0.22)",
+    previewImage: "/images/projects/creators-vault.png",
+    tags: ["Next.js", "NestJS", "PostgreSQL"],
     metrics: [
-      { label: "Standing", value: "4th Place" },
-      { label: "Division", value: "IEEE ML" },
-      { label: "Focus", value: "Predictive AI" },
+      { label: "Search Engine", value: "Semantic Search" },
+      { label: "Asset Graphs", value: "Relationship Track" },
+      { label: "Architecture", value: "Next.js + NestJS" },
     ],
-    gradient: "from-emerald-950/80 via-teal-900/30 to-charcoal-950",
+    gradient: "from-amber-950/80 via-orange-900/30 to-charcoal-950",
+    accent: "#f59e0b",
+    github: "https://github.com/thevoid404/Creators-vault",
+  },
+  /* =========================================================================
+   * TEMPLATE: To add project 4 or 5 later, uncomment and fill in below:
+   * =========================================================================
+   * {
+   *   id: "project-four",
+   *   slug: "project-four",
+   *   title: "Project Four",
+   *   tagline: "High-Performance Distributed Application",
+   *   description: "One-line summary of what the system does and why it matters.",
+   *   longDescription: "Detailed case study description covering architecture, tech stack, and results.",
+   *   role: "Lead Full-Stack Engineer",
+   *   year: "2025",
+   *   featuredSpan: "standard",
+   *   glowColor: "rgba(16, 185, 129, 0.25)",
+   *   tags: ["Next.js", "NestJS", "PostgreSQL", "Docker"],
+   *   metrics: [
+   *     { label: "Metric One", value: "99.9%" },
+   *     { label: "Metric Two", value: "<50ms" },
+   *   ],
+   *   gradient: "from-emerald-950/80 via-teal-900/30 to-charcoal-950",
+   *   accent: "#10b981",
+   *   link: "https://example.com",
+   *   github: "https://github.com/thevoid404",
+   * },
+   */
+];
+
+/* =============================================================================
+ * VENTURES & MILESTONES (STRICTLY the only place IEEE Datathon appears)
+ * ============================================================================= */
+export const experiences: Milestone[] = [
+  {
+    id: "1",
+    role: "Co-Founder & Full-Stack Engineer — Aria",
+    company: "Active Venture · Autonomous AI & Commerce Operations",
+    period: "2024 — Present",
+    location: "Dhaka, Bangladesh",
+    status: "Active",
     accent: "#10b981",
-    // Easily drop your Kaggle notebook or certificate URLs here anytime:
+    description:
+      "Architecting autonomous AI customer support and commerce operations across Next.js frontend, NestJS backend, Redis state caching, and LangGraph agent orchestration.",
+    highlights: [
+      "Architected multi-agent tool execution pipelines with LangGraph and deterministic validation",
+      "Engineered real-time bidirectional WebSocket event streams with Socket.io and Redis cache",
+      "Built containerized Docker microservices paired with relational PostgreSQL schemas",
+    ],
+  },
+  {
+    id: "2",
+    role: "Co-Founder — Nexus Studio",
+    company: "Active Venture · Digital Product & Web Agency",
+    period: "2024 — Present",
+    location: "Dhaka, Bangladesh",
+    status: "Active",
+    accent: "#14b8a6",
+    description:
+      "Running our digital web studio—designing and shipping high-craft modern web experiences for brands, startups, and high-performance products.",
+    highlights: [
+      "Directing frontend motion craft, responsive layouts, and interactive design systems with GSAP",
+      "Delivering sub-second load times and 98+ Lighthouse scores across client productions",
+      "Translating brand identities into memorable, high-conversion digital platforms",
+    ],
+  },
+  {
+    id: "3",
+    role: "4th Place Finalist — IEEE Datathon",
+    company: "IEEE National Competition · Machine Learning Track",
+    period: "2024",
+    location: "Dhaka, Bangladesh",
+    status: "Achievement",
+    accent: "#10b981",
+    description:
+      "Placed 4th nationwide under IEEE, competing on end-to-end machine learning modeling pipelines and data analysis under strict competition constraints.",
+    highlights: [
+      "Built complete feature engineering and predictive modeling pipelines in Python and Scikit-learn",
+      "Secured 4th place national finalist standing against competitive engineering teams nationwide",
+      "Conducted deep exploratory data analysis and model validation on complex competitive datasets",
+    ],
     kaggleUrl: "https://www.kaggle.com",
     certificateUrl: "https://www.linkedin.com/in/ashraf-uddin-ahmed-anas/",
   },
 ];
 
 /* =============================================================================
- * ENGINEERING JOURNEY & MILESTONES (Replaced dummy companies)
- * ============================================================================= */
-export const experiences: Milestone[] = [
-  {
-    id: "1",
-    role: "Full-Stack & Agentic AI Engineering (Aria)",
-    company: "Active Daily Product Development · Autonomous Systems",
-    period: "2024 — Present",
-    location: "Dhaka, Bangladesh",
-    description:
-      "Active daily product engineering across Next.js, NestJS, Redis, PostgreSQL, Socket.io, and LangGraph/LangSmith.",
-    highlights: [
-      "Architected multi-agent autonomous support workflows using LangGraph and LangSmith for deterministic execution",
-      "Implemented real-time bidirectional WebSocket event channels with Socket.io and Redis state caching",
-      "Engineered modular NestJS backend services with PostgreSQL schemas and containerized Docker deployment",
-    ],
-  },
-  {
-    id: "2",
-    role: "4th Place Finalist — IEEE Datathon",
-    company: "IEEE National Competition · Machine Learning Track",
-    period: "2024",
-    location: "Dhaka, Bangladesh",
-    description:
-      "Competed under IEEE, building end-to-end machine learning pipelines and data-driven solutions under competition constraints.",
-    highlights: [
-      "Built complete feature engineering and predictive modeling pipelines in Python and Scikit-learn",
-      "Secured 4th place national finalist standing against competitive engineering teams nationwide",
-      "Conducted deep exploratory data analysis and model validation on complex competitive datasets",
-    ],
-  },
-  {
-    id: "3",
-    role: "MERN to Distributed Backend & AI Systems",
-    company: "Architectural Evolution & System Design",
-    period: "2023 — 2024",
-    location: "Dhaka, Bangladesh",
-    description:
-      "Transitioned from monolithic MERN stack builds into containerized, real-time architectures with NestJS, Docker, Redis, and LLM orchestration.",
-    highlights: [
-      "Migrated from express-based monolithic structures to production-grade NestJS enterprise architecture",
-      "Deepened focus on caching layers with Redis, event queues, and PostgreSQL relational design",
-      "Integrated LLM orchestration frameworks (LangChain, LangGraph) into practical production-ready products",
-    ],
-  },
-];
-
-/* =============================================================================
- * ENGINEERING DISCIPLINE & WORKFLOW
+ * HOW I WORK (4 Crisp, Punchy Steps)
  * ============================================================================= */
 export const processSteps: ProcessStep[] = [
   {
     id: "1",
     step: "01",
-    title: "Discovery & Empathy",
+    title: "Understand",
     description:
-      "Deep dive into the real-world friction and requirements before rushing to write code. Architecture begins with genuine empathy.",
+      "Uncovering root friction and core requirements before writing a single line of code.",
   },
   {
     id: "2",
     step: "02",
-    title: "System Design",
+    title: "Architect",
     description:
-      "Modeling database schemas, state contracts, caching boundaries with Redis, and deterministic AI execution flows.",
+      "Designing robust database schemas, clean API boundaries, and resilient state contracts.",
   },
   {
     id: "3",
     step: "03",
-    title: "Disciplined Development",
+    title: "Build",
     description:
-      "Building with strict TypeScript, modular NestJS or Next.js services, WebSocket feedback loops, and containerization.",
+      "Iterating with strict TypeScript, modular services, and deterministic tool execution.",
   },
   {
     id: "4",
     step: "04",
-    title: "Refinement & Craft",
+    title: "Ship & Iterate",
     description:
-      "Fluid GSAP motion choreographies, latency profiling, deterministic validation, and accessibility compliance.",
-  },
-  {
-    id: "5",
-    step: "05",
-    title: "Deployment & Monitoring",
-    description:
-      "Dockerized deployment, logging with LangSmith / telemetry, and continuous iteration based on real-world usage.",
+      "Deploying containerized builds with telemetry, motion polish, and performance profiling.",
   },
 ];

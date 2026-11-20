@@ -3,8 +3,120 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, registerGsapPlugins } from "@/lib/gsap-config";
-import { siteConfig } from "@/config/site-data";
+import {
+  siteConfig,
+  type ResearchFrontier,
+} from "@/config/site-data";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { cn } from "@/lib/utils";
+
+/**
+ * Geometric Micro-Chip / Circuit Node SVG motif for Edge AI
+ */
+function ChipMotif({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect x="13" y="13" width="22" height="22" rx="3" strokeWidth="1.4" />
+      <rect
+        x="19"
+        y="19"
+        width="10"
+        height="10"
+        rx="1"
+        fill="currentColor"
+        fillOpacity="0.12"
+        strokeWidth="1.2"
+      />
+      <path d="M6 18h7M6 24h7M6 30h7" />
+      <path d="M35 18h7M35 24h7M35 30h7" />
+      <path d="M18 6v7M24 6v7M30 6v7" />
+      <path d="M18 35v7M24 35v7M30 35v7" />
+      <circle cx="6" cy="18" r="1.2" fill="currentColor" />
+      <circle cx="6" cy="24" r="1.2" fill="currentColor" />
+      <circle cx="6" cy="30" r="1.2" fill="currentColor" />
+      <circle cx="42" cy="18" r="1.2" fill="currentColor" />
+      <circle cx="42" cy="24" r="1.2" fill="currentColor" />
+      <circle cx="42" cy="30" r="1.2" fill="currentColor" />
+      <circle cx="18" cy="6" r="1.2" fill="currentColor" />
+      <circle cx="24" cy="6" r="1.2" fill="currentColor" />
+      <circle cx="30" cy="6" r="1.2" fill="currentColor" />
+      <circle cx="18" cy="42" r="1.2" fill="currentColor" />
+      <circle cx="24" cy="42" r="1.2" fill="currentColor" />
+      <circle cx="30" cy="42" r="1.2" fill="currentColor" />
+    </svg>
+  );
+}
+
+/**
+ * Decentralized Node-Ring / Constellation SVG motif for Federated Learning
+ */
+function ConstellationMotif({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="24" cy="24" r="16" strokeDasharray="3 3" opacity="0.4" />
+      <circle cx="24" cy="24" r="9" strokeDasharray="2 2" opacity="0.3" />
+      <path
+        d="M24 8L37 18M37 18L33 34M33 34L15 34M15 34L11 18M11 18L24 8"
+        strokeDasharray="2 2"
+        opacity="0.45"
+      />
+      <path d="M24 8L24 24M37 18L24 24M33 34L24 24M15 34L24 24M11 18L24 24" />
+      <circle cx="24" cy="24" r="3" fill="currentColor" />
+      <circle cx="24" cy="8" r="2.2" fill="currentColor" />
+      <circle cx="37" cy="18" r="2.2" fill="currentColor" />
+      <circle cx="33" cy="34" r="2.2" fill="currentColor" />
+      <circle cx="15" cy="34" r="2.2" fill="currentColor" />
+      <circle cx="11" cy="18" r="2.2" fill="currentColor" />
+    </svg>
+  );
+}
+
+/**
+ * Concentric Wave-Interference / Orbital SVG motif for Quantum Physics
+ */
+function QuantumMotif({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      className={className}
+      aria-hidden="true"
+    >
+      <ellipse cx="24" cy="24" rx="18" ry="7" transform="rotate(-30 24 24)" />
+      <ellipse cx="24" cy="24" rx="18" ry="7" transform="rotate(30 24 24)" />
+      <ellipse cx="24" cy="24" rx="18" ry="7" transform="rotate(90 24 24)" />
+      <circle cx="24" cy="24" r="2.8" fill="currentColor" />
+      <circle cx="9" cy="15" r="1.8" fill="currentColor" />
+      <circle cx="39" cy="33" r="1.8" fill="currentColor" />
+      <circle cx="39" cy="15" r="1.8" fill="currentColor" />
+    </svg>
+  );
+}
+
+function renderCornerMotif(motif: ResearchFrontier["motif"]) {
+  const baseClass =
+    "pointer-events-none absolute top-4 right-4 h-14 w-14 text-[#0E523D] transition-all duration-500 group-hover:scale-110 group-hover:opacity-[0.22] opacity-[0.07] dark:text-[#34A885] dark:opacity-[0.13] dark:group-hover:opacity-[0.26]";
+
+  if (motif === "chip") return <ChipMotif className={baseClass} />;
+  if (motif === "constellation") return <ConstellationMotif className={baseClass} />;
+  return <QuantumMotif className={baseClass} />;
+}
 
 export function Interests() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -13,18 +125,46 @@ export function Interests() {
   useGSAP(
     () => {
       registerGsapPlugins();
-      gsap.from(".interest-card", {
-        y: 36,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.08,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 78%",
-          toggleActions: "play none none reverse",
-        },
-      });
+      const section = sectionRef.current;
+      if (!section) return;
+
+      // Tier 1 Research Frontier Cards entrance
+      gsap.fromTo(
+        ".interest-frontier-card",
+        { opacity: 0, y: 32 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          stagger: 0.08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".interest-frontier-grid",
+            start: "top 88%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
+
+      // Tier 2 Active Engineering Craft Cards entrance
+      gsap.fromTo(
+        ".interest-craft-card",
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.55,
+          stagger: 0.06,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".interest-craft-grid",
+            start: "top 88%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
     },
     { scope: sectionRef }
   );
@@ -33,37 +173,122 @@ export function Interests() {
     <section
       id="interests"
       ref={sectionRef}
-      className="section-accent-glow section-accent-interests relative z-10 overflow-hidden py-24 sm:py-32"
+      className="section-accent-glow section-accent-interests relative z-10 overflow-hidden py-14 sm:py-16 lg:py-20"
       aria-labelledby="interests-heading"
     >
       <div className="section-padding section-container">
         <SectionHeading
-          label="Interests"
+          label="Curiosity & Research"
           title={interests.headline}
           description={interests.description}
           accent
         />
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {interests.items.map((item, index) => (
-            <article
-              key={item.id}
-              className="interest-card interest-card-accent group rounded-2xl p-6 backdrop-blur-sm transition-transform duration-500 hover:-translate-y-1"
-            >
-              <span className="font-mono text-xs text-muted-subtle">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3
-                id={index === 0 ? "interests-heading" : undefined}
-                className="mt-3 text-lg font-medium text-zinc-100 transition-colors group-hover:text-white"
-              >
-                {item.title}
+        {/* 2-Tier Architectural Layout */}
+        <div className="mt-8">
+          {/* TIER 1: Featured Research Frontier Cards */}
+          <div className="interest-frontier-grid grid grid-cols-1 gap-6 lg:grid-cols-3">
+            {interests.frontiers.map((frontier) => {
+              const isExploring = frontier.status === "Exploring";
+
+              return (
+                <article
+                  key={frontier.id}
+                  className={cn(
+                    "interest-frontier-card group relative flex flex-col justify-between overflow-hidden rounded-2xl p-6 sm:p-7",
+                    "bg-white/90 backdrop-blur-xl transition-all duration-300",
+                    "border border-[#D4E2DC] shadow-[0_8px_30px_-10px_rgba(12,24,20,0.06)] hover:-translate-y-1 hover:border-[#0E523D]",
+                    "dark:border-[#1E3B31]/80 dark:bg-[#101614]/95 dark:shadow-[inset_0_1px_0_0_rgba(52,211,153,0.12),0_12px_32px_-12px_rgba(0,0,0,0.75)] dark:hover:border-[#255C49]"
+                  )}
+                >
+                  {/* Top Hairline Highlight */}
+                  <div className="pointer-events-none absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#0E5A42]/20 to-transparent dark:via-emerald-400/25" />
+
+                  {/* Corner Motif SVG */}
+                  {renderCornerMotif(frontier.motif)}
+
+                  {/* Top: Status Pill + Title + Summary */}
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={cn(
+                          "rounded-full px-2.5 py-0.5 font-mono text-[10.5px] uppercase tracking-wider",
+                          isExploring
+                            ? "border border-[#0D4A38]/20 bg-[#063729]/[0.06] text-[#063729] dark:border-emerald-400/25 dark:bg-emerald-400/10 dark:text-emerald-300"
+                            : "border border-teal-600/20 bg-teal-600/[0.06] text-teal-800 dark:border-teal-400/25 dark:bg-teal-400/10 dark:text-teal-300"
+                        )}
+                      >
+                        {frontier.status}
+                      </span>
+                    </div>
+
+                    <h3 className="mt-4 text-xl font-semibold tracking-[-0.02em] text-[#091713] transition-colors group-hover:text-[#063729] dark:text-white dark:group-hover:text-emerald-300">
+                      {frontier.title}
+                    </h3>
+
+                    <p className="mt-2.5 text-[14px] leading-[1.6] text-[#4A5D56] dark:text-zinc-400">
+                      {frontier.summary}
+                    </p>
+                  </div>
+
+                  {/* Bottom: Hairline Divider + Inquiry & Central Question */}
+                  <div className="mt-6 border-t border-[#E2EAE6] pt-4 dark:border-white/[0.06]">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-[#063729]/75 dark:text-emerald-400/80">
+                        INQUIRY
+                      </span>
+                    </div>
+                    <p className="mt-1 font-sans text-[13px] italic leading-snug text-[#1A2E27] dark:text-zinc-300">
+                      “{frontier.centralQuestion}”
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          {/* TIER 2: Compact Active Engineering Craft Cards */}
+          <div className="mt-8 sm:mt-10">
+            <div className="mb-4 flex items-center gap-2 px-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0E5A42] dark:bg-emerald-400" />
+              <h3 className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#063729] dark:text-[#34A885]">
+                Active Engineering Craft
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                {item.description}
-              </p>
-            </article>
-          ))}
+            </div>
+
+            <div className="interest-craft-grid grid grid-cols-1 gap-5 md:grid-cols-3">
+              {interests.crafts.map((craft) => (
+                <article
+                  key={craft.id}
+                  className={cn(
+                    "interest-craft-card group relative flex flex-col justify-between overflow-hidden rounded-xl p-5",
+                    "bg-white/75 backdrop-blur-sm transition-all duration-300",
+                    "border border-[#DCE6E1] hover:-translate-y-1 hover:border-[#0E523D]/40",
+                    "dark:border-[#1E3B31]/80 dark:bg-[#101614]/95 dark:shadow-[inset_0_1px_0_0_rgba(52,211,153,0.12),0_12px_32px_-12px_rgba(0,0,0,0.75)] dark:hover:border-[#255C49]"
+                  )}
+                >
+                  {/* Top Hairline Highlight */}
+                  <div className="pointer-events-none absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#0E5A42]/15 to-transparent dark:via-emerald-400/20" />
+
+                  <div>
+                    {/* Status Dot + Tag */}
+                    <div className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[#063729] dark:text-[#34A885]">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#0E5A42] animate-pulse dark:bg-emerald-400" />
+                      <span>{craft.status}</span>
+                    </div>
+
+                    <h4 className="mt-2.5 text-[16px] font-semibold tracking-[-0.015em] text-[#091713] transition-colors group-hover:text-[#063729] dark:text-zinc-100 dark:group-hover:text-emerald-300">
+                      {craft.title}
+                    </h4>
+
+                    <p className="mt-1.5 text-[13px] leading-relaxed text-[#4A5D56] dark:text-zinc-400">
+                      {craft.description}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

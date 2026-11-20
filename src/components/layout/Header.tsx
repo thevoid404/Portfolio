@@ -42,17 +42,17 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "border-b border-white/[0.06] bg-charcoal-950/80 py-4 backdrop-blur-xl"
+          ? "border-b border-[#E2EAE6] bg-white/80 py-4 backdrop-blur-xl dark:border-emerald-500/[0.14] dark:bg-[#0B0F0E]/80"
           : "bg-transparent py-6"
       )}
     >
       <div className="section-padding section-container flex items-center justify-between">
         <a
           href="#"
-          className="group flex items-center gap-2 text-sm font-medium tracking-tight text-zinc-100"
+          className="group flex items-center gap-2 text-sm font-medium tracking-tight text-[#0C1814] dark:text-zinc-100"
           aria-label="Back to top"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] font-mono text-xs transition-colors group-hover:border-white/20 group-hover:bg-white/[0.06]">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#DCE5E0] bg-[#F1F6F3] font-mono text-xs transition-colors group-hover:border-[#0E5A42]/30 group-hover:bg-[#EBF7F1] dark:border-white/10 dark:bg-white/[0.03] dark:group-hover:border-emerald-500/30 dark:group-hover:bg-emerald-500/10">
             A
           </span>
           <span className="hidden sm:inline">Anas</span>
@@ -66,7 +66,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm text-muted transition-colors duration-300 hover:text-zinc-100"
+              className="text-sm font-medium text-[#4A5D56] transition-colors duration-300 hover:text-[#0C1814] dark:text-muted dark:hover:text-emerald-300"
             >
               {item.label}
             </a>
@@ -77,7 +77,7 @@ export function Header() {
           <ThemeToggle />
           <a
             href="#contact"
-            className="rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-sm text-zinc-300 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:text-zinc-100"
+            className="rounded-full border border-[#115C45]/70 bg-gradient-to-r from-[#041812] via-[#072B20] to-[#051F17] px-5 py-2 text-sm font-medium text-[#ECFDF5] shadow-[0_8px_24px_-6px_rgba(4,28,21,0.55)] transition-all duration-300 hover:border-[#187A5C] hover:shadow-[0_10px_28px_-4px_rgba(14,77,58,0.45)]"
           >
             Get in touch
           </a>
@@ -87,7 +87,7 @@ export function Header() {
           <ThemeToggle />
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#DCE5E0] bg-white/80 dark:border-white/10 dark:bg-transparent"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -96,19 +96,19 @@ export function Header() {
             <div className="flex w-4 flex-col gap-1">
               <span
                 className={cn(
-                  "h-px w-full bg-zinc-300 transition-transform duration-300",
+                  "h-px w-full bg-[#0C1814] transition-transform duration-300 dark:bg-zinc-300",
                   menuOpen && "translate-y-[5px] rotate-45"
                 )}
               />
               <span
                 className={cn(
-                  "h-px w-full bg-zinc-300 transition-opacity duration-300",
+                  "h-px w-full bg-[#0C1814] transition-opacity duration-300 dark:bg-zinc-300",
                   menuOpen && "opacity-0"
                 )}
               />
               <span
                 className={cn(
-                  "h-px w-full bg-zinc-300 transition-transform duration-300",
+                  "h-px w-full bg-[#0C1814] transition-transform duration-300 dark:bg-zinc-300",
                   menuOpen && "-translate-y-[5px] -rotate-45"
                 )}
               />
@@ -119,7 +119,7 @@ export function Header() {
 
       <div
         className={cn(
-          "fixed inset-0 top-[72px] z-40 flex flex-col gap-6 bg-charcoal-950/95 p-8 backdrop-blur-xl transition-all duration-500 md:hidden",
+          "fixed inset-0 top-[72px] z-40 flex flex-col gap-6 border-b border-[#E2EAE6] bg-white/95 p-8 backdrop-blur-xl transition-all duration-500 md:hidden dark:border-white/[0.08] dark:bg-charcoal-950/95",
           menuOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
@@ -130,19 +130,19 @@ export function Header() {
           <a
             key={item.href}
             href={item.href}
-            className="text-2xl font-medium text-zinc-300 transition-colors hover:text-zinc-50"
+            className="text-2xl font-medium text-[#1A2E27] transition-colors hover:text-[#0C1814] dark:text-zinc-300 dark:hover:text-emerald-300"
             onClick={() => setMenuOpen(false)}
           >
             {item.label}
           </a>
         ))}
-        <div className="mt-4 flex items-center justify-between border-t border-white/[0.08] pt-6">
-          <span className="text-sm font-medium text-muted">Theme</span>
+        <div className="mt-4 flex items-center justify-between border-t border-[#E2EAE6] pt-6 dark:border-white/[0.08]">
+          <span className="text-sm font-medium text-[#4A5D56] dark:text-muted">Theme</span>
           <ThemeToggle />
         </div>
         <a
           href="#contact"
-          className="mt-2 text-lg text-muted"
+          className="mt-2 text-lg font-medium text-[#0E5A42] dark:text-emerald-400"
           onClick={() => setMenuOpen(false)}
         >
           Get in touch →

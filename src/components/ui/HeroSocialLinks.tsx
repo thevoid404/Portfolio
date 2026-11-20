@@ -36,7 +36,7 @@ export function HeroSocialLinks({ className }: HeroSocialLinksProps) {
           href={link.href}
           target={link.external ? "_blank" : undefined}
           rel={link.external ? "noopener noreferrer" : undefined}
-          className="inline-flex items-center justify-center rounded-full border border-white/[0.1] bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-zinc-300 transition-all duration-300 hover:border-violet-400/30 hover:bg-gradient-to-r hover:from-violet-500/15 hover:to-cyan-500/10 hover:text-zinc-50"
+          className="inline-flex items-center justify-center rounded-full border border-[#DCE5E0] bg-[#F1F6F3] px-5 py-2.5 text-sm font-medium text-[#1A2E27] transition-all duration-300 hover:border-[#0D4A38]/40 hover:bg-[#EBF7F1] hover:text-[#063729] dark:border-white/[0.1] dark:bg-white/[0.04] dark:text-zinc-300 dark:hover:border-[#125E47] dark:hover:bg-[#072B20]/40 dark:hover:text-[#34A885]"
         >
           {link.label}
         </a>

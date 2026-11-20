@@ -21,12 +21,12 @@ export function useGsapReveal(
   options: RevealOptions = {}
 ) {
   const {
-    y = 60,
+    y = 16,
     opacity = 0,
-    duration = 1,
+    duration = 0.45,
     delay = 0,
-    stagger = 0.08,
-    start = "top 85%",
+    stagger = 0.04,
+    start = "top 94%",
     scrub = false,
     markers = false,
   } = options;
@@ -49,7 +49,7 @@ export function useGsapReveal(
         duration,
         delay,
         stagger,
-        ease: "power3.out",
+        ease: "power2.out",
       };
 
       if (scrub) {
@@ -70,7 +70,8 @@ export function useGsapReveal(
           scrollTrigger: {
             trigger: container,
             start,
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
+            once: true,
             markers,
           },
         });
@@ -97,17 +98,18 @@ export function useGsapTimelineReveal(
       items.forEach((item, index) => {
         gsap.fromTo(
           item,
-          { opacity: 0, x: -30 },
+          { opacity: 0, y: 16 },
           {
             opacity: 1,
-            x: 0,
-            duration: 0.8,
-            delay: index * 0.1,
-            ease: "power3.out",
+            y: 0,
+            duration: 0.45,
+            delay: index * 0.05,
+            ease: "power2.out",
             scrollTrigger: {
               trigger: item,
-              start: "top 88%",
-              toggleActions: "play none none reverse",
+              start: "top 94%",
+              toggleActions: "play none none none",
+              once: true,
             },
           }
         );

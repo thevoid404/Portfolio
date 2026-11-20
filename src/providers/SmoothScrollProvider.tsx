@@ -14,10 +14,9 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   registerGsapPlugins();
 
   useEffect(() => {
-
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 0.85,
+      lerp: 0.12,
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
@@ -36,6 +35,11 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
 
     gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
+
+    // Refresh ScrollTrigger cleanly after mount
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
 
     return () => {
       gsap.ticker.remove(tickerCallback);

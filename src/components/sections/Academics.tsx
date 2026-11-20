@@ -13,18 +13,29 @@ export function Academics() {
   useGSAP(
     () => {
       registerGsapPlugins();
-      gsap.from(".academics-reveal", {
-        y: 40,
-        opacity: 0,
-        duration: 0.85,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 78%",
-          toggleActions: "play none none reverse",
-        },
-      });
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const card = section.querySelector(".academics-card");
+      if (!card) return;
+
+      // Safe, single-fire entrance animation that never hides inner elements on theme toggle
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.55,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 92%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
     },
     { scope: sectionRef }
   );
@@ -33,145 +44,109 @@ export function Academics() {
     <section
       id="academics"
       ref={sectionRef}
-      className="relative z-10 py-24 sm:py-32"
+      className="relative z-10 py-14 sm:py-16 lg:py-20"
       aria-labelledby="academics-heading"
     >
       <div className="section-padding section-container">
-        <div className="academics-reveal">
-          <SectionHeading
-            label="Academics"
-            title="University & academic background"
-            description="Undergraduate computer science track, core engineering focus areas, and national competition milestones."
+        <SectionHeading
+          label="Academics"
+          title="University & academic background"
+          description="Formal computer science education and academic track."
+        />
+
+        {/* Unified Crisp 2-Row Academic Card (Zero Clutter, 100% visible by default) */}
+        <article className="academics-card relative mt-6 overflow-hidden rounded-2xl border border-[#D4E2DC] bg-white/90 p-6 shadow-[0_12px_36px_-14px_rgba(6,45,34,0.09)] backdrop-blur-xl transition-all duration-300 hover:border-[#0E523D] sm:p-8 lg:p-10 dark:border-[#1E3B31]/80 dark:bg-[#101614]/95 dark:shadow-[inset_0_1px_0_0_rgba(52,211,153,0.12),0_12px_32px_-12px_rgba(0,0,0,0.75)] dark:hover:border-[#255C49]">
+          {/* Top Hairline Highlight */}
+          <div className="pointer-events-none absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#0E5A42]/20 to-transparent dark:via-emerald-400/25" />
+
+          {/* Subtle Ambient Radial Glow */}
+          <div
+            className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full opacity-35 dark:hidden"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(16,185,129,0.16) 0%, transparent 70%)",
+            }}
+            aria-hidden="true"
           />
-        </div>
+          <div
+            className="pointer-events-none absolute -top-16 -right-16 hidden h-48 w-48 rounded-full opacity-30 dark:block"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(16,185,129,0.18) 0%, transparent 70%)",
+            }}
+            aria-hidden="true"
+          />
 
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
-          {/* Main University Card */}
-          <article className="academics-reveal bento-card relative col-span-1 overflow-hidden rounded-3xl p-8 lg:col-span-7 lg:p-10">
-            <div
-              className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-40"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(34,211,238,0.35) 0%, transparent 70%)",
-              }}
-              aria-hidden
-            />
-            <div className="relative">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
-                  {academics.status}
-                </span>
-                <span className="font-mono text-xs text-muted-subtle">
-                  Computer Science & Engineering
-                </span>
-              </div>
-
-              <h3
-                id="academics-heading"
-                className="mt-6 text-2xl font-semibold tracking-tight text-zinc-50 sm:text-3xl"
-              >
-                {academics.university}
-              </h3>
-              <p className="mt-2 text-sm text-muted">{academics.faculty}</p>
-              <p className="mt-1 text-lg font-medium text-zinc-300">
+          <div className="relative z-10 flex flex-col">
+            {/* Primary Block (Top — University) */}
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-wider text-[#0A4D38] dark:text-emerald-400">
                 {academics.program}
               </p>
+              <h3
+                id="academics-heading"
+                className="mt-2 text-2xl font-semibold tracking-tight text-[#091713] sm:text-3xl dark:text-white"
+              >
+                {academics.university}{" "}
+                <span className="font-normal text-[#7D938B] dark:text-zinc-500">·</span>{" "}
+                <span className="font-normal text-[#4A5D56] dark:text-zinc-300">
+                  {academics.faculty}
+                </span>
+              </h3>
 
-              {/* Real verified stats — NO 6th semester and NO fake exam dates */}
-              <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4">
-                  <p className="text-xs text-muted-subtle">Status</p>
-                  <p className="mt-1 text-sm font-medium text-zinc-200">
+              {/* Clean 3-column metadata strip with high font contrast */}
+              <div className="mt-6 grid grid-cols-1 gap-4 border-y border-[#E2EAE6] py-5 sm:grid-cols-3 dark:border-white/[0.06]">
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-wider text-[#7D938B] dark:text-muted-subtle">
+                    Status
+                  </p>
+                  <p className="mt-1 font-sans text-base font-semibold text-[#1A2E27] dark:text-zinc-200">
                     {academics.status}
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4">
-                  <p className="text-xs text-muted-subtle">CGPA</p>
-                  <p className="mt-1 text-sm font-medium text-zinc-200">
+                <div className="sm:border-l sm:border-[#E2EAE6] sm:pl-6 dark:sm:border-white/[0.06]">
+                  <p className="font-mono text-xs uppercase tracking-wider text-[#7D938B] dark:text-muted-subtle">
+                    CGPA
+                  </p>
+                  <p className="mt-1 font-sans text-base font-semibold text-[#091713] dark:text-emerald-400">
                     {academics.cgpa}
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4">
-                  <p className="text-xs text-muted-subtle">Campus</p>
-                  <p className="mt-1 text-sm font-medium text-zinc-200">
+                <div className="sm:border-l sm:border-[#E2EAE6] sm:pl-6 dark:sm:border-white/[0.06]">
+                  <p className="font-mono text-xs uppercase tracking-wider text-[#7D938B] dark:text-muted-subtle">
+                    Campus
+                  </p>
+                  <p className="mt-1 font-sans text-base font-semibold text-[#1A2E27] dark:text-zinc-200">
                     {academics.location}
                   </p>
                 </div>
               </div>
+            </div>
 
-              <p className="mt-6 text-sm leading-relaxed text-muted">
-                {academics.summary}
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                {academics.focusAreas.map((area) => (
-                  <span
-                    key={area}
-                    className="rounded-full border border-white/[0.06] px-3 py-1 text-xs text-muted"
-                  >
-                    {area}
+            {/* Compact Secondary Row (Bottom — HSC Science) */}
+            <div className="mt-6 border-t border-[#E3ECE8] pt-5 dark:border-white/[0.08]">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="font-mono text-[10.5px] uppercase tracking-wider text-[#0A4D38] dark:text-emerald-400/90">
+                    {academics.hsc.program}
+                  </p>
+                  <h4 className="mt-0.5 text-[15px] font-semibold text-[#091713] dark:text-white">
+                    {academics.hsc.college}
+                  </h4>
+                </div>
+                <div className="flex items-center gap-2 font-sans text-xs">
+                  <span className="font-semibold text-[#091713] dark:text-emerald-400">
+                    {academics.hsc.gpa}
                   </span>
-                ))}
+                  <span className="text-[#CBD5E1] dark:text-zinc-700">·</span>
+                  <span className="text-[#4A5D56] dark:text-zinc-400">
+                    {academics.hsc.location}
+                  </span>
+                </div>
               </div>
             </div>
-          </article>
-
-          {/* Real Highlights (Final-Year CSE Track, IEEE Datathon 4th Place Finalist, Applied AI & Systems Engineering) */}
-          <div className="academics-reveal col-span-1 flex flex-col gap-5 lg:col-span-5">
-            <article className="bento-card rounded-3xl p-8">
-              <h4 className="text-sm font-medium uppercase tracking-wider text-muted">
-                Academic & Systems Engineering Track
-              </h4>
-              <ul className="mt-5 space-y-4">
-                {academics.highlights.map((item) => (
-                  <li
-                    key={item.title}
-                    className="border-b border-white/[0.04] pb-4 last:border-0 last:pb-0"
-                  >
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="text-sm font-medium text-zinc-200">{item.title}</p>
-                      {item.badge && (
-                        <span className="shrink-0 rounded-full bg-violet-500/10 px-2.5 py-0.5 font-mono text-[10px] text-violet-400">
-                          {item.badge}
-                        </span>
-                      )}
-                    </div>
-                    <p className="mt-1 text-xs leading-relaxed text-muted">
-                      {item.detail}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </article>
-
-            <article className="bento-card rounded-3xl p-8">
-              <h4 className="text-sm font-medium uppercase tracking-wider text-muted">
-                National Datathon & Honors
-              </h4>
-              <ul className="mt-5 space-y-4">
-                {academics.milestones.map((item) => (
-                  <li key={item.title} className="relative pl-5">
-                    <span
-                      className="absolute left-0 top-2 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-violet-400 to-cyan-400"
-                      aria-hidden
-                    />
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="text-sm font-medium text-zinc-200">{item.title}</p>
-                      {item.badge && (
-                        <span className="shrink-0 rounded-full bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[10px] text-emerald-400">
-                          {item.badge}
-                        </span>
-                      )}
-                    </div>
-                    <p className="mt-1 text-xs leading-relaxed text-muted">
-                      {item.detail}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </article>
           </div>
-        </div>
+        </article>
       </div>
     </section>
   );

@@ -20,85 +20,65 @@ export function Profile() {
       const photo = photoRef.current;
       if (!section) return;
 
-      gsap.from(".profile-heading-reveal", {
-        y: 40,
-        opacity: 0,
-        duration: 0.85,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 82%",
-          toggleActions: "play none none reverse",
-        },
-      });
+      gsap.fromTo(
+        ".profile-heading-reveal",
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          stagger: 0.08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 88%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
 
       if (photo) {
         gsap.fromTo(
           photo,
           {
             opacity: 0,
-            y: 80,
-            scale: 0.88,
-            rotation: -4,
-            clipPath: "inset(12% 8% 100% 8% round 24px)",
+            y: 32,
+            scale: 0.96,
           },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            rotation: 0,
-            clipPath: "inset(0% 0% 0% 0% round 24px)",
-            duration: 1.25,
+            duration: 0.7,
             ease: "power3.out",
             scrollTrigger: {
               trigger: photo,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
+              start: "top 88%",
+              toggleActions: "play none none none",
+              once: true,
             },
           }
         );
-
-        const inner = photo.querySelector(".profile-photo-inner");
-        if (inner) {
-          gsap.from(inner, {
-            scale: 1.2,
-            duration: 1.4,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: photo,
-              start: "top 90%",
-              end: "top 35%",
-              scrub: 0.6,
-            },
-          });
-        }
-
-        gsap.from(".profile-photo-glow", {
-          opacity: 0,
-          scale: 0.6,
-          duration: 1.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: photo,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        });
       }
 
-      gsap.from(".profile-content-reveal", {
-        x: 40,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".profile-content-col",
-          start: "top 82%",
-          toggleActions: "play none none reverse",
-        },
-      });
+      gsap.fromTo(
+        ".profile-content-reveal",
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          stagger: 0.08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".profile-content-col",
+            start: "top 88%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
     },
     { scope: sectionRef }
   );
@@ -109,7 +89,7 @@ export function Profile() {
     <section
       id="profile"
       ref={sectionRef}
-      className="section-accent-glow section-accent-profile relative z-10 overflow-hidden py-24 sm:py-32"
+      className="section-accent-glow section-accent-profile relative z-10 overflow-hidden py-14 sm:py-16 lg:py-20"
       aria-labelledby="profile-heading"
     >
       <div className="section-padding section-container">
@@ -127,52 +107,65 @@ export function Profile() {
             ref={photoRef}
             className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none"
           >
+            {/* Light mode soft emerald photo glow */}
             <div
-              className="profile-photo-glow pointer-events-none absolute -inset-6 rounded-[2rem] opacity-60"
+              className="profile-photo-glow pointer-events-none absolute -inset-6 rounded-[2rem] opacity-60 dark:hidden"
               style={{
                 background:
-                  "radial-gradient(ellipse at 50% 50%, rgba(139,92,246,0.18) 0%, rgba(34,211,238,0.08) 50%, transparent 70%)",
+                  "radial-gradient(ellipse at 50% 50%, rgba(16,185,129,0.18) 0%, rgba(14,77,58,0.06) 50%, transparent 70%)",
+              }}
+              aria-hidden
+            />
+            {/* Dark mode deep emerald glow */}
+            <div
+              className="profile-photo-glow pointer-events-none absolute -inset-6 hidden rounded-[2rem] opacity-60 dark:block"
+              style={{
+                background:
+                  "radial-gradient(ellipse at 50% 50%, rgba(16,185,129,0.2) 0%, rgba(6,78,59,0.12) 50%, transparent 70%)",
               }}
               aria-hidden
             />
             <div className="profile-photo-inner relative">
               <ProfileImage
                 priority
-                className="w-full shadow-2xl shadow-black/40"
+                className="w-full shadow-2xl shadow-[#0C1814]/10 dark:shadow-black/40"
               />
             </div>
-            <p className="mt-4 text-center font-mono text-xs text-muted-subtle lg:text-left">
+            <p className="mt-4 text-center font-mono text-xs text-[#7D938B] lg:text-left dark:text-muted-subtle">
               {profile.tagline}
             </p>
           </div>
 
-          <div className="profile-content-col space-y-8">
+          <div className="profile-content-col space-y-7">
             <div className="profile-content-reveal">
               <h3
                 id="profile-heading"
-                className="text-2xl font-semibold tracking-tight text-zinc-50 sm:text-3xl"
+                className="text-2xl font-semibold tracking-tight text-[#0C1814] sm:text-3xl dark:text-zinc-50"
               >
                 {siteConfig.name}
               </h3>
-              <p className="mt-2 text-lg text-muted">{siteConfig.title}</p>
+              <p className="mt-2 text-lg text-[#4A5D56] dark:text-muted">{siteConfig.title}</p>
+              <p className="mt-1 text-sm font-medium text-[#4A5D56] dark:text-zinc-400">
+                Co-Founder at <span className="text-[#0C1814] dark:text-zinc-200">Aria</span> &amp; <span className="text-[#0C1814] dark:text-zinc-200">Nexus Studio</span>
+              </p>
             </div>
 
-            <p className="profile-content-reveal text-base leading-relaxed text-zinc-400">
+            <p className="profile-content-reveal text-base leading-relaxed text-[#4A5D56] dark:text-zinc-400">
               {profile.bio}
             </p>
 
-            <ul className="profile-content-reveal flex flex-wrap gap-3">
+            <ul className="profile-content-reveal flex flex-wrap gap-2.5">
               {profile.highlights.map((item) => (
                 <li
                   key={item}
-                  className="rounded-full border border-violet-500/15 bg-gradient-to-r from-violet-500/10 via-transparent to-cyan-500/10 px-4 py-2 text-sm text-zinc-400"
+                  className="rounded-full border border-[#B7E4CE] bg-[#EBF7F1] px-4 py-2 font-mono text-xs text-[#0A4D38] dark:border-emerald-500/20 dark:bg-emerald-500/[0.06] dark:text-emerald-300"
                 >
                   {item}
                 </li>
               ))}
             </ul>
 
-            <div className="profile-content-reveal flex flex-wrap items-center gap-4">
+            <div className="profile-content-reveal flex flex-wrap items-center gap-4 pt-2">
               <ResumeButton variant="primary" />
               <MagneticButton href="#academics" variant="secondary">
                 Academics

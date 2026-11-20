@@ -13,8 +13,8 @@
   --surface: #0c0c0c;
   --surface-elevated: #141414;
   --accent: #e4e4e7;
-  --glow-violet: rgba(139, 92, 246, 0.12);
-  --glow-cyan: rgba(34, 211, 238, 0.08);
+  --glow-violet: rgba(16, 185, 129, 0.12);
+  --glow-cyan: rgba(20, 184, 166, 0.08);
   --glow-white: rgba(255, 255, 255, 0.04);
   --charcoal-950: #050505;
 }
@@ -30,27 +30,27 @@ html.dark {
   --surface: #0c0c0c;
   --surface-elevated: #141414;
   --accent: #e4e4e7;
-  --glow-violet: rgba(139, 92, 246, 0.12);
-  --glow-cyan: rgba(34, 211, 238, 0.08);
+  --glow-violet: rgba(16, 185, 129, 0.12);
+  --glow-cyan: rgba(20, 184, 166, 0.08);
   --glow-white: rgba(255, 255, 255, 0.04);
   --charcoal-950: #050505;
 }
 
 html.light {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --muted: #475569;
-  --muted-foreground: #64748b;
-  --muted-subtle: #94a3b8;
-  --border: rgba(226, 232, 240, 0.8);
-  --border-hover: rgba(203, 213, 225, 0.9);
+  --background: #F7FAF8;
+  --foreground: #0C1814;
+  --muted: #4A5D56;
+  --muted-foreground: #627770;
+  --muted-subtle: #7D938B;
+  --border: #DCE5E0;
+  --border-hover: rgba(14, 77, 58, 0.3);
   --surface: #ffffff;
-  --surface-elevated: #f8fafc;
-  --accent: #0f172a;
-  --glow-violet: rgba(99, 102, 241, 0.11);
-  --glow-cyan: rgba(6, 182, 212, 0.14);
-  --glow-white: rgba(15, 23, 42, 0.03);
-  --charcoal-950: #ffffff;
+  --surface-elevated: #F1F6F3;
+  --accent: #0E5A42;
+  --glow-violet: rgba(16, 185, 129, 0.08);
+  --glow-cyan: rgba(14, 77, 58, 0.05);
+  --glow-white: rgba(12, 24, 20, 0.03);
+  --charcoal-950: #F7FAF8;
 }
 
 @theme inline {
@@ -102,7 +102,12 @@ body {
 }
 
 ::selection {
-  background: rgba(139, 92, 246, 0.25);
+  background: rgba(16, 185, 129, 0.25);
+  color: inherit;
+}
+
+html.light ::selection {
+  background: rgba(16, 185, 129, 0.2);
   color: inherit;
 }
 
@@ -135,7 +140,7 @@ body {
   height: 320px;
   background: radial-gradient(
     ellipse,
-    rgba(139, 92, 246, 0.11) 0%,
+    rgba(6, 78, 59, 0.32) 0%,
     transparent 70%
   );
 }
@@ -147,7 +152,7 @@ body {
   height: 380px;
   background: radial-gradient(
     ellipse,
-    rgba(34, 211, 238, 0.08) 0%,
+    rgba(16, 185, 129, 0.13) 0%,
     transparent 72%
   );
 }
@@ -159,7 +164,7 @@ body {
   height: 340px;
   background: radial-gradient(
     ellipse,
-    rgba(99, 102, 241, 0.07) 0%,
+    rgba(20, 184, 166, 0.08) 0%,
     transparent 70%
   );
 }
@@ -171,7 +176,7 @@ body {
   height: 280px;
   background: radial-gradient(
     ellipse,
-    rgba(113, 113, 122, 0.06) 0%,
+    rgba(6, 78, 59, 0.18) 0%,
     transparent 75%
   );
 }
@@ -183,7 +188,7 @@ body {
   height: 280px;
   background: radial-gradient(
     ellipse,
-    rgba(228, 228, 231, 0.04) 0%,
+    rgba(16, 185, 129, 0.06) 0%,
     transparent 68%
   );
 }
@@ -199,7 +204,7 @@ body {
   height: 50%;
   background: radial-gradient(
     ellipse at center,
-    rgba(139, 92, 246, 0.14) 0%,
+    rgba(6, 78, 59, 0.32) 0%,
     transparent 70%
   );
   filter: blur(80px);
@@ -214,7 +219,7 @@ body {
   height: 40%;
   background: radial-gradient(
     ellipse at center,
-    rgba(34, 211, 238, 0.1) 0%,
+    rgba(16, 185, 129, 0.13) 0%,
     transparent 70%
   );
   filter: blur(100px);
@@ -253,10 +258,10 @@ body {
 .hero-gradient-text {
   background: linear-gradient(
     115deg,
-    #a5b4fc 0%,
-    #c4b5fd 18%,
-    #67e8f9 42%,
-    #e4e4e7 68%,
+    #34A885 0%,
+    #228B6B 22%,
+    #146B51 45%,
+    #e4e4e7 75%,
     #f4f4f5 100%
   );
   -webkit-background-clip: text;
@@ -276,7 +281,7 @@ body {
 }
 
 .accent-label-gradient {
-  background: linear-gradient(90deg, #a78bfa, #22d3ee, #a78bfa);
+  background: linear-gradient(90deg, #34A885, #228B6B, #34A885);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -305,7 +310,7 @@ body {
   height: min(480px, 55vw);
   background: radial-gradient(
     circle,
-    rgba(139, 92, 246, 0.38) 0%,
+    rgba(6, 78, 59, 0.35) 0%,
     transparent 70%
   );
 }
@@ -317,7 +322,7 @@ body {
   height: min(400px, 45vw);
   background: radial-gradient(
     circle,
-    rgba(34, 211, 238, 0.28) 0%,
+    rgba(16, 185, 129, 0.16) 0%,
     transparent 70%
   );
 }
@@ -329,7 +334,7 @@ body {
   height: min(360px, 40vw);
   background: radial-gradient(
     circle,
-    rgba(99, 102, 241, 0.22) 0%,
+    rgba(20, 184, 166, 0.12) 0%,
     transparent 70%
   );
 }
@@ -337,9 +342,9 @@ body {
 .profile-image-ring {
   background: linear-gradient(
     145deg,
-    rgba(167, 139, 250, 0.7),
-    rgba(34, 211, 238, 0.45),
-    rgba(129, 140, 248, 0.5)
+    rgba(16, 185, 129, 0.6),
+    rgba(6, 78, 59, 0.4),
+    rgba(20, 184, 166, 0.45)
   );
   padding: 2px;
 }
@@ -363,7 +368,7 @@ body {
   height: 360px;
   background: radial-gradient(
     circle,
-    rgba(139, 92, 246, 0.12) 0%,
+    rgba(6, 78, 59, 0.28) 0%,
     transparent 70%
   );
 }
@@ -375,7 +380,20 @@ body {
   height: 400px;
   background: radial-gradient(
     circle,
-    rgba(34, 211, 238, 0.1) 0%,
+    rgba(16, 185, 129, 0.12) 0%,
+    transparent 70%
+  );
+}
+
+.section-accent-ventures::before {
+  top: 15%;
+  right: -5%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(
+    circle,
+    rgba(6, 78, 59, 0.3) 0%,
+    rgba(20, 184, 166, 0.08) 50%,
     transparent 70%
   );
 }
@@ -387,7 +405,7 @@ body {
   height: 380px;
   background: radial-gradient(
     circle,
-    rgba(129, 140, 248, 0.11) 0%,
+    rgba(16, 185, 129, 0.10) 0%,
     transparent 70%
   );
 }
@@ -400,8 +418,8 @@ body {
   height: 60%;
   background: radial-gradient(
     ellipse,
-    rgba(139, 92, 246, 0.08) 0%,
-    rgba(34, 211, 238, 0.05) 45%,
+    rgba(6, 78, 59, 0.28) 0%,
+    rgba(16, 185, 129, 0.1) 45%,
     transparent 75%
   );
 }
@@ -413,9 +431,9 @@ body {
       padding-box,
     linear-gradient(
       135deg,
-      rgba(167, 139, 250, 0.35),
-      rgba(34, 211, 238, 0.2),
-      rgba(129, 140, 248, 0.15)
+      rgba(16, 185, 129, 0.35),
+      rgba(20, 184, 166, 0.2),
+      rgba(6, 78, 59, 0.25)
     )
       border-box;
 }
@@ -424,8 +442,8 @@ body {
   background: linear-gradient(
     145deg,
     rgba(255, 255, 255, 0.05) 0%,
-    rgba(139, 92, 246, 0.04) 40%,
-    rgba(34, 211, 238, 0.03) 100%
+    rgba(16, 185, 129, 0.04) 40%,
+    rgba(20, 184, 166, 0.03) 100%
   );
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition:
@@ -435,13 +453,13 @@ body {
 }
 
 .interest-card-accent:hover {
-  border-color: rgba(167, 139, 250, 0.25);
-  box-shadow: 0 0 40px rgba(139, 92, 246, 0.08);
+  border-color: rgba(52, 211, 153, 0.3);
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.1);
   background: linear-gradient(
     145deg,
     rgba(255, 255, 255, 0.06) 0%,
-    rgba(139, 92, 246, 0.08) 50%,
-    rgba(34, 211, 238, 0.06) 100%
+    rgba(16, 185, 129, 0.08) 50%,
+    rgba(20, 184, 166, 0.06) 100%
   );
 }
 
@@ -449,7 +467,7 @@ body {
   border: 1px solid transparent;
   background:
     linear-gradient(rgba(8, 8, 10, 0.85), rgba(8, 8, 10, 0.85)) padding-box,
-    linear-gradient(90deg, rgba(167, 139, 250, 0.4), rgba(34, 211, 238, 0.3))
+    linear-gradient(90deg, rgba(16, 185, 129, 0.4), rgba(20, 184, 166, 0.3))
       border-box;
 }
 
@@ -486,17 +504,17 @@ body {
 }
 
 .bento-card {
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    rgba(255, 255, 255, 0.01) 100%
-  );
-  border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+  background: rgba(15, 18, 25, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
+    0 12px 40px -12px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(16px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bento-card:hover {
-  border-color: var(--border-hover);
+  border-color: rgba(52, 211, 153, 0.3);
 }
 
 .project-card-gradient {
@@ -532,89 +550,67 @@ body {
   outline-offset: 3px;
 }
 
+html.light :focus-visible {
+  outline: 2px solid #0E5A42;
+  outline-offset: 3px;
+}
+
 /* =============================================================================
- * LIGHT MODE AESTHETIC OVERRIDES
- * Luminous crisp pure white / pearl surfaces with signature airy cyan-violet glow
+ * LIGHT MODE SYSTEM: Crisp Pearl-White (#F7FAF8) & Deep Forest Emerald (#0E5A42)
+ * High-trust, luminous aesthetic with restrained atmospheric mint/sage washes
  * ============================================================================= */
 html.light .bento-card {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+  border: 1px solid #DCE5E0;
+  box-shadow: 0 10px 35px -12px rgba(12, 24, 20, 0.08);
 }
 
 html.light .bento-card:hover {
-  border-color: rgba(203, 213, 225, 0.95);
-  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.07);
+  border-color: rgba(14, 77, 58, 0.3);
+  box-shadow: 0 14px 40px -10px rgba(12, 24, 20, 0.12);
 }
 
 html.light .interest-card-accent {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+  border: 1px solid #DCE5E0;
+  box-shadow: 0 10px 35px -12px rgba(12, 24, 20, 0.08);
 }
 
 html.light .interest-card-accent:hover {
-  border-color: rgba(167, 139, 250, 0.45);
-  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(238, 242, 255, 0.85) 50%,
-    rgba(236, 254, 255, 0.85) 100%
-  );
+  border-color: rgba(14, 77, 58, 0.3);
+  box-shadow: 0 14px 40px -10px rgba(12, 24, 20, 0.12);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 html.light .gradient-panel {
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.96))
-      padding-box,
-    linear-gradient(
-      135deg,
-      rgba(167, 139, 250, 0.4),
-      rgba(34, 211, 238, 0.3),
-      rgba(129, 140, 248, 0.25)
-    )
-      border-box;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #DCE5E0;
+  box-shadow: 0 16px 40px rgba(12, 24, 20, 0.06);
 }
 
 html.light .hero-badge-gradient {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.94))
-      padding-box,
-    linear-gradient(90deg, rgba(167, 139, 250, 0.5), rgba(34, 211, 238, 0.45))
-      border-box;
-  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+  background: #EBF7F1;
+  border: 1px solid #B7E4CE;
+  box-shadow: 0 2px 8px rgba(12, 24, 20, 0.04);
 }
 
-html.light .project-card {
-  border-color: rgba(226, 232, 240, 0.85);
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
-}
-
-html.light .project-card:hover {
-  border-color: rgba(167, 139, 250, 0.4);
-  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
-}
-
-html.light .project-card-gradient::before {
+html.light .profile-image-ring {
   background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 0.96) 0%,
-    rgba(255, 255, 255, 0.72) 50%,
-    rgba(255, 255, 255, 0.2) 100%
+    145deg,
+    rgba(16, 185, 129, 0.5),
+    rgba(14, 77, 58, 0.3)
   );
 }
 
-/* Ambient glow in light mode (soft, clean, airy cyan & soft indigo/violet) */
+/* Restrained ambient background washes in light mode */
 html.light .bg-spot-top {
   background: radial-gradient(
     ellipse,
-    rgba(99, 102, 241, 0.11) 0%,
+    rgba(16, 185, 129, 0.08) 0%,
     transparent 70%
   );
 }
@@ -622,7 +618,7 @@ html.light .bg-spot-top {
 html.light .bg-spot-mid-right {
   background: radial-gradient(
     ellipse,
-    rgba(6, 182, 212, 0.14) 0%,
+    rgba(14, 77, 58, 0.05) 0%,
     transparent 72%
   );
 }
@@ -630,7 +626,7 @@ html.light .bg-spot-mid-right {
 html.light .bg-spot-mid-left {
   background: radial-gradient(
     ellipse,
-    rgba(99, 102, 241, 0.09) 0%,
+    rgba(16, 185, 129, 0.06) 0%,
     transparent 70%
   );
 }
@@ -638,7 +634,7 @@ html.light .bg-spot-mid-left {
 html.light .bg-spot-bottom {
   background: radial-gradient(
     ellipse,
-    rgba(6, 182, 212, 0.11) 0%,
+    rgba(14, 77, 58, 0.05) 0%,
     transparent 75%
   );
 }
@@ -646,7 +642,7 @@ html.light .bg-spot-bottom {
 html.light .bg-spot-center {
   background: radial-gradient(
     ellipse,
-    rgba(99, 102, 241, 0.07) 0%,
+    rgba(16, 185, 129, 0.04) 0%,
     transparent 68%
   );
 }
@@ -654,7 +650,7 @@ html.light .bg-spot-center {
 html.light .ambient-glow::before {
   background: radial-gradient(
     ellipse at center,
-    rgba(99, 102, 241, 0.11) 0%,
+    rgba(16, 185, 129, 0.08) 0%,
     transparent 70%
   );
 }
@@ -662,7 +658,7 @@ html.light .ambient-glow::before {
 html.light .ambient-glow::after {
   background: radial-gradient(
     ellipse at center,
-    rgba(6, 182, 212, 0.14) 0%,
+    rgba(14, 77, 58, 0.05) 0%,
     transparent 70%
   );
 }
@@ -670,7 +666,7 @@ html.light .ambient-glow::after {
 html.light .hero-orb-violet {
   background: radial-gradient(
     circle,
-    rgba(99, 102, 241, 0.16) 0%,
+    rgba(16, 185, 129, 0.12) 0%,
     transparent 70%
   );
 }
@@ -678,7 +674,7 @@ html.light .hero-orb-violet {
 html.light .hero-orb-cyan {
   background: radial-gradient(
     circle,
-    rgba(6, 182, 212, 0.14) 0%,
+    rgba(14, 77, 58, 0.08) 0%,
     transparent 70%
   );
 }
@@ -686,26 +682,76 @@ html.light .hero-orb-cyan {
 html.light .hero-orb-slate {
   background: radial-gradient(
     circle,
-    rgba(148, 163, 184, 0.12) 0%,
+    rgba(125, 147, 139, 0.08) 0%,
     transparent 70%
+  );
+}
+
+html.light .section-accent-profile::before {
+  background: radial-gradient(
+    circle,
+    rgba(16, 185, 129, 0.07) 0%,
+    transparent 70%
+  );
+}
+
+html.light .section-accent-projects::before {
+  background: radial-gradient(
+    circle,
+    rgba(14, 77, 58, 0.05) 0%,
+    transparent 70%
+  );
+}
+
+html.light .section-accent-ventures::before {
+  background: radial-gradient(
+    circle,
+    rgba(16, 185, 129, 0.07) 0%,
+    rgba(14, 77, 58, 0.04) 50%,
+    transparent 70%
+  );
+}
+
+html.light .section-accent-interests::before {
+  background: radial-gradient(
+    circle,
+    rgba(16, 185, 129, 0.06) 0%,
+    transparent 70%
+  );
+}
+
+html.light .section-accent-contact::before {
+  background: radial-gradient(
+    ellipse,
+    rgba(16, 185, 129, 0.07) 0%,
+    rgba(14, 77, 58, 0.04) 45%,
+    transparent 75%
   );
 }
 
 html.light .bg-grid {
   background-image:
-    linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(12, 24, 20, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(12, 24, 20, 0.035) 1px, transparent 1px);
 }
 
 html.light .hero-gradient-text {
   background: linear-gradient(
     115deg,
-    #4338ca 0%,
-    #6366f1 22%,
-    #0891b2 50%,
-    #1e293b 80%,
-    #0f172a 100%
+    #064e3b 0%,
+    #047857 25%,
+    #0f766e 50%,
+    #0c1814 80%,
+    #0c1814 100%
   );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+}
+
+html.light .accent-label-gradient {
+  background: linear-gradient(90deg, #063729, #0D4A38, #063729);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -716,51 +762,42 @@ html.light .timeline-line {
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(15, 23, 42, 0.12) 10%,
-    rgba(15, 23, 42, 0.12) 90%,
+    rgba(12, 24, 20, 0.1) 10%,
+    rgba(12, 24, 20, 0.1) 90%,
     transparent
   );
 }
 
-html.light .timeline-progress {
-  background: linear-gradient(
-    to bottom,
-    rgba(99, 102, 241, 0.75),
-    rgba(6, 182, 212, 0.75),
-    transparent
-  );
-}
-
-/* Crisp Slate Typography overrides for Light Mode */
+/* High-contrast typography fallbacks for Light Mode */
 html.light .text-zinc-50,
 html.light .text-zinc-100 {
-  color: #0f172a;
+  color: #0C1814;
 }
 
 html.light .text-zinc-200 {
-  color: #1e293b;
+  color: #1A2E27;
 }
 
 html.light .text-zinc-300,
 html.light .text-zinc-400 {
-  color: #334155;
+  color: #4A5D56;
 }
 
 html.light .text-zinc-500 {
-  color: #64748b;
+  color: #627770;
 }
 
 html.light .text-zinc-600,
 html.light .text-zinc-700 {
-  color: #94a3b8;
+  color: #7D938B;
 }
 
 html.light .text-muted {
-  color: #475569;
+  color: #4A5D56;
 }
 
 html.light .text-muted-subtle {
-  color: #64748b;
+  color: #7D938B;
 }
 
 /* Border overrides for Light Mode */
@@ -770,33 +807,36 @@ html.light .border-white\/\[0\.04\],
 html.light .border-white\/\[0\.06\],
 html.light .border-white\/\[0\.08\],
 html.light .border-white\/10,
-html.light .border-white\/\[0\.1\] {
-  border-color: rgba(226, 232, 240, 0.85);
+html.light .border-white\/\[0\.1\],
+html.light .border-white\/\[0\.10\] {
+  border-color: #DCE5E0;
 }
 
 html.light .border-white\/20,
 html.light .border-white\/\[0\.12\],
 html.light .border-white\/\[0\.14\],
-html.light .border-white\/\[0\.16\] {
-  border-color: rgba(203, 213, 225, 0.9);
+html.light .border-white\/\[0\.16\],
+html.light .border-white\/\[0\.22\],
+html.light .border-white\/\[0\.25\] {
+  border-color: rgba(14, 77, 58, 0.25);
 }
 
-/* Surface backgrounds for sub-cards and pills in Light Mode */
+/* Sub-card and pill surface backgrounds in Light Mode */
 html.light .bg-white\/\[0\.02\],
 html.light .bg-white\/\[0\.03\],
 html.light .bg-white\/\[0\.04\],
 html.light .bg-white\/\[0\.05\],
 html.light .bg-white\/\[0\.06\] {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: #F1F6F3;
 }
 
 html.light .bg-white\/\[0\.08\],
 html.light .bg-white\/10 {
-  background-color: rgba(248, 250, 252, 0.95);
+  background-color: #EBF7F1;
 }
 
 html.light .bg-black\/20 {
-  background-color: rgba(241, 245, 249, 0.9);
+  background-color: rgba(241, 246, 243, 0.9);
 }
 
 html.light .bg-charcoal-950\/80 {
@@ -808,75 +848,82 @@ html.light .bg-charcoal-950\/95 {
 }
 
 html.light .grain-overlay {
-  opacity: 0.015;
+  opacity: 0.012;
 }
 
-/* Light mode primary button */
+/* Light mode primary button: sleek deep obsidian-forest pill */
 html.light a.bg-zinc-100,
 html.light button.bg-zinc-100 {
-  background-color: #0f172a !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15) !important;
+  background: linear-gradient(to right, #041812, #072B20, #051F17) !important;
+  color: #ECFDF5 !important;
+  border: 1px solid rgba(17, 92, 69, 0.7) !important;
+  box-shadow: 0 8px 24px -6px rgba(4, 28, 21, 0.55) !important;
 }
 
 html.light a.bg-zinc-100:hover,
 html.light button.bg-zinc-100:hover {
-  background-color: #1e293b !important;
-  color: #ffffff !important;
+  border-color: #187A5C !important;
+  box-shadow: 0 10px 28px -4px rgba(14, 77, 58, 0.45) !important;
 }
 
-/* Light mode primary resume button */
+/* Resume button in Light Mode */
 html.light .resume-btn-primary {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%) !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.25) !important;
+  background: linear-gradient(to right, #041812, #072B20, #051F17) !important;
+  color: #ECFDF5 !important;
+  border: 1px solid rgba(17, 92, 69, 0.7) !important;
+  box-shadow: 0 8px 24px -6px rgba(4, 28, 21, 0.55) !important;
 }
 
 html.light .resume-btn-primary:hover {
-  box-shadow: 0 6px 25px rgba(99, 102, 241, 0.35) !important;
-  color: #ffffff !important;
+  border-color: #187A5C !important;
+  box-shadow: 0 10px 28px -4px rgba(14, 77, 58, 0.45) !important;
 }
 
 /* Project Modal in Light Mode */
 html.light .project-modal-panel {
   background-color: #ffffff !important;
-  border-color: rgba(226, 232, 240, 0.95) !important;
-  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15) !important;
+  border-color: #DCE5E0 !important;
+  box-shadow: 0 25px 50px -12px rgba(12, 24, 20, 0.15) !important;
 }
 
 html.light .project-modal-overlay-gradient {
-  background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%) !important;
+  background: linear-gradient(
+    to top,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  ) !important;
 }
 
 html.light .project-modal-close-btn {
-  background-color: rgba(255, 255, 255, 0.85) !important;
-  border-color: rgba(226, 232, 240, 0.9) !important;
-  color: #0f172a !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: #DCE5E0 !important;
+  color: #0C1814 !important;
 }
 
 html.light .project-modal-close-btn:hover {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+  background-color: #F1F6F3 !important;
+  color: #0C1814 !important;
 }
 
 /* Form Inputs in Light Mode */
 html.light input,
 html.light textarea {
-  color: #0f172a !important;
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  border-color: rgba(226, 232, 240, 0.95) !important;
+  color: #0C1814 !important;
+  background-color: #F1F6F3 !important;
+  border-color: #DCE5E0 !important;
 }
 
 html.light input::placeholder,
 html.light textarea::placeholder {
-  color: #94a3b8 !important;
+  color: #7D938B !important;
 }
 
 html.light input:focus,
 html.light textarea:focus {
-  border-color: rgba(99, 102, 241, 0.5) !important;
+  border-color: rgba(14, 90, 66, 0.4) !important;
   background-color: #ffffff !important;
-  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.2) !important;
+  box-shadow: 0 0 0 1px rgba(14, 90, 66, 0.2) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

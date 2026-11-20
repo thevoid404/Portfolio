@@ -119,16 +119,16 @@ export function TechIcon({ skill, className }: TechIconProps) {
   return (
     <div
       className={cn(
-        "group flex flex-col items-center justify-center gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-500 hover:border-white/[0.14] hover:bg-white/[0.05]",
+        "group flex flex-col items-center justify-center gap-3 rounded-2xl border border-[#DCE5E0] bg-[#F1F6F3]/80 p-5 transition-all duration-500 hover:border-[#0E5A42]/30 hover:bg-[#EBF7F1] dark:border-white/[0.06] dark:bg-white/[0.02] dark:hover:border-white/[0.14] dark:hover:bg-white/[0.05]",
         className
       )}
     >
       <Icon
         className={cn(
-          "h-8 w-8 text-muted-subtle transition-colors duration-500 group-hover:text-zinc-100"
+          "h-8 w-8 text-[#4A5D56] transition-colors duration-500 group-hover:text-[#0C1814] dark:text-muted-subtle dark:group-hover:text-zinc-100"
         )}
       />
-      <span className="text-xs font-medium tracking-wide text-muted-subtle transition-colors duration-500 group-hover:text-zinc-300">
+      <span className="text-xs font-medium tracking-wide text-[#4A5D56] transition-colors duration-500 group-hover:text-[#0C1814] dark:text-muted-subtle dark:group-hover:text-zinc-300">
         {skill.name}
       </span>
     </div>

@@ -17,8 +17,8 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       onClick={toggleTheme}
       className={cn(
         "group relative flex h-9 w-9 items-center justify-center rounded-full border transition-all duration-300",
-        "border-white/10 bg-white/[0.04] text-zinc-300 hover:border-violet-400/40 hover:bg-white/[0.08] hover:text-white hover:shadow-[0_0_20px_rgba(139,92,246,0.25)]",
-        "dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300",
+        "border-[#DCE5E0] bg-[#F1F6F3] text-[#1A2E27] hover:border-[#0D4A38]/40 hover:bg-[#EBF7F1] hover:text-[#063729]",
+        "dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300 dark:hover:border-[#125E47] dark:hover:bg-[#072B20]/40 dark:hover:text-[#34A885] dark:hover:shadow-[0_0_20px_rgba(18,94,71,0.3)]",
         className
       )}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
@@ -32,7 +32,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       <svg
         className={cn(
           "h-4 w-4 transition-transform duration-300",
-          isDark ? "hidden scale-0" : "block scale-100 text-amber-500"
+          isDark ? "hidden scale-0" : "block scale-100 text-[#063729]"
         )}
         viewBox="0 0 24 24"
         fill="none"
@@ -50,7 +50,9 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       <svg
         className={cn(
           "h-4 w-4 transition-transform duration-300",
-          isDark ? "block scale-100 text-violet-300 group-hover:text-cyan-300" : "hidden scale-0"
+          isDark
+            ? "block scale-100 text-[#34A885] group-hover:text-emerald-200"
+            : "hidden scale-0"
         )}
         viewBox="0 0 24 24"
         fill="none"

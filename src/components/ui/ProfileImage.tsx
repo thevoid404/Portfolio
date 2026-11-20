@@ -36,7 +36,7 @@ export function ProfileImage({ className, priority = false }: ProfileImageProps)
             onError={() => setHasError(true)}
           />
         ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-violet-950/50 via-zinc-900 to-cyan-950/40">
+          <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-emerald-950/60 via-zinc-900 to-teal-950/50">
             <span className="text-5xl font-semibold tracking-tight text-zinc-300 sm:text-6xl">
               {initials}
             </span>

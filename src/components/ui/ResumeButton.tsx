@@ -14,9 +14,9 @@ export function ResumeButton({
 
   const styles = {
     primary:
-      "resume-btn-primary border-transparent bg-gradient-to-r from-violet-200 via-zinc-100 to-cyan-100 text-zinc-950 hover:from-white hover:via-white hover:to-cyan-50 hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]",
+      "resume-btn-primary border border-[#115C45]/70 bg-gradient-to-r from-[#041812] via-[#072B20] to-[#051F17] text-[#ECFDF5] shadow-[0_8px_24px_-6px_rgba(4,28,21,0.55)] transition-all duration-300 hover:border-[#187A5C] hover:shadow-[0_10px_28px_-4px_rgba(14,77,58,0.45)]",
     outline:
-      "border-white/10 bg-white/[0.04] text-zinc-200 hover:border-white/20 hover:bg-white/[0.08] hover:text-white",
+      "border border-[#DCE5E0] bg-[#F1F6F3] text-[#1A2E27] hover:border-[#0D4A38]/40 hover:bg-[#EBF7F1] hover:text-[#063729] dark:border-[#125E47]/50 dark:bg-white/[0.04] dark:text-zinc-200 dark:hover:border-[#187A5C] dark:hover:bg-[#072B20]/30 dark:hover:text-[#34A885]",
   };
 
   return (

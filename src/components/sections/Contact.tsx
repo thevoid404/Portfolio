@@ -12,18 +12,23 @@ export function Contact() {
 
   useGSAP(
     () => {
-      gsap.from(".contact-reveal", {
-        y: 50,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.12,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          toggleActions: "play none none reverse",
-        },
-      });
+      gsap.fromTo(
+        ".contact-reveal",
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          stagger: 0.08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 88%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
     },
     { scope: sectionRef }
   );
@@ -46,25 +51,44 @@ export function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="section-accent-glow section-accent-contact relative z-10 overflow-hidden py-32"
+      className="section-accent-glow section-accent-contact relative z-10 overflow-hidden py-14 sm:py-16 lg:py-20"
       aria-labelledby="contact-heading"
     >
       <div className="section-padding section-container">
-        <div className="contact-reveal gradient-panel overflow-hidden rounded-[2rem] p-8 sm:p-12 lg:p-16">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="contact-reveal relative overflow-hidden rounded-2xl border border-[#0A3D2E]/35 bg-white/90 p-8 shadow-[0_14px_40px_-12px_rgba(6,45,34,0.12)] backdrop-blur-xl sm:p-12 lg:p-16 dark:border-[#0F523E]/80 dark:bg-[#070B0A]/90 dark:shadow-[0_0_40px_-14px_rgba(11,74,55,0.45),inset_0_1px_0_0_rgba(20,105,79,0.35)]">
+          {/* Top Hairline Highlight */}
+          <div className="pointer-events-none absolute top-0 left-12 right-12 h-px bg-gradient-to-r from-transparent via-[#0D4A38]/30 to-transparent dark:via-[#146B51]/40" />
+
+          {/* Ambient Glow Orb behind CTA */}
+          <div
+            className="pointer-events-none absolute -bottom-20 -right-20 hidden h-64 w-64 rounded-full opacity-40 blur-3xl dark:block"
+            style={{
+              background: "radial-gradient(circle, rgba(16,185,129,0.2) 0%, transparent 70%)",
+            }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full opacity-30 blur-3xl dark:hidden"
+            style={{
+              background: "radial-gradient(circle, rgba(16,185,129,0.2) 0%, transparent 70%)",
+            }}
+            aria-hidden
+          />
+
+          <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <SectionHeading
                 label="Contact"
                 title="Let's build something exceptional"
-                description="Have a project in mind? I'd love to hear about it. Drop a message and I'll respond within 48 hours."
+                description="Have an ambitious product, engineering role, or selective build in mind? Let's connect."
                 accent
               />
-              <div className="mt-10 space-y-6">
+              <div className="mt-8 space-y-5">
                 <a
                   href={`mailto:${siteConfig.email}`}
                   className="group flex items-center gap-4"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/[0.08] bg-white/[0.03] transition-all duration-500 group-hover:border-white/20 group-hover:bg-white/[0.06]">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#DCE5E0] bg-[#F1F6F3] transition-all duration-500 group-hover:border-[#0D4A38]/40 group-hover:bg-[#EBF7F1] dark:border-white/[0.08] dark:bg-white/[0.03] dark:group-hover:border-[#125E47] dark:group-hover:bg-white/[0.06]">
                     <svg
                       width="18"
                       height="18"
@@ -72,7 +96,7 @@ export function Contact() {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="1.5"
-                      className="text-muted transition-colors group-hover:text-zinc-200"
+                      className="text-[#4A5D56] transition-colors group-hover:text-[#063729] dark:text-muted dark:group-hover:text-[#34A885]"
                       aria-hidden
                     >
                       <path d="M4 6h16v12H4z" />
@@ -80,14 +104,14 @@ export function Contact() {
                     </svg>
                   </span>
                   <div>
-                    <p className="text-xs text-muted-subtle">Email</p>
-                    <p className="text-lg font-medium text-zinc-200 transition-colors group-hover:text-white">
+                    <p className="text-xs text-[#7D938B] font-mono dark:text-muted-subtle">Email</p>
+                    <p className="text-base font-medium text-[#0C1814] transition-colors group-hover:text-[#063729] sm:text-lg dark:text-zinc-200 dark:group-hover:text-white">
                       {siteConfig.email}
                     </p>
                   </div>
                 </a>
                 <div className="flex items-center gap-4">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/[0.08] bg-white/[0.03]">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#DCE5E0] bg-[#F1F6F3] dark:border-white/[0.08] dark:bg-white/[0.03]">
                     <svg
                       width="18"
                       height="18"
@@ -95,7 +119,7 @@ export function Contact() {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="1.5"
-                      className="text-muted"
+                      className="text-[#4A5D56] dark:text-muted"
                       aria-hidden
                     >
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
@@ -103,14 +127,14 @@ export function Contact() {
                     </svg>
                   </span>
                   <div>
-                    <p className="text-xs text-muted-subtle">Location</p>
-                    <p className="text-lg font-medium text-zinc-200">
+                    <p className="text-xs text-[#7D938B] font-mono dark:text-muted-subtle">Location</p>
+                    <p className="text-base font-medium text-[#0C1814] sm:text-lg dark:text-zinc-200">
                       {siteConfig.location}
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="contact-reveal mt-10">
+              <div className="contact-reveal mt-8">
                 <MagneticButton
                   href={`mailto:${siteConfig.email}`}
                   variant="primary"
@@ -122,7 +146,7 @@ export function Contact() {
 
             <form
               onSubmit={handleSubmit}
-              className="contact-reveal space-y-5"
+              className="contact-reveal space-y-4"
               aria-labelledby="contact-heading"
             >
               <h2 id="contact-heading" className="sr-only">
@@ -131,7 +155,7 @@ export function Contact() {
               <div>
                 <label
                   htmlFor="name"
-                  className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-subtle"
+                  className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-[#7D938B] dark:text-muted-subtle"
                 >
                   Name
                 </label>
@@ -141,14 +165,14 @@ export function Contact() {
                   type="text"
                   required
                   autoComplete="name"
-                  className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-zinc-100 outline-none transition-all duration-300 placeholder:text-zinc-700 focus:border-white/20 focus:bg-white/[0.05] focus:ring-1 focus:ring-white/10"
+                  className="w-full rounded-xl border border-[#DCE5E0] bg-[#F1F6F3]/80 px-4 py-3 text-sm text-[#0C1814] outline-none transition-all duration-300 placeholder:text-[#7D938B] focus:border-[#0E5A42]/40 focus:bg-white focus:ring-1 focus:ring-[#0E5A42]/20 dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-zinc-100 dark:placeholder:text-zinc-600 dark:focus:border-white/20 dark:focus:bg-white/[0.05] dark:focus:ring-white/10"
                   placeholder="Your name"
                 />
               </div>
               <div>
                 <label
                   htmlFor="email"
-                  className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-subtle"
+                  className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-[#7D938B] dark:text-muted-subtle"
                 >
                   Email
                 </label>
@@ -158,14 +182,14 @@ export function Contact() {
                   type="email"
                   required
                   autoComplete="email"
-                  className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-zinc-100 outline-none transition-all duration-300 placeholder:text-zinc-700 focus:border-white/20 focus:bg-white/[0.05] focus:ring-1 focus:ring-white/10"
+                  className="w-full rounded-xl border border-[#DCE5E0] bg-[#F1F6F3]/80 px-4 py-3 text-sm text-[#0C1814] outline-none transition-all duration-300 placeholder:text-[#7D938B] focus:border-[#0E5A42]/40 focus:bg-white focus:ring-1 focus:ring-[#0E5A42]/20 dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-zinc-100 dark:placeholder:text-zinc-600 dark:focus:border-white/20 dark:focus:bg-white/[0.05] dark:focus:ring-white/10"
                   placeholder="you@company.com"
                 />
               </div>
               <div>
                 <label
                   htmlFor="message"
-                  className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-subtle"
+                  className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-[#7D938B] dark:text-muted-subtle"
                 >
                   Message
                 </label>
@@ -173,9 +197,9 @@ export function Contact() {
                   id="message"
                   name="message"
                   required
-                  rows={5}
-                  className="w-full resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-zinc-100 outline-none transition-all duration-300 placeholder:text-zinc-700 focus:border-white/20 focus:bg-white/[0.05] focus:ring-1 focus:ring-white/10"
-                  placeholder="Tell me about your project..."
+                  rows={4}
+                  className="w-full resize-none rounded-xl border border-[#DCE5E0] bg-[#F1F6F3]/80 px-4 py-3 text-sm text-[#0C1814] outline-none transition-all duration-300 placeholder:text-[#7D938B] focus:border-[#0E5A42]/40 focus:bg-white focus:ring-1 focus:ring-[#0E5A42]/20 dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-zinc-100 dark:placeholder:text-zinc-600 dark:focus:border-white/20 dark:focus:bg-white/[0.05] dark:focus:ring-white/10"
+                  placeholder="Tell me about your project or role..."
                 />
               </div>
               <MagneticButton

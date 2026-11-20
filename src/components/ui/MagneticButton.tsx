@@ -65,10 +65,11 @@ export function MagneticButton({
 
   const variants = {
     primary:
-      "bg-zinc-100 text-zinc-950 hover:bg-white shadow-[0_0_40px_rgba(255,255,255,0.08)]",
+      "border border-[#115C45]/70 bg-gradient-to-r from-[#041812] via-[#072B20] to-[#051F17] text-[#ECFDF5] shadow-[0_8px_24px_-6px_rgba(4,28,21,0.55)] transition-all duration-300 hover:border-[#187A5C] hover:shadow-[0_10px_28px_-4px_rgba(14,77,58,0.45)]",
     secondary:
-      "border border-white/10 bg-white/[0.03] text-zinc-100 hover:border-white/20 hover:bg-white/[0.06]",
-    ghost: "text-zinc-400 hover:text-zinc-100",
+      "border border-[#DCE5E0] bg-[#F1F6F3] text-[#1A2E27] hover:border-[#0D4A38]/40 hover:bg-[#EBF7F1] hover:text-[#063729] dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-100 dark:hover:border-[#125E47] dark:hover:bg-[#072B20]/40 dark:hover:text-[#34A885]",
+    ghost:
+      "text-[#4A5D56] hover:text-[#063729] dark:text-zinc-400 dark:hover:text-[#34A885]",
   };
 
   const sharedClass = cn(

@@ -59,7 +59,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-violet-500/20 selection:text-foreground">
+      <body className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-emerald-500/20 selection:text-foreground">
         <ThemeProvider>
           <SmoothScrollProvider>
             <AmbientBackground />
