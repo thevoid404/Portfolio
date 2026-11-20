@@ -425,6 +425,7 @@ export const projects: Project[] = [
     ],
     gradient: "from-amber-950/80 via-orange-900/30 to-charcoal-950",
     accent: "#f59e0b",
+    link: "https://creators-vault-storage.vercel.app/",
     github: "https://github.com/thevoid404/Creators-vault",
   },
   /* =========================================================================
