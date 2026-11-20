@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap-config";
 import { siteConfig } from "@/config/site-data";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -72,42 +73,48 @@ export function Header() {
           ))}
         </nav>
 
-        <a
-          href="#contact"
-          className="hidden rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-sm text-zinc-300 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:text-zinc-100 md:inline-flex"
-        >
-          Get in touch
-        </a>
+        <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
+          <a
+            href="#contact"
+            className="rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-sm text-zinc-300 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:text-zinc-100"
+          >
+            Get in touch
+          </a>
+        </div>
 
-        <button
-          type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 md:hidden"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-expanded={menuOpen}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-        >
-          <span className="sr-only">{menuOpen ? "Close" : "Menu"}</span>
-          <div className="flex w-4 flex-col gap-1">
-            <span
-              className={cn(
-                "h-px w-full bg-zinc-300 transition-transform duration-300",
-                menuOpen && "translate-y-[5px] rotate-45"
-              )}
-            />
-            <span
-              className={cn(
-                "h-px w-full bg-zinc-300 transition-opacity duration-300",
-                menuOpen && "opacity-0"
-              )}
-            />
-            <span
-              className={cn(
-                "h-px w-full bg-zinc-300 transition-transform duration-300",
-                menuOpen && "-translate-y-[5px] -rotate-45"
-              )}
-            />
-          </div>
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            <span className="sr-only">{menuOpen ? "Close" : "Menu"}</span>
+            <div className="flex w-4 flex-col gap-1">
+              <span
+                className={cn(
+                  "h-px w-full bg-zinc-300 transition-transform duration-300",
+                  menuOpen && "translate-y-[5px] rotate-45"
+                )}
+              />
+              <span
+                className={cn(
+                  "h-px w-full bg-zinc-300 transition-opacity duration-300",
+                  menuOpen && "opacity-0"
+                )}
+              />
+              <span
+                className={cn(
+                  "h-px w-full bg-zinc-300 transition-transform duration-300",
+                  menuOpen && "-translate-y-[5px] -rotate-45"
+                )}
+              />
+            </div>
+          </button>
+        </div>
       </div>
 
       <div
@@ -129,9 +136,13 @@ export function Header() {
             {item.label}
           </a>
         ))}
+        <div className="mt-4 flex items-center justify-between border-t border-white/[0.08] pt-6">
+          <span className="text-sm font-medium text-muted">Theme</span>
+          <ThemeToggle />
+        </div>
         <a
           href="#contact"
-          className="mt-4 text-lg text-muted"
+          className="mt-2 text-lg text-muted"
           onClick={() => setMenuOpen(false)}
         >
           Get in touch →

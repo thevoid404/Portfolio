@@ -14,7 +14,7 @@ export function ResumeButton({
 
   const styles = {
     primary:
-      "border-transparent bg-gradient-to-r from-violet-200 via-zinc-100 to-cyan-100 text-zinc-950 hover:from-white hover:via-white hover:to-cyan-50 hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]",
+      "resume-btn-primary border-transparent bg-gradient-to-r from-violet-200 via-zinc-100 to-cyan-100 text-zinc-950 hover:from-white hover:via-white hover:to-cyan-50 hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]",
     outline:
       "border-white/10 bg-white/[0.04] text-zinc-200 hover:border-white/20 hover:bg-white/[0.08] hover:text-white",
   };

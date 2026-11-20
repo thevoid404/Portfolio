@@ -80,7 +80,7 @@ export function Hero() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
           <span className="font-mono text-xs tracking-wider text-muted">
-            Available for select projects
+            {siteConfig.hero.availabilityBadge}
           </span>
         </div>
 

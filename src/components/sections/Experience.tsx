@@ -85,9 +85,9 @@ export function Experience() {
     >
       <div className="section-padding section-container">
         <SectionHeading
-          label="Experience"
-          title="Career journey"
-          description="A track record of shipping impactful products across startups and agencies."
+          label="Milestones"
+          title="Engineering Journey & Milestones"
+          description="A progression from full-stack fundamentals to distributed real-time systems and agentic AI architectures."
         />
 
         <div ref={timelineRef} className="relative max-w-3xl">
@@ -120,7 +120,7 @@ export function Experience() {
                     </span>
                   </div>
                   <p className="mt-1 text-sm text-muted">
-                    {exp.company} · {exp.location}
+                    {exp.company}
                   </p>
                   <p className="mt-4 text-sm leading-relaxed text-muted">
                     {exp.description}
@@ -146,7 +146,7 @@ export function Experience() {
           <SectionHeading
             label="Process"
             title="How I work"
-            description="A disciplined workflow from discovery through launch."
+            description="A disciplined engineering workflow from problem discovery through production launch."
           />
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">

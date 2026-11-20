@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #050505;
   --foreground: #f4f4f5;
@@ -15,6 +17,40 @@
   --glow-cyan: rgba(34, 211, 238, 0.08);
   --glow-white: rgba(255, 255, 255, 0.04);
   --charcoal-950: #050505;
+}
+
+html.dark {
+  --background: #050505;
+  --foreground: #f4f4f5;
+  --muted: #b8b8c2;
+  --muted-foreground: #9494a3;
+  --muted-subtle: #7e7e8c;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.16);
+  --surface: #0c0c0c;
+  --surface-elevated: #141414;
+  --accent: #e4e4e7;
+  --glow-violet: rgba(139, 92, 246, 0.12);
+  --glow-cyan: rgba(34, 211, 238, 0.08);
+  --glow-white: rgba(255, 255, 255, 0.04);
+  --charcoal-950: #050505;
+}
+
+html.light {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --muted: #475569;
+  --muted-foreground: #64748b;
+  --muted-subtle: #94a3b8;
+  --border: rgba(226, 232, 240, 0.8);
+  --border-hover: rgba(203, 213, 225, 0.9);
+  --surface: #ffffff;
+  --surface-elevated: #f8fafc;
+  --accent: #0f172a;
+  --glow-violet: rgba(99, 102, 241, 0.11);
+  --glow-cyan: rgba(6, 182, 212, 0.14);
+  --glow-white: rgba(15, 23, 42, 0.03);
+  --charcoal-950: #ffffff;
 }
 
 @theme inline {
@@ -62,11 +98,12 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
+  background: rgba(139, 92, 246, 0.25);
+  color: inherit;
 }
 
 .ambient-glow {
@@ -448,25 +485,6 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 40s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 .bento-card {
   background: linear-gradient(
     145deg,
@@ -514,13 +532,356 @@ body {
   outline-offset: 3px;
 }
 
+/* =============================================================================
+ * LIGHT MODE AESTHETIC OVERRIDES
+ * Luminous crisp pure white / pearl surfaces with signature airy cyan-violet glow
+ * ============================================================================= */
+html.light .bento-card {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+}
+
+html.light .bento-card:hover {
+  border-color: rgba(203, 213, 225, 0.95);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.07);
+}
+
+html.light .interest-card-accent {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+}
+
+html.light .interest-card-accent:hover {
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(238, 242, 255, 0.85) 50%,
+    rgba(236, 254, 255, 0.85) 100%
+  );
+}
+
+html.light .gradient-panel {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.96))
+      padding-box,
+    linear-gradient(
+      135deg,
+      rgba(167, 139, 250, 0.4),
+      rgba(34, 211, 238, 0.3),
+      rgba(129, 140, 248, 0.25)
+    )
+      border-box;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
+}
+
+html.light .hero-badge-gradient {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.94))
+      padding-box,
+    linear-gradient(90deg, rgba(167, 139, 250, 0.5), rgba(34, 211, 238, 0.45))
+      border-box;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+}
+
+html.light .project-card {
+  border-color: rgba(226, 232, 240, 0.85);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+}
+
+html.light .project-card:hover {
+  border-color: rgba(167, 139, 250, 0.4);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+}
+
+html.light .project-card-gradient::before {
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(255, 255, 255, 0.72) 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+}
+
+/* Ambient glow in light mode (soft, clean, airy cyan & soft indigo/violet) */
+html.light .bg-spot-top {
+  background: radial-gradient(
+    ellipse,
+    rgba(99, 102, 241, 0.11) 0%,
+    transparent 70%
+  );
+}
+
+html.light .bg-spot-mid-right {
+  background: radial-gradient(
+    ellipse,
+    rgba(6, 182, 212, 0.14) 0%,
+    transparent 72%
+  );
+}
+
+html.light .bg-spot-mid-left {
+  background: radial-gradient(
+    ellipse,
+    rgba(99, 102, 241, 0.09) 0%,
+    transparent 70%
+  );
+}
+
+html.light .bg-spot-bottom {
+  background: radial-gradient(
+    ellipse,
+    rgba(6, 182, 212, 0.11) 0%,
+    transparent 75%
+  );
+}
+
+html.light .bg-spot-center {
+  background: radial-gradient(
+    ellipse,
+    rgba(99, 102, 241, 0.07) 0%,
+    transparent 68%
+  );
+}
+
+html.light .ambient-glow::before {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(99, 102, 241, 0.11) 0%,
+    transparent 70%
+  );
+}
+
+html.light .ambient-glow::after {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(6, 182, 212, 0.14) 0%,
+    transparent 70%
+  );
+}
+
+html.light .hero-orb-violet {
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.16) 0%,
+    transparent 70%
+  );
+}
+
+html.light .hero-orb-cyan {
+  background: radial-gradient(
+    circle,
+    rgba(6, 182, 212, 0.14) 0%,
+    transparent 70%
+  );
+}
+
+html.light .hero-orb-slate {
+  background: radial-gradient(
+    circle,
+    rgba(148, 163, 184, 0.12) 0%,
+    transparent 70%
+  );
+}
+
+html.light .bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+}
+
+html.light .hero-gradient-text {
+  background: linear-gradient(
+    115deg,
+    #4338ca 0%,
+    #6366f1 22%,
+    #0891b2 50%,
+    #1e293b 80%,
+    #0f172a 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+}
+
+html.light .timeline-line {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(15, 23, 42, 0.12) 10%,
+    rgba(15, 23, 42, 0.12) 90%,
+    transparent
+  );
+}
+
+html.light .timeline-progress {
+  background: linear-gradient(
+    to bottom,
+    rgba(99, 102, 241, 0.75),
+    rgba(6, 182, 212, 0.75),
+    transparent
+  );
+}
+
+/* Crisp Slate Typography overrides for Light Mode */
+html.light .text-zinc-50,
+html.light .text-zinc-100 {
+  color: #0f172a;
+}
+
+html.light .text-zinc-200 {
+  color: #1e293b;
+}
+
+html.light .text-zinc-300,
+html.light .text-zinc-400 {
+  color: #334155;
+}
+
+html.light .text-zinc-500 {
+  color: #64748b;
+}
+
+html.light .text-zinc-600,
+html.light .text-zinc-700 {
+  color: #94a3b8;
+}
+
+html.light .text-muted {
+  color: #475569;
+}
+
+html.light .text-muted-subtle {
+  color: #64748b;
+}
+
+/* Border overrides for Light Mode */
+html.light .border-white\/\[0\.02\],
+html.light .border-white\/\[0\.03\],
+html.light .border-white\/\[0\.04\],
+html.light .border-white\/\[0\.06\],
+html.light .border-white\/\[0\.08\],
+html.light .border-white\/10,
+html.light .border-white\/\[0\.1\] {
+  border-color: rgba(226, 232, 240, 0.85);
+}
+
+html.light .border-white\/20,
+html.light .border-white\/\[0\.12\],
+html.light .border-white\/\[0\.14\],
+html.light .border-white\/\[0\.16\] {
+  border-color: rgba(203, 213, 225, 0.9);
+}
+
+/* Surface backgrounds for sub-cards and pills in Light Mode */
+html.light .bg-white\/\[0\.02\],
+html.light .bg-white\/\[0\.03\],
+html.light .bg-white\/\[0\.04\],
+html.light .bg-white\/\[0\.05\],
+html.light .bg-white\/\[0\.06\] {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+html.light .bg-white\/\[0\.08\],
+html.light .bg-white\/10 {
+  background-color: rgba(248, 250, 252, 0.95);
+}
+
+html.light .bg-black\/20 {
+  background-color: rgba(241, 245, 249, 0.9);
+}
+
+html.light .bg-charcoal-950\/80 {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+html.light .bg-charcoal-950\/95 {
+  background-color: rgba(255, 255, 255, 0.96);
+}
+
+html.light .grain-overlay {
+  opacity: 0.015;
+}
+
+/* Light mode primary button */
+html.light a.bg-zinc-100,
+html.light button.bg-zinc-100 {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15) !important;
+}
+
+html.light a.bg-zinc-100:hover,
+html.light button.bg-zinc-100:hover {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+}
+
+/* Light mode primary resume button */
+html.light .resume-btn-primary {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.25) !important;
+}
+
+html.light .resume-btn-primary:hover {
+  box-shadow: 0 6px 25px rgba(99, 102, 241, 0.35) !important;
+  color: #ffffff !important;
+}
+
+/* Project Modal in Light Mode */
+html.light .project-modal-panel {
+  background-color: #ffffff !important;
+  border-color: rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15) !important;
+}
+
+html.light .project-modal-overlay-gradient {
+  background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%) !important;
+}
+
+html.light .project-modal-close-btn {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+  color: #0f172a !important;
+}
+
+html.light .project-modal-close-btn:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Form Inputs in Light Mode */
+html.light input,
+html.light textarea {
+  color: #0f172a !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(226, 232, 240, 0.95) !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+html.light input:focus,
+html.light textarea:focus {
+  border-color: rgba(99, 102, 241, 0.5) !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.2) !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-gradient-text,
   .accent-label-gradient {
-    animation: none;
-  }
-
-  .marquee-track {
     animation: none;
   }
 

@@ -117,7 +117,7 @@ export function Profile() {
           <SectionHeading
             label="Profile"
             title="Meet the developer behind the work"
-            description="A quick introduction — swap in your own photo and bio anytime."
+            description="Engineering scalable web products, agentic AI workflows, and resilient distributed backends."
             accent
           />
         </div>
@@ -175,7 +175,7 @@ export function Profile() {
             <div className="profile-content-reveal flex flex-wrap items-center gap-4">
               <ResumeButton variant="primary" />
               <MagneticButton href="#academics" variant="secondary">
-                Academic updates
+                Academics
               </MagneticButton>
               <MagneticButton href="#contact" variant="ghost">
                 Get in touch

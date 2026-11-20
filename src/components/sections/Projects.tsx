@@ -13,8 +13,6 @@ const projectEnterOffsets = [
   { x: 100, y: 120, rotate: 4, scale: 0.9 },
   { x: -80, y: 100, rotate: -3, scale: 0.92 },
   { x: 90, y: 130, rotate: 5, scale: 0.89 },
-  { x: -100, y: 110, rotate: -4, scale: 0.91 },
-  { x: 70, y: 125, rotate: 3, scale: 0.9 },
 ];
 
 export function Projects() {
@@ -31,7 +29,7 @@ export function Projects() {
       const cards = grid.querySelectorAll<HTMLElement>(".project-card");
 
       cards.forEach((card, index) => {
-        const offset = projectEnterOffsets[index] ?? projectEnterOffsets[0];
+        const offset = projectEnterOffsets[index % projectEnterOffsets.length];
 
         gsap.set(card, {
           opacity: 0,
@@ -50,7 +48,7 @@ export function Projects() {
           scale: 1,
           duration: 1.15,
           ease: "power3.out",
-          delay: index * 0.06,
+          delay: index * 0.08,
           scrollTrigger: {
             trigger: card,
             start: "top 90%",
@@ -74,23 +72,20 @@ export function Projects() {
         <SectionHeading
           label="Selected Work"
           title="Featured projects"
-          description="Six case studies spanning commerce, automation, AI, fintech, and content platforms."
+          description="Featured full-stack engineering builds, agentic systems, and competitive ML achievements."
           accent
         />
 
         <div
           ref={gridRef}
-          className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2"
         >
           {projects.map((project, index) => (
             <button
               key={project.id}
               type="button"
               data-project-index={index}
-              className={cn(
-                "project-card project-card-gradient group relative flex min-h-[380px] flex-col justify-end overflow-hidden rounded-3xl border border-white/[0.06] text-left will-change-transform hover:border-white/[0.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400",
-                index === 0 && "md:col-span-2 md:min-h-[420px] lg:col-span-2"
-              )}
+              className="project-card project-card-gradient group relative flex min-h-[380px] flex-col justify-end overflow-hidden rounded-3xl border border-white/[0.06] text-left will-change-transform hover:border-white/[0.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400"
               onClick={() => setSelectedProject(project)}
               aria-label={`View case study: ${project.title}`}
             >
@@ -109,7 +104,7 @@ export function Projects() {
 
               <div className="relative z-10 p-8">
                 <span className="font-mono text-xs text-muted-subtle">
-                  {project.year}
+                  {project.year} · {project.role.split("(")[0].trim()}
                 </span>
                 <h3
                   id={index === 0 ? "projects-heading" : undefined}
@@ -121,7 +116,7 @@ export function Projects() {
                   {project.description}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tags.slice(0, 3).map((tag) => (
+                  {project.tags.slice(0, 4).map((tag) => (
                     <span
                       key={tag}
                       className="rounded-full border border-white/[0.06] bg-black/20 px-2.5 py-0.5 text-xs text-muted"
@@ -129,9 +124,14 @@ export function Projects() {
                       {tag}
                     </span>
                   ))}
+                  {project.tags.length > 4 && (
+                    <span className="rounded-full border border-white/[0.06] bg-black/20 px-2 py-0.5 text-xs text-muted-subtle">
+                      +{project.tags.length - 4}
+                    </span>
+                  )}
                 </div>
                 <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-zinc-300 transition-all duration-300 group-hover:gap-3 group-hover:text-zinc-100">
-                  View case study
+                  View case study & details
                   <span aria-hidden>→</span>
                 </span>
               </div>

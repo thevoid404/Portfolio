@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Academics() {
   const sectionRef = useRef<HTMLElement>(null);
-  const { education } = siteConfig;
+  const { academics } = siteConfig;
 
   useGSAP(
     () => {
@@ -40,12 +40,13 @@ export function Academics() {
         <div className="academics-reveal">
           <SectionHeading
             label="Academics"
-            title="University & semester details"
-            description="Keep this block updated each semester — courses, status, and recent milestones."
+            title="University & academic background"
+            description="Undergraduate computer science track, core engineering focus areas, and national competition milestones."
           />
         </div>
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
+          {/* Main University Card */}
           <article className="academics-reveal bento-card relative col-span-1 overflow-hidden rounded-3xl p-8 lg:col-span-7 lg:p-10">
             <div
               className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-40"
@@ -58,10 +59,10 @@ export function Academics() {
             <div className="relative">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
-                  {education.status}
+                  {academics.status}
                 </span>
                 <span className="font-mono text-xs text-muted-subtle">
-                  {education.academicYear}
+                  Computer Science & Engineering
                 </span>
               </div>
 
@@ -69,40 +70,41 @@ export function Academics() {
                 id="academics-heading"
                 className="mt-6 text-2xl font-semibold tracking-tight text-zinc-50 sm:text-3xl"
               >
-                {education.university}
+                {academics.university}
               </h3>
-              <p className="mt-2 text-sm text-muted">{education.faculty}</p>
+              <p className="mt-2 text-sm text-muted">{academics.faculty}</p>
               <p className="mt-1 text-lg font-medium text-zinc-300">
-                {education.program}
+                {academics.program}
               </p>
 
-              <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {/* Real verified stats — NO 6th semester and NO fake exam dates */}
+              <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4">
-                  <p className="text-xs text-muted-subtle">Semester</p>
+                  <p className="text-xs text-muted-subtle">Status</p>
                   <p className="mt-1 text-sm font-medium text-zinc-200">
-                    {education.currentSemester}
+                    {academics.status}
                   </p>
                 </div>
                 <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4">
-                  <p className="text-xs text-muted-subtle">GPA</p>
+                  <p className="text-xs text-muted-subtle">CGPA</p>
                   <p className="mt-1 text-sm font-medium text-zinc-200">
-                    {education.gpa}
+                    {academics.cgpa}
                   </p>
                 </div>
-                <div className="col-span-2 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 sm:col-span-2">
+                <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4">
                   <p className="text-xs text-muted-subtle">Campus</p>
                   <p className="mt-1 text-sm font-medium text-zinc-200">
-                    {education.location}
+                    {academics.location}
                   </p>
                 </div>
               </div>
 
               <p className="mt-6 text-sm leading-relaxed text-muted">
-                {education.summary}
+                {academics.summary}
               </p>
 
               <div className="mt-6 flex flex-wrap gap-2">
-                {education.focusAreas.map((area) => (
+                {academics.focusAreas.map((area) => (
                   <span
                     key={area}
                     className="rounded-full border border-white/[0.06] px-3 py-1 text-xs text-muted"
@@ -114,26 +116,29 @@ export function Academics() {
             </div>
           </article>
 
+          {/* Real Highlights (Final-Year CSE Track, IEEE Datathon 4th Place Finalist, Applied AI & Systems Engineering) */}
           <div className="academics-reveal col-span-1 flex flex-col gap-5 lg:col-span-5">
             <article className="bento-card rounded-3xl p-8">
               <h4 className="text-sm font-medium uppercase tracking-wider text-muted">
-                Current courses
+                Academic & Systems Engineering Track
               </h4>
-              <ul className="mt-5 space-y-3">
-                {education.currentCourses.map((course) => (
+              <ul className="mt-5 space-y-4">
+                {academics.highlights.map((item) => (
                   <li
-                    key={course.code}
-                    className="flex items-start justify-between gap-4 border-b border-white/[0.04] pb-3 last:border-0 last:pb-0"
+                    key={item.title}
+                    className="border-b border-white/[0.04] pb-4 last:border-0 last:pb-0"
                   >
-                    <div>
-                      <p className="font-mono text-xs text-violet-400/90">
-                        {course.code}
-                      </p>
-                      <p className="mt-0.5 text-sm text-zinc-300">{course.name}</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-sm font-medium text-zinc-200">{item.title}</p>
+                      {item.badge && (
+                        <span className="shrink-0 rounded-full bg-violet-500/10 px-2.5 py-0.5 font-mono text-[10px] text-violet-400">
+                          {item.badge}
+                        </span>
+                      )}
                     </div>
-                    <span className="shrink-0 rounded-full bg-white/[0.04] px-2.5 py-1 text-[10px] uppercase tracking-wide text-muted">
-                      {course.status}
-                    </span>
+                    <p className="mt-1 text-xs leading-relaxed text-muted">
+                      {item.detail}
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -141,21 +146,25 @@ export function Academics() {
 
             <article className="bento-card rounded-3xl p-8">
               <h4 className="text-sm font-medium uppercase tracking-wider text-muted">
-                Recent updates
+                National Datathon & Honors
               </h4>
-              <ul className="mt-5 space-y-5">
-                {education.recentUpdates.map((update) => (
-                  <li key={update.title} className="relative pl-5">
+              <ul className="mt-5 space-y-4">
+                {academics.milestones.map((item) => (
+                  <li key={item.title} className="relative pl-5">
                     <span
                       className="absolute left-0 top-2 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-violet-400 to-cyan-400"
                       aria-hidden
                     />
-                    <p className="font-mono text-xs text-muted-subtle">{update.date}</p>
-                    <p className="mt-1 text-sm font-medium text-zinc-200">
-                      {update.title}
-                    </p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-sm font-medium text-zinc-200">{item.title}</p>
+                      {item.badge && (
+                        <span className="shrink-0 rounded-full bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[10px] text-emerald-400">
+                          {item.badge}
+                        </span>
+                      )}
+                    </div>
                     <p className="mt-1 text-xs leading-relaxed text-muted">
-                      {update.detail}
+                      {item.detail}
                     </p>
                   </li>
                 ))}

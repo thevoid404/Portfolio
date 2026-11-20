@@ -85,7 +85,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
       <div
         ref={panelRef}
         className={cn(
-          "relative z-10 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/[0.08] bg-zinc-950 shadow-2xl",
+          "project-modal-panel relative z-10 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/[0.08] bg-zinc-950 shadow-2xl",
           "scrollbar-thin"
         )}
         data-lenis-prevent
@@ -96,11 +96,11 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             project.gradient
           )}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
+          <div className="project-modal-overlay-gradient absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
           <button
             type="button"
             onClick={handleClose}
-            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-zinc-300 backdrop-blur-sm transition-colors hover:bg-black/60 hover:text-white"
+            className="project-modal-close-btn absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-zinc-300 backdrop-blur-sm transition-colors hover:bg-black/60 hover:text-white"
             aria-label="Close project details"
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -144,7 +144,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <span
                 key={tag}
@@ -159,7 +159,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             {project.link && (
               <a
                 href={project.link}
-                className="inline-flex items-center gap-2 text-sm font-medium text-zinc-200 transition-colors hover:text-white"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-5 py-2.5 text-sm font-medium text-zinc-100 transition-colors hover:border-violet-500/50 hover:bg-violet-500/20 hover:text-white"
               >
                 View live
                 <span aria-hidden>→</span>
@@ -168,9 +170,33 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             {project.github && (
               <a
                 href={project.github}
-                className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-zinc-300"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm text-muted transition-colors hover:border-white/20 hover:text-zinc-200"
               >
                 Source code
+                <span aria-hidden>↗</span>
+              </a>
+            )}
+            {project.kaggleUrl && (
+              <a
+                href={project.kaggleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-2.5 text-sm font-medium text-cyan-300 transition-colors hover:border-cyan-500/50 hover:bg-cyan-500/20 hover:text-cyan-100"
+              >
+                Kaggle Notebook
+                <span aria-hidden>↗</span>
+              </a>
+            )}
+            {project.certificateUrl && (
+              <a
+                href={project.certificateUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-5 py-2.5 text-sm font-medium text-emerald-300 transition-colors hover:border-emerald-500/50 hover:bg-emerald-500/20 hover:text-emerald-100"
+              >
+                Award / Certificate
                 <span aria-hidden>↗</span>
               </a>
             )}
