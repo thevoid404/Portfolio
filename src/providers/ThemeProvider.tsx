@@ -33,7 +33,7 @@ function applyThemeClass(theme: Theme) {
 }
 
 function getThemeSnapshot(): Theme {
-  if (typeof window === "undefined") return "dark";
+  if (typeof window === "undefined") return "light";
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored === "light" || stored === "dark") {
@@ -42,11 +42,11 @@ function getThemeSnapshot(): Theme {
   } catch {
     // fallback
   }
-  return "dark";
+  return "light";
 }
 
 function getThemeServerSnapshot(): Theme {
-  return "dark";
+  return "light";
 }
 
 function subscribe(callback: () => void) {

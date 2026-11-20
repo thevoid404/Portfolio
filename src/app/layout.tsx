@@ -48,14 +48,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark`}
+      className={`${geistSans.variable} ${geistMono.variable} light`}
       suppressHydrationWarning
     >
       <head>
-        {/* Anti-FOUC Theme Initialization Script (Defaults strictly to dark) */}
+        {/* Anti-FOUC Theme Initialization Script (Defaults strictly to light mode) */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("portfolio-theme");if(t==="light"){document.documentElement.classList.remove("dark");document.documentElement.classList.add("light");}else{document.documentElement.classList.add("dark");document.documentElement.classList.remove("light");}}catch(e){}})()`,
+            __html: `(function(){try{var t=localStorage.getItem("portfolio-theme");if(t==="dark"){document.documentElement.classList.add("dark");document.documentElement.classList.remove("light");}else{document.documentElement.classList.remove("dark");document.documentElement.classList.add("light");}}catch(e){}})()`,
           }}
         />
       </head>
