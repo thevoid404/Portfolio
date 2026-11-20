@@ -3,7 +3,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, registerGsapPlugins, ScrollTrigger } from "@/lib/gsap-config";
-import { processSteps } from "@/config/site-data";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/utils";
 
@@ -34,7 +33,7 @@ const milestoneItems: MilestoneItem[] = [
     role: "Co-Founder & Full-Stack Engineer — Aria",
     company: "Active Venture · Autonomous AI & Commerce Operations",
     badge: "Active Venture",
-    period: "2024 — Present",
+    period: "2026 — Present",
     description:
       "Architecting autonomous AI customer support and commerce operations across Next.js frontend, NestJS backend, Redis state caching, and LangGraph agent orchestration.",
     bullets: [
@@ -54,7 +53,7 @@ const milestoneItems: MilestoneItem[] = [
     role: "Co-Founder — Nexus Studio",
     company: "Active Venture · Digital Product & Web Agency",
     badge: "Active Venture",
-    period: "2024 — Present",
+    period: "2026 — Present",
     description:
       "Running our digital web studio—designing and shipping high-craft modern web experiences for brands, startups, and high-performance products.",
     bullets: [
@@ -69,21 +68,21 @@ const milestoneItems: MilestoneItem[] = [
   {
     id: "ieee-datathon",
     index: "03",
-    name: "IEEE Datathon",
+    name: "REACT 2026 Datathon",
     shortRole: "4th Place Finalist",
-    role: "4th Place Finalist — IEEE Datathon",
-    company: "IEEE National Competition · Machine Learning Track",
+    role: "5th Place Finalist — REACT 2026 Datathon",
+    company: "IEEE SEU Student Branch · Temporal Fraud Detection",
     badge: "National Finalist",
-    period: "2024",
+    period: "Sep 2026",
     description:
-      "Placed 4th nationwide under IEEE, competing on end-to-end machine learning modeling pipelines and data analysis under strict competition constraints.",
+      "Placed 4th nationally in a temporal fraud detection datathon—predicting fraud probability from raw chronological payment streams with zero pre-built historical features.",
     bullets: [
-      "Built feature engineering & predictive modeling pipelines in Python and Scikit-learn",
-      "Secured 4th place national standing against competitive engineering teams nationwide",
-      "Conducted deep exploratory data analysis & model validation on complex competitive datasets",
+      "Engineered strictly leakage-safe, past-only behavioral signals across customer, device, merchant, location, and entity-relationship patterns",
+      "Built time-aware validation pipelines instead of random K-fold to prevent temporal and target leakage across sequential transactions",
+      "Optimized calibrated probability rankings for PR-AUC (Average Precision) under severe ~1.5–2% fraud class imbalance",
     ],
-    kaggleUrl: "https://www.kaggle.com",
-    certificateUrl: "https://www.linkedin.com/in/ashraf-uddin-ahmed-anas/",
+    kaggleUrl: "https://www.kaggle.com/competitions/react-2026-datathon/leaderboard", // Replace with your exact Kaggle notebook/competition URL
+    certificateUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7504212660033589248/",
     isAmber: true,
   },
 ];
@@ -93,7 +92,6 @@ export function Experience() {
   const trackRef = useRef<HTMLDivElement>(null);
   const detailCardRef = useRef<HTMLDivElement>(null);
   const contentInnerRef = useRef<HTMLDivElement>(null);
-  const processRef = useRef<HTMLDivElement>(null);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const activeIndexRef = useRef(0);
@@ -145,43 +143,6 @@ export function Experience() {
 
         return () => trigger.kill();
       });
-
-      // Process section (How I work)
-      const process = processRef.current;
-      if (process) {
-        gsap.fromTo(
-          ".process-beam-progress",
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: process,
-              start: "top 88%",
-              end: "bottom 75%",
-              scrub: 1,
-            },
-          }
-        );
-
-        gsap.fromTo(
-          ".process-card",
-          { opacity: 0, y: 32 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.65,
-            stagger: 0.08,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: process,
-              start: "top 88%",
-              toggleActions: "play none none none",
-              once: true,
-            },
-          }
-        );
-      }
     },
     { scope: sectionRef }
   );
@@ -206,14 +167,6 @@ export function Experience() {
         behavior: "smooth",
       });
     }
-  };
-
-  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
-    e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
   };
 
   const activeMilestone = milestoneItems[activeIndex];
@@ -441,71 +394,6 @@ export function Experience() {
                   </div>
                 </article>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* "How I Work" Interactive Connected Workflow */}
-      <div className="section-padding section-container pb-14 sm:pb-16 lg:pb-20">
-        <div ref={processRef} className="mt-20 sm:mt-24 lg:mt-28">
-          <SectionHeading
-            label="Process"
-            title="How I work"
-            description="A disciplined engineering cadence from root problem discovery through containerized launch."
-          />
-
-          <div className="relative">
-            {/* Connected Luminous Progress Line (Desktop) */}
-            <div className="pointer-events-none absolute top-10 left-[8%] right-[8%] z-0 hidden h-[2px] bg-[#DCE5E0] lg:block dark:bg-white/[0.06]">
-              <div className="process-beam-progress h-full origin-left bg-gradient-to-r from-[#0D4A38] via-[#115E47] to-[#187A5C] shadow-[0_0_12px_rgba(13,74,56,0.3)] dark:from-[#0D4A38] dark:via-[#187A5C] dark:to-[#115E47] dark:shadow-[0_0_14px_rgba(17,94,71,0.65)]" />
-            </div>
-
-            {/* 4 Crisp Steps Grid */}
-            <div className="relative z-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-              {processSteps.map((step) => (
-                <article
-                  key={step.id}
-                  onMouseMove={handleCardMouseMove}
-                  className="process-card group relative overflow-hidden rounded-2xl border border-[#DCE5E0] bg-white/85 p-6 opacity-100 shadow-[0_10px_35px_-12px_rgba(12,24,20,0.08)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#0D4A38]/40 dark:border-white/[0.10] dark:bg-[#0F1219]/90 dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_12px_40px_-12px_rgba(0,0,0,0.7)] dark:hover:border-[#125E47]"
-                >
-                  {/* Cursor-Following Radial Spotlight Glow */}
-                  <div
-                    className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:hidden"
-                    style={{
-                      background:
-                        "radial-gradient(280px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(13, 74, 56, 0.12), transparent 70%)",
-                    }}
-                    aria-hidden
-                  />
-                  <div
-                    className="pointer-events-none absolute -inset-px hidden rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:block"
-                    style={{
-                      background:
-                        "radial-gradient(280px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(18, 94, 71, 0.15), transparent 70%)",
-                    }}
-                    aria-hidden
-                  />
-
-                  {/* Top Hairline Highlight */}
-                  <div className="pointer-events-none absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#0D4A38]/20 to-transparent dark:via-[#146B51]/30" />
-
-                  <div className="relative z-10">
-                    {/* Step Numeral (Illuminates on hover) */}
-                    <span className="font-mono text-3xl font-light text-[#7D938B] transition-all duration-300 group-hover:text-[#063729] group-hover:drop-shadow-[0_0_10px_rgba(13,74,56,0.3)] dark:text-zinc-600 dark:group-hover:text-[#34A885] dark:group-hover:drop-shadow-[0_0_10px_rgba(20,107,81,0.5)]">
-                      {step.step}
-                    </span>
-
-                    <h4 className="mt-4 text-base font-semibold tracking-tight text-[#0C1814] transition-colors group-hover:text-[#063729] dark:text-zinc-200 dark:group-hover:text-[#34A885]">
-                      {step.title}
-                    </h4>
-
-                    <p className="mt-2 text-xs leading-relaxed text-[#4A5D56] sm:text-sm dark:text-muted-subtle">
-                      {step.description}
-                    </p>
-                  </div>
-                </article>
-              ))}
             </div>
           </div>
         </div>

@@ -115,14 +115,16 @@ export function Hero() {
 
       <div className="section-padding section-container relative z-10 max-w-5xl">
         <div className="max-w-4xl">
-          <div className="hero-badge mb-8 inline-flex items-center gap-2 rounded-full border border-[#B7E4CE] bg-[#EBF7F1] px-4 py-2 dark:border-emerald-500/25 dark:bg-emerald-500/[0.08] dark:shadow-[0_0_20px_-4px_rgba(16,185,129,0.25)]">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-40" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            </span>
-            <span className="font-mono text-xs tracking-wider text-[#0A4D38] dark:text-emerald-300/90">
-              {siteConfig.hero.availabilityBadge}
-            </span>
+          <div className="hero-badge mb-8 inline-block">
+            <div className="hero-float-badge inline-flex items-center gap-2 rounded-full border border-[#B7E4CE] bg-[#EBF7F1] px-4 py-2 dark:border-emerald-500/25 dark:bg-emerald-500/[0.08] dark:shadow-[0_0_20px_-4px_rgba(16,185,129,0.25)]">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-40" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              </span>
+              <span className="font-mono text-xs tracking-wider text-[#0A4D38] dark:text-emerald-300/90">
+                {siteConfig.hero.availabilityBadge}
+              </span>
+            </div>
           </div>
 
           <h1>

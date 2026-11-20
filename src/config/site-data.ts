@@ -181,6 +181,26 @@ export const siteConfig = {
       "Most of how I think about software didn’t come from chasing frameworks; it came from sitting with messy, real-world problems until they actually made sense. Moving from monolithic stacks into structured backend and AI systems taught me something simple: good engineering is mostly empathy. When you genuinely understand the friction someone is dealing with, the right architecture starts revealing itself.",
       "I don’t tie my identity to a single stack. If something is genuinely worth building, I’d rather learn whatever the problem asks for than force every idea into what I already know.",
     ],
+    languages: "English · Bengali",
+    beyondScreen: [
+      {
+        title: "DIY & Making",
+        description: "Building practical things I actually need from scratch.",
+      },
+      {
+        title: "Photography",
+        description: "Drawn to framing, natural light, and visual detail.",
+      },
+      {
+        title: "Cinema & Series",
+        description: "Always up for sharp storytelling and good pacing.",
+      },
+    ],
+    availability: {
+      status: "Open to Opportunities",
+      detail:
+        "Software engineering roles, internships & select product builds.",
+    },
     stats: [
       { label: "Active Ventures", value: "2" },
       { label: "Web & Agentic AI", value: "Full-Stack" },

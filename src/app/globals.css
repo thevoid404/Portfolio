@@ -258,26 +258,40 @@ html.light ::selection {
 .hero-gradient-text {
   background: linear-gradient(
     115deg,
-    #34A885 0%,
-    #228B6B 22%,
-    #146B51 45%,
-    #e4e4e7 75%,
-    #f4f4f5 100%
+    #228B6B 0%,
+    #5EEAD4 50%,
+    #228B6B 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% auto;
-  animation: hero-gradient-shift 10s ease-in-out infinite alternate;
+  animation: hero-gradient-shift 7s ease-in-out infinite;
 }
 
 @keyframes hero-gradient-shift {
   0% {
     background-position: 0% center;
   }
-  100% {
+  50% {
     background-position: 100% center;
   }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+@keyframes hero-badge-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.hero-float-badge {
+  animation: hero-badge-float 5.5s ease-in-out infinite;
 }
 
 .accent-label-gradient {
@@ -738,16 +752,15 @@ html.light .bg-grid {
 html.light .hero-gradient-text {
   background: linear-gradient(
     115deg,
-    #064e3b 0%,
-    #047857 25%,
-    #0f766e 50%,
-    #0c1814 80%,
-    #0c1814 100%
+    #063729 0%,
+    #0F6B4E 50%,
+    #063729 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% auto;
+  animation: hero-gradient-shift 7s ease-in-out infinite;
 }
 
 html.light .accent-label-gradient {
@@ -928,8 +941,9 @@ html.light textarea:focus {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-gradient-text,
+  .hero-float-badge,
   .accent-label-gradient {
-    animation: none;
+    animation: none !important;
   }
 
   *,

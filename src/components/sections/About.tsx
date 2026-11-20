@@ -83,48 +83,62 @@ export function About() {
             </div>
           </article>
 
-          {/* Location & Focus Card */}
+          {/* Upper-Right Card: Metadata, Beyond the Screen & Availability */}
           <div className="about-bento-item bento-card relative col-span-1 flex flex-col justify-between overflow-hidden rounded-3xl p-8 md:col-span-5 md:p-10">
             <div className="pointer-events-none absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#10B981]/25 to-transparent dark:via-emerald-400/25" />
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#7D938B] dark:text-muted-subtle">
-                Based in
-              </p>
-              <p className="mt-2 text-2xl font-medium text-[#0C1814] dark:text-zinc-100">
-                {siteConfig.location}
-              </p>
+
+            {/* Top 2-Column Metadata Row */}
+            <div className="grid grid-cols-2 gap-4 border-b border-[#E3ECE8] pb-5 dark:border-white/[0.08]">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-wider text-[#7D938B] dark:text-muted-subtle">
+                  Based in
+                </p>
+                <p className="mt-1.5 font-sans text-base font-semibold text-[#0C1814] dark:text-zinc-100">
+                  {siteConfig.location}
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-wider text-[#7D938B] dark:text-muted-subtle">
+                  Languages
+                </p>
+                <p className="mt-1.5 font-sans text-base font-semibold text-[#0C1814] dark:text-zinc-100">
+                  {siteConfig.about.languages}
+                </p>
+              </div>
             </div>
 
-            <div className="mt-8 border-t border-[#E2EAE6] pt-6 dark:border-white/[0.06]">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#7D938B] dark:text-muted-subtle">
-                What I focus on
+            {/* Middle Section: Beyond the Screen */}
+            <div className="py-5 space-y-3.5">
+              <p className="font-mono text-xs uppercase tracking-wider text-[#7D938B] dark:text-muted-subtle">
+                Beyond the screen
               </p>
-              <ul className="mt-4 space-y-4">
-                <li className="flex flex-col">
-                  <span className="text-sm font-medium text-[#0C1814] dark:text-zinc-100">
-                    Full-Stack Web Systems
+              <div className="space-y-3">
+                {siteConfig.about.beyondScreen.map((item) => (
+                  <div key={item.title} className="flex flex-col">
+                    <span className="font-sans text-[14px] font-semibold text-[#0C1814] dark:text-zinc-100">
+                      {item.title}
+                    </span>
+                    <span className="mt-0.5 font-sans text-xs text-[#4A5D56] dark:text-zinc-400">
+                      {item.description}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom Availability Strip */}
+            <div className="mt-auto border-t border-[#E3ECE8] pt-4 dark:border-white/[0.08]">
+              <div className="rounded-xl border border-[#0D4A38]/20 bg-[#EDF5F1] px-4 py-3 dark:border-[#165E48]/50 dark:bg-[#091F18]/80">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-[#0E5A42] animate-pulse dark:bg-emerald-400" />
+                  <span className="font-sans text-[13.5px] font-semibold text-[#073326] dark:text-emerald-300">
+                    {siteConfig.about.availability.status}
                   </span>
-                  <span className="mt-0.5 text-xs text-[#4A5D56] dark:text-muted">
-                    Production interfaces &amp; resilient APIs
-                  </span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-sm font-medium text-[#0C1814] dark:text-zinc-100">
-                    Autonomous AI Workflows
-                  </span>
-                  <span className="mt-0.5 text-xs text-[#4A5D56] dark:text-muted">
-                    Agent orchestration &amp; deterministic tooling
-                  </span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-sm font-medium text-[#0C1814] dark:text-zinc-100">
-                    Distributed Backend Craft
-                  </span>
-                  <span className="mt-0.5 text-xs text-[#4A5D56] dark:text-muted">
-                    Structured architectures built to scale
-                  </span>
-                </li>
-              </ul>
+                </div>
+                <p className="mt-0.5 font-sans text-[13px] text-[#3E544C] dark:text-zinc-300">
+                  {siteConfig.about.availability.detail}
+                </p>
+              </div>
             </div>
           </div>
 
