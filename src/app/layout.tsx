@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { AmbientBackground } from "@/components/layout/AmbientBackground";
+import { Preloader } from "@/components/ui/Preloader";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,6 +39,13 @@ export const metadata: Metadata = {
       "Building scalable web systems and autonomous AI workflows with Next.js, NestJS, Redis, and LangGraph.",
     type: "website",
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -62,6 +70,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-emerald-500/20 selection:text-foreground">
         <ThemeProvider>
           <SmoothScrollProvider>
+            <Preloader />
             <AmbientBackground />
             {children}
           </SmoothScrollProvider>

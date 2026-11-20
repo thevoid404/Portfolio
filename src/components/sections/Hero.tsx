@@ -18,6 +18,14 @@ export function Hero() {
   const name = siteConfig.name;
 
   const handleDoubleClick = (e: React.MouseEvent<HTMLElement>) => {
+    // Strictly restrict to Laptop / PC (disable on mobile, tablet, and touch screens)
+    if (
+      typeof window !== "undefined" &&
+      (window.innerWidth < 1024 || !window.matchMedia("(pointer: fine)").matches)
+    ) {
+      return;
+    }
+
     // Ignore double-clicks on interactive elements (links, buttons, inputs)
     const target = e.target as HTMLElement | null;
     if (target?.closest("a, button, input, textarea, select")) {
@@ -138,10 +146,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* On-Demand Double-Click Emerald Waves (Zero Idle GPU Cost) */}
+      {/* On-Demand Double-Click Emerald Waves (Strictly Laptop/PC - Zero Idle GPU Cost) */}
       {waves.length > 0 && (
         <div
-          className="pointer-events-none absolute inset-0 select-none overflow-hidden"
+          className="pointer-events-none absolute inset-0 hidden select-none overflow-hidden lg:block"
           aria-hidden="true"
         >
           {waves.map((wave) => (
