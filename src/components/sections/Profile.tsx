@@ -20,14 +20,14 @@ export function Profile() {
       const photo = photoRef.current;
       if (!section) return;
 
+      // Bold Section Heading Reveal
       gsap.fromTo(
-        ".profile-heading-reveal",
-        { opacity: 0, y: 28 },
+        ".section-heading-reveal",
+        { opacity: 0, y: 36 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.65,
-          stagger: 0.08,
+          duration: 0.75,
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
@@ -39,18 +39,19 @@ export function Profile() {
       );
 
       if (photo) {
+        // Fluid Card Entrance
         gsap.fromTo(
           photo,
           {
             opacity: 0,
-            y: 32,
+            y: 50,
             scale: 0.96,
           },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 0.7,
+            duration: 0.8,
             ease: "power3.out",
             scrollTrigger: {
               trigger: photo,
@@ -60,15 +61,31 @@ export function Profile() {
             },
           }
         );
+
+        // Tactile Scroll-Linked Image Parallax Scrub
+        gsap.fromTo(
+          ".profile-parallax-img",
+          { yPercent: -5 },
+          {
+            yPercent: 5,
+            ease: "none",
+            scrollTrigger: {
+              trigger: photo,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
       }
 
       gsap.fromTo(
         ".profile-content-reveal",
-        { opacity: 0, y: 28 },
+        { opacity: 0, y: 32 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.65,
+          duration: 0.7,
           stagger: 0.08,
           ease: "power3.out",
           scrollTrigger: {
@@ -167,8 +184,8 @@ export function Profile() {
 
             <div className="profile-content-reveal flex flex-wrap items-center gap-4 pt-2">
               <ResumeButton variant="primary" />
-              <MagneticButton href="#academics" variant="secondary">
-                Academics
+              <MagneticButton href="#projects" variant="secondary">
+                Selected Work
               </MagneticButton>
               <MagneticButton href="#contact" variant="ghost">
                 Get in touch

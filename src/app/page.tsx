@@ -16,10 +16,10 @@ export default function Home() {
       <main className="relative z-10">
         <Hero />
         <Profile />
-        <Academics />
-        <About />
         <Projects />
         <Experience />
+        <About />
+        <Academics />
         <Interests />
         <Contact />
       </main>

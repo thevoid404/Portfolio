@@ -92,7 +92,7 @@ export const siteConfig = {
   email: "anasahmed4484@gmail.com",
   location: "Dhaka, Bangladesh",
   intro:
-    "Building resilient web platforms and autonomous AI systems—from refined interfaces down to distributed backends.",
+    "Building full-stack web applications and AI systems—from clean interfaces down to reliable backends.",
 
   hero: {
     availabilityBadge: "Available for engineering roles & select builds",
@@ -222,7 +222,7 @@ export const siteConfig = {
   interests: {
     headline: "Technical Curiosities & Research",
     description:
-      "Areas of genuine technical depth, active exploration, and engineering curiosity.",
+      "Topics I’m actively studying and areas I enjoy building in.",
     frontiers: [
       {
         id: "edge-ai",
@@ -282,10 +282,10 @@ export const siteConfig = {
 
   nav: [
     { label: "Profile", href: "#profile" },
-    { label: "Academics", href: "#academics" },
-    { label: "About", href: "#about" },
     { label: "Work", href: "#projects" },
-    { label: "Ventures", href: "#experience" },
+    { label: "Experience", href: "#experience" },
+    { label: "About", href: "#about" },
+    { label: "Education", href: "#academics" },
     { label: "Interests", href: "#interests" },
     { label: "Contact", href: "#contact" },
   ],

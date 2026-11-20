@@ -138,11 +138,9 @@ html.light ::selection {
   left: 15%;
   width: 420px;
   height: 320px;
-  background: radial-gradient(
-    ellipse,
-    rgba(6, 78, 59, 0.32) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse,
+      rgba(6, 78, 59, 0.32) 0%,
+      transparent 70%);
 }
 
 .bg-spot-mid-right {
@@ -150,11 +148,9 @@ html.light ::selection {
   right: -5%;
   width: 380px;
   height: 380px;
-  background: radial-gradient(
-    ellipse,
-    rgba(16, 185, 129, 0.13) 0%,
-    transparent 72%
-  );
+  background: radial-gradient(ellipse,
+      rgba(16, 185, 129, 0.13) 0%,
+      transparent 72%);
 }
 
 .bg-spot-mid-left {
@@ -162,11 +158,9 @@ html.light ::selection {
   left: -8%;
   width: 340px;
   height: 340px;
-  background: radial-gradient(
-    ellipse,
-    rgba(20, 184, 166, 0.08) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse,
+      rgba(20, 184, 166, 0.08) 0%,
+      transparent 70%);
 }
 
 .bg-spot-bottom {
@@ -174,11 +168,9 @@ html.light ::selection {
   left: 42%;
   width: 500px;
   height: 280px;
-  background: radial-gradient(
-    ellipse,
-    rgba(6, 78, 59, 0.18) 0%,
-    transparent 75%
-  );
+  background: radial-gradient(ellipse,
+      rgba(6, 78, 59, 0.18) 0%,
+      transparent 75%);
 }
 
 .bg-spot-center {
@@ -186,11 +178,9 @@ html.light ::selection {
   left: 55%;
   width: 280px;
   height: 280px;
-  background: radial-gradient(
-    ellipse,
-    rgba(16, 185, 129, 0.06) 0%,
-    transparent 68%
-  );
+  background: radial-gradient(ellipse,
+      rgba(16, 185, 129, 0.06) 0%,
+      transparent 68%);
 }
 
 .ambient-glow::before {
@@ -202,11 +192,9 @@ html.light ::selection {
   width: 80%;
   max-width: 900px;
   height: 50%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(6, 78, 59, 0.32) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse at center,
+      rgba(6, 78, 59, 0.32) 0%,
+      transparent 70%);
   filter: blur(80px);
 }
 
@@ -217,11 +205,9 @@ html.light ::selection {
   right: -10%;
   width: 50%;
   height: 40%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(16, 185, 129, 0.13) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse at center,
+      rgba(16, 185, 129, 0.13) 0%,
+      transparent 70%);
   filter: blur(100px);
 }
 
@@ -243,55 +229,79 @@ html.light ::selection {
     linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 72px 72px;
-  mask-image: radial-gradient(
-    ellipse 85% 70% at 50% 0%,
-    black 0%,
-    transparent 75%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 85% 70% at 50% 0%,
-    black 0%,
-    transparent 75%
-  );
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 0%,
+      black 0%,
+      transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 0%,
+      black 0%,
+      transparent 75%);
 }
 
 .hero-gradient-text {
-  background: linear-gradient(
-    115deg,
-    #228B6B 0%,
-    #5EEAD4 50%,
-    #228B6B 100%
-  );
+  background: linear-gradient(115deg,
+      #228B6B 0%,
+      #5EEAD4 50%,
+      #228B6B 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: hero-gradient-shift 7s ease-in-out infinite;
 }
 
 @keyframes hero-gradient-shift {
   0% {
     background-position: 0% center;
   }
+
   50% {
     background-position: 100% center;
   }
+
   100% {
     background-position: 0% center;
   }
 }
 
-@keyframes hero-badge-float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
+/* On-Demand Double-Click Emerald Wave (Zero Idle Cost) */
+.hero-click-wave {
+  width: 280px;
+  height: 260px;
+  border-radius: 44% 56% 52% 48% / 48% 42% 58% 52%;
+  background: radial-gradient(ellipse at center,
+      rgba(16, 185, 129, 0.22) 0%,
+      rgba(10, 110, 80, 0.12) 32%,
+      rgba(52, 211, 153, 0.04) 56%,
+      transparent 72%);
+  animation: heroClickWave 4.2s cubic-bezier(0.22, 0.85, 0.36, 1) forwards;
+  transform-origin: center center;
+  will-change: transform, opacity;
 }
 
-.hero-float-badge {
-  animation: hero-badge-float 5.5s ease-in-out infinite;
+html.dark .hero-click-wave {
+  background: radial-gradient(ellipse at center,
+      rgba(16, 185, 129, 0.24) 0%,
+      rgba(6, 95, 70, 0.13) 34%,
+      rgba(6, 78, 59, 0.04) 56%,
+      transparent 72%);
+}
+
+@keyframes heroClickWave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.15) rotate(0deg);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  35% {
+    opacity: 0.75;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(7.5) rotate(20deg);
+    opacity: 0;
+  }
 }
 
 .accent-label-gradient {
@@ -300,7 +310,7 @@ html.light ::selection {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: hero-gradient-shift 12s ease-in-out infinite alternate;
+  animation: hero-gradient-shift 8s ease-in-out infinite alternate;
 }
 
 .hero-mesh {
@@ -322,11 +332,9 @@ html.light ::selection {
   left: 10%;
   width: min(480px, 55vw);
   height: min(480px, 55vw);
-  background: radial-gradient(
-    circle,
-    rgba(6, 78, 59, 0.35) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(6, 78, 59, 0.35) 0%,
+      transparent 70%);
 }
 
 .hero-orb-cyan {
@@ -334,11 +342,9 @@ html.light ::selection {
   right: 5%;
   width: min(400px, 45vw);
   height: min(400px, 45vw);
-  background: radial-gradient(
-    circle,
-    rgba(16, 185, 129, 0.16) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(16, 185, 129, 0.16) 0%,
+      transparent 70%);
 }
 
 .hero-orb-slate {
@@ -346,20 +352,16 @@ html.light ::selection {
   left: 35%;
   width: min(360px, 40vw);
   height: min(360px, 40vw);
-  background: radial-gradient(
-    circle,
-    rgba(20, 184, 166, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(20, 184, 166, 0.12) 0%,
+      transparent 70%);
 }
 
 .profile-image-ring {
-  background: linear-gradient(
-    145deg,
-    rgba(16, 185, 129, 0.6),
-    rgba(6, 78, 59, 0.4),
-    rgba(20, 184, 166, 0.45)
-  );
+  background: linear-gradient(145deg,
+      rgba(16, 185, 129, 0.6),
+      rgba(6, 78, 59, 0.4),
+      rgba(20, 184, 166, 0.45));
   padding: 2px;
 }
 
@@ -380,11 +382,9 @@ html.light ::selection {
   right: -5%;
   width: 360px;
   height: 360px;
-  background: radial-gradient(
-    circle,
-    rgba(6, 78, 59, 0.28) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(6, 78, 59, 0.28) 0%,
+      transparent 70%);
 }
 
 .section-accent-projects::before {
@@ -392,11 +392,9 @@ html.light ::selection {
   left: -8%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(
-    circle,
-    rgba(16, 185, 129, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(16, 185, 129, 0.12) 0%,
+      transparent 70%);
 }
 
 .section-accent-ventures::before {
@@ -404,12 +402,10 @@ html.light ::selection {
   right: -5%;
   width: 450px;
   height: 450px;
-  background: radial-gradient(
-    circle,
-    rgba(6, 78, 59, 0.3) 0%,
-    rgba(20, 184, 166, 0.08) 50%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(6, 78, 59, 0.3) 0%,
+      rgba(20, 184, 166, 0.08) 50%,
+      transparent 70%);
 }
 
 .section-accent-interests::before {
@@ -417,11 +413,9 @@ html.light ::selection {
   right: 10%;
   width: 380px;
   height: 380px;
-  background: radial-gradient(
-    circle,
-    rgba(16, 185, 129, 0.10) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(16, 185, 129, 0.10) 0%,
+      transparent 70%);
 }
 
 .section-accent-contact::before {
@@ -430,35 +424,27 @@ html.light ::selection {
   transform: translate(-50%, -50%);
   width: 70%;
   height: 60%;
-  background: radial-gradient(
-    ellipse,
-    rgba(6, 78, 59, 0.28) 0%,
-    rgba(16, 185, 129, 0.1) 45%,
-    transparent 75%
-  );
+  background: radial-gradient(ellipse,
+      rgba(6, 78, 59, 0.28) 0%,
+      rgba(16, 185, 129, 0.1) 45%,
+      transparent 75%);
 }
 
 .gradient-panel {
   border: 1px solid transparent;
   background:
-    linear-gradient(145deg, rgba(12, 12, 14, 0.95), rgba(8, 8, 10, 0.98))
-      padding-box,
-    linear-gradient(
-      135deg,
+    linear-gradient(145deg, rgba(12, 12, 14, 0.95), rgba(8, 8, 10, 0.98)) padding-box,
+    linear-gradient(135deg,
       rgba(16, 185, 129, 0.35),
       rgba(20, 184, 166, 0.2),
-      rgba(6, 78, 59, 0.25)
-    )
-      border-box;
+      rgba(6, 78, 59, 0.25)) border-box;
 }
 
 .interest-card-accent {
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(16, 185, 129, 0.04) 40%,
-    rgba(20, 184, 166, 0.03) 100%
-  );
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(16, 185, 129, 0.04) 40%,
+      rgba(20, 184, 166, 0.03) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition:
     border-color 0.4s ease,
@@ -469,20 +455,17 @@ html.light ::selection {
 .interest-card-accent:hover {
   border-color: rgba(52, 211, 153, 0.3);
   box-shadow: 0 0 40px rgba(16, 185, 129, 0.1);
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(16, 185, 129, 0.08) 50%,
-    rgba(20, 184, 166, 0.06) 100%
-  );
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(16, 185, 129, 0.08) 50%,
+      rgba(20, 184, 166, 0.06) 100%);
 }
 
 .hero-badge-gradient {
   border: 1px solid transparent;
   background:
     linear-gradient(rgba(8, 8, 10, 0.85), rgba(8, 8, 10, 0.85)) padding-box,
-    linear-gradient(90deg, rgba(16, 185, 129, 0.4), rgba(20, 184, 166, 0.3))
-      border-box;
+    linear-gradient(90deg, rgba(16, 185, 129, 0.4), rgba(20, 184, 166, 0.3)) border-box;
 }
 
 .section-padding {
@@ -506,12 +489,10 @@ html.light ::selection {
 }
 
 .text-gradient {
-  background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #a1a1aa 50%,
-    #71717a 100%
-  );
+  background: linear-gradient(135deg,
+      #ffffff 0%,
+      #a1a1aa 50%,
+      #71717a 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -540,23 +521,19 @@ html.light ::selection {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(5, 5, 5, 0.95) 0%,
-    rgba(5, 5, 5, 0.4) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(to top,
+      rgba(5, 5, 5, 0.95) 0%,
+      rgba(5, 5, 5, 0.4) 50%,
+      transparent 100%);
   z-index: 1;
 }
 
 .timeline-line {
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255, 255, 255, 0.12) 10%,
-    rgba(255, 255, 255, 0.12) 90%,
-    transparent
-  );
+  background: linear-gradient(to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.12) 10%,
+      rgba(255, 255, 255, 0.12) 90%,
+      transparent);
 }
 
 :focus-visible {
@@ -613,134 +590,102 @@ html.light .hero-badge-gradient {
 }
 
 html.light .profile-image-ring {
-  background: linear-gradient(
-    145deg,
-    rgba(16, 185, 129, 0.5),
-    rgba(14, 77, 58, 0.3)
-  );
+  background: linear-gradient(145deg,
+      rgba(16, 185, 129, 0.5),
+      rgba(14, 77, 58, 0.3));
 }
 
 /* Restrained ambient background washes in light mode */
 html.light .bg-spot-top {
-  background: radial-gradient(
-    ellipse,
-    rgba(16, 185, 129, 0.08) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse,
+      rgba(16, 185, 129, 0.08) 0%,
+      transparent 70%);
 }
 
 html.light .bg-spot-mid-right {
-  background: radial-gradient(
-    ellipse,
-    rgba(14, 77, 58, 0.05) 0%,
-    transparent 72%
-  );
+  background: radial-gradient(ellipse,
+      rgba(14, 77, 58, 0.05) 0%,
+      transparent 72%);
 }
 
 html.light .bg-spot-mid-left {
-  background: radial-gradient(
-    ellipse,
-    rgba(16, 185, 129, 0.06) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse,
+      rgba(16, 185, 129, 0.06) 0%,
+      transparent 70%);
 }
 
 html.light .bg-spot-bottom {
-  background: radial-gradient(
-    ellipse,
-    rgba(14, 77, 58, 0.05) 0%,
-    transparent 75%
-  );
+  background: radial-gradient(ellipse,
+      rgba(14, 77, 58, 0.05) 0%,
+      transparent 75%);
 }
 
 html.light .bg-spot-center {
-  background: radial-gradient(
-    ellipse,
-    rgba(16, 185, 129, 0.04) 0%,
-    transparent 68%
-  );
+  background: radial-gradient(ellipse,
+      rgba(16, 185, 129, 0.04) 0%,
+      transparent 68%);
 }
 
 html.light .ambient-glow::before {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(16, 185, 129, 0.08) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse at center,
+      rgba(16, 185, 129, 0.08) 0%,
+      transparent 70%);
 }
 
 html.light .ambient-glow::after {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(14, 77, 58, 0.05) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse at center,
+      rgba(14, 77, 58, 0.05) 0%,
+      transparent 70%);
 }
 
 html.light .hero-orb-violet {
-  background: radial-gradient(
-    circle,
-    rgba(16, 185, 129, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(16, 185, 129, 0.12) 0%,
+      transparent 70%);
 }
 
 html.light .hero-orb-cyan {
-  background: radial-gradient(
-    circle,
-    rgba(14, 77, 58, 0.08) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(14, 77, 58, 0.08) 0%,
+      transparent 70%);
 }
 
 html.light .hero-orb-slate {
-  background: radial-gradient(
-    circle,
-    rgba(125, 147, 139, 0.08) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(125, 147, 139, 0.08) 0%,
+      transparent 70%);
 }
 
 html.light .section-accent-profile::before {
-  background: radial-gradient(
-    circle,
-    rgba(16, 185, 129, 0.07) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(16, 185, 129, 0.07) 0%,
+      transparent 70%);
 }
 
 html.light .section-accent-projects::before {
-  background: radial-gradient(
-    circle,
-    rgba(14, 77, 58, 0.05) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(14, 77, 58, 0.05) 0%,
+      transparent 70%);
 }
 
 html.light .section-accent-ventures::before {
-  background: radial-gradient(
-    circle,
-    rgba(16, 185, 129, 0.07) 0%,
-    rgba(14, 77, 58, 0.04) 50%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(16, 185, 129, 0.07) 0%,
+      rgba(14, 77, 58, 0.04) 50%,
+      transparent 70%);
 }
 
 html.light .section-accent-interests::before {
-  background: radial-gradient(
-    circle,
-    rgba(16, 185, 129, 0.06) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(16, 185, 129, 0.06) 0%,
+      transparent 70%);
 }
 
 html.light .section-accent-contact::before {
-  background: radial-gradient(
-    ellipse,
-    rgba(16, 185, 129, 0.07) 0%,
-    rgba(14, 77, 58, 0.04) 45%,
-    transparent 75%
-  );
+  background: radial-gradient(ellipse,
+      rgba(16, 185, 129, 0.07) 0%,
+      rgba(14, 77, 58, 0.04) 45%,
+      transparent 75%);
 }
 
 html.light .bg-grid {
@@ -750,17 +695,13 @@ html.light .bg-grid {
 }
 
 html.light .hero-gradient-text {
-  background: linear-gradient(
-    115deg,
-    #063729 0%,
-    #0F6B4E 50%,
-    #063729 100%
-  );
+  background: linear-gradient(115deg,
+      #063729 0%,
+      #0F6B4E 50%,
+      #063729 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: hero-gradient-shift 7s ease-in-out infinite;
 }
 
 html.light .accent-label-gradient {
@@ -772,13 +713,11 @@ html.light .accent-label-gradient {
 }
 
 html.light .timeline-line {
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(12, 24, 20, 0.1) 10%,
-    rgba(12, 24, 20, 0.1) 90%,
-    transparent
-  );
+  background: linear-gradient(to bottom,
+      transparent,
+      rgba(12, 24, 20, 0.1) 10%,
+      rgba(12, 24, 20, 0.1) 90%,
+      transparent);
 }
 
 /* High-contrast typography fallbacks for Light Mode */
@@ -900,12 +839,10 @@ html.light .project-modal-panel {
 }
 
 html.light .project-modal-overlay-gradient {
-  background: linear-gradient(
-    to top,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.6) 50%,
-    transparent 100%
-  ) !important;
+  background: linear-gradient(to top,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      transparent 100%) !important;
 }
 
 html.light .project-modal-close-btn {
@@ -940,10 +877,14 @@ html.light textarea:focus {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-gradient-text,
-  .hero-float-badge,
-  .accent-label-gradient {
+
+  .accent-label-gradient,
+  .hero-click-wave {
     animation: none !important;
+  }
+
+  .hero-click-wave {
+    display: none !important;
   }
 
   *,

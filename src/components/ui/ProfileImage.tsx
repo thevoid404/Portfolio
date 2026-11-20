@@ -31,7 +31,7 @@ export function ProfileImage({ className, priority = false }: ProfileImageProps)
             alt={siteConfig.profile.alt}
             fill
             priority={priority}
-            className="object-cover object-center"
+            className="profile-parallax-img object-cover object-center scale-110 transition-transform duration-700 will-change-transform"
             sizes="(max-width: 768px) 100vw, 420px"
             onError={() => setHasError(true)}
           />

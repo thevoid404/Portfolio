@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap-config";
+import { gsap, registerGsapPlugins } from "@/lib/gsap-config";
 import { siteConfig, techSkills } from "@/config/site-data";
 import { TechIcon } from "@/components/icons/TechIcons";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -12,17 +12,18 @@ export function About() {
 
   useGSAP(
     () => {
+      registerGsapPlugins();
       const section = sectionRef.current;
       if (!section) return;
 
+      // Section Heading Reveal
       gsap.fromTo(
-        ".about-bento-item",
-        { opacity: 0, y: 32 },
+        ".section-heading-reveal",
+        { opacity: 0, y: 36 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.65,
-          stagger: 0.08,
+          duration: 0.75,
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
@@ -33,14 +34,35 @@ export function About() {
         }
       );
 
+      // Staggered Bento Cards Entrance
       gsap.fromTo(
-        ".tech-icon-item",
-        { opacity: 0, scale: 0.9 },
+        ".about-bento-item",
+        { opacity: 0, y: 50, scale: 0.96 },
         {
           opacity: 1,
+          y: 0,
           scale: 1,
-          duration: 0.45,
-          stagger: 0.02,
+          duration: 0.8,
+          stagger: 0.11,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 88%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
+
+      // Tech Stack Icons Crisp Wave Stagger
+      gsap.fromTo(
+        ".tech-icon-item",
+        { opacity: 0, y: 22 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.03,
           ease: "power2.out",
           scrollTrigger: {
             trigger: ".tech-grid",
@@ -70,10 +92,13 @@ export function About() {
         />
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-12">
-          {/* Story Card: Problem-First Philosophy */}
+          {/* Story Card: The Perspective */}
           <article className="about-bento-item bento-card relative col-span-1 overflow-hidden rounded-3xl p-8 md:col-span-7 md:p-10">
             <div className="pointer-events-none absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#0E5A42]/20 to-transparent dark:via-white/15" />
-            <h3 id="about-heading" className="mb-6 text-xl font-medium text-[#0C1814] dark:text-zinc-200">
+            <h3
+              id="about-heading"
+              className="mb-6 text-xl font-medium text-[#0C1814] dark:text-zinc-200"
+            >
               The perspective
             </h3>
             <div className="space-y-4 text-base leading-relaxed text-[#4A5D56] dark:text-muted">
@@ -145,18 +170,15 @@ export function About() {
           {/* Tech Stack Block */}
           <div className="about-bento-item bento-card relative col-span-1 overflow-hidden rounded-3xl p-8 md:col-span-12 md:p-10">
             <div className="pointer-events-none absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#0E5A42]/20 to-transparent dark:via-emerald-400/25" />
-            <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div className="mb-8 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h3 className="text-xl font-medium text-[#0C1814] dark:text-zinc-200">
-                  Tech expertise & systems stack
+                <h3 className="text-xl font-semibold tracking-tight text-[#0C1814] dark:text-zinc-100">
+                  Tech Stack
                 </h3>
-                <p className="mt-1 text-sm text-[#4A5D56] dark:text-muted-subtle">
-                  Monochrome engineering stack — hover to illuminate
+                <p className="mt-1 text-sm text-[#4A5D56] dark:text-zinc-400">
+                  Tools I work with day to day.
                 </p>
               </div>
-              <p className="font-mono text-xs text-[#7D938B] dark:text-muted-subtle">
-                {techSkills.length} verified technologies
-              </p>
             </div>
             <div className="tech-grid grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
               {techSkills.map((skill) => (
@@ -167,48 +189,55 @@ export function About() {
             </div>
           </div>
 
-          {/* Philosophy Quote Card */}
-          <div className="about-bento-item bento-card relative col-span-1 flex items-center justify-center overflow-hidden rounded-3xl p-10 md:col-span-6">
-            <div className="pointer-events-none absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#0E5A42]/20 to-transparent dark:via-emerald-400/25" />
-            <blockquote className="text-center">
-              <p className="text-lg font-medium leading-relaxed text-[#0C1814] sm:text-xl dark:text-zinc-300">
-                &ldquo;Code is the medium. Experience is the message.&rdquo;
-              </p>
-              <footer className="mt-4 font-mono text-xs text-[#7D938B] dark:text-muted-subtle">
-                — Design & Engineering Philosophy
-              </footer>
-            </blockquote>
-          </div>
-
-          {/* Deliverables Card */}
-          <div className="about-bento-item bento-card relative col-span-1 overflow-hidden rounded-3xl p-8 md:col-span-6 md:p-10">
+          {/* What I Build Block (Full-Width 2x2 Grid, Zero Corporate Fluff) */}
+          <div className="about-bento-item bento-card relative col-span-1 overflow-hidden rounded-3xl p-8 md:col-span-12 md:p-10">
             <div className="pointer-events-none absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#10B981]/25 to-transparent dark:via-emerald-400/25" />
             <div
-              className="pointer-events-none absolute -right-20 -top-20 hidden h-60 w-60 rounded-full opacity-30 dark:block"
+              className="pointer-events-none absolute -right-20 -top-20 hidden h-60 w-60 rounded-full opacity-20 dark:block"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(16,185,129,0.25) 0%, transparent 70%)",
+                  "radial-gradient(circle, rgba(16,185,129,0.22) 0%, transparent 70%)",
               }}
             />
-            <h3 className="relative text-xl font-medium text-[#0C1814] dark:text-zinc-200">
-              What I build & deliver
+            <h3 className="relative text-xl font-semibold tracking-tight text-[#0C1814] dark:text-zinc-100">
+              What I build
             </h3>
-            <ul className="relative mt-6 space-y-3.5">
+
+            <div className="relative mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {[
-                "Production Next.js & NestJS web applications",
-                "Autonomous agentic AI workflows with LangGraph & LangSmith",
-                "Real-time event-driven backends with WebSockets & Redis",
-                "Cinematic user interfaces with fluid GSAP motion systems",
+                {
+                  title: "Full-stack web apps with Next.js, NestJS & PostgreSQL",
+                  desc: "Production web applications built with strict TypeScript, modular architecture, and reliable data layers.",
+                },
+                {
+                  title: "AI agent workflows with LangGraph & structured validation",
+                  desc: "Reliable agent systems with deterministic tool calling, multi-step execution graphs, and trace evaluation.",
+                },
+                {
+                  title: "Real-time backends using Socket.io, Redis & Docker",
+                  desc: "Event-driven real-time services with pub/sub caching, containerized execution, and resilient APIs.",
+                },
+                {
+                  title: "Clean, responsive interfaces with thoughtful motion",
+                  desc: "Polished, accessible user experiences crafted with Tailwind CSS and fluid, performant GSAP animation.",
+                },
               ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 text-sm text-[#4A5D56] dark:text-muted"
+                <div
+                  key={item.title}
+                  className="flex items-start gap-3.5 rounded-2xl border border-[#DCE6E1] bg-[#F7FAF8]/80 p-5 transition-all duration-300 hover:border-[#0E523D]/40 dark:border-white/[0.06] dark:bg-white/[0.02] dark:hover:border-emerald-500/25"
                 >
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0E5A42] dark:bg-emerald-400" />
-                  {item}
-                </li>
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#0E5A42] dark:bg-emerald-400" />
+                  <div>
+                    <h4 className="font-sans text-sm font-semibold text-[#0C1814] dark:text-zinc-100">
+                      {item.title}
+                    </h4>
+                    <p className="mt-1 font-sans text-xs leading-relaxed text-[#4A5D56] dark:text-zinc-400">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

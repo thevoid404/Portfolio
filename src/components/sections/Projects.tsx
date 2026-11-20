@@ -181,7 +181,7 @@ function ProjectShowcaseStage({
             alt={`${project.title} preview`}
             fill
             className={cn(
-              "h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]",
+              "project-parallax-img h-full w-full object-cover object-top scale-110 transition-transform duration-500 ease-out will-change-transform group-hover:scale-[1.13]",
               theme.isBright &&
                 "brightness-100 dark:brightness-[0.92] dark:contrast-[1.02] dark:group-hover:brightness-100"
             )}
@@ -215,15 +215,33 @@ export function Projects() {
       const section = sectionRef.current;
       if (!section) return;
 
+      // Section Heading Reveal
+      gsap.fromTo(
+        ".section-heading-reveal",
+        { opacity: 0, y: 36 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 88%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
+
       // Aria Flagship Card Scroll Entrance
       gsap.fromTo(
         ".project-flagship-card",
-        { opacity: 0, y: 42, scale: 0.97 },
+        { opacity: 0, y: 50, scale: 0.96 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.75,
+          duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".project-flagship-card",
@@ -237,13 +255,13 @@ export function Projects() {
       // Bottom 3 Cards Staggered Scroll Entrance
       gsap.fromTo(
         ".project-bottom-card",
-        { opacity: 0, y: 48, scale: 0.96 },
+        { opacity: 0, y: 50, scale: 0.96 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.7,
-          stagger: 0.1,
+          duration: 0.8,
+          stagger: 0.11,
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".project-bottom-row",
@@ -253,6 +271,26 @@ export function Projects() {
           },
         }
       );
+
+      // Subtle Scroll-Linked Image Parallax Scrub
+      gsap.utils.toArray<HTMLElement>(".project-parallax-img").forEach((img) => {
+        const parent = img.parentElement;
+        if (!parent) return;
+        gsap.fromTo(
+          img,
+          { yPercent: -5 },
+          {
+            yPercent: 5,
+            ease: "none",
+            scrollTrigger: {
+              trigger: parent,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
+      });
     },
     { scope: sectionRef }
   );
@@ -272,7 +310,7 @@ export function Projects() {
         <SectionHeading
           label="Selected Work"
           title="Featured projects"
-          description="High-conviction web applications, AI orchestration systems, and interactive digital platforms."
+          description="Real products I’ve designed, built, and shipped—from full-stack web apps to AI workflows."
           accent
         />
 

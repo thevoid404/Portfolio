@@ -128,15 +128,34 @@ export function Interests() {
       const section = sectionRef.current;
       if (!section) return;
 
-      // Tier 1 Research Frontier Cards entrance
+      // Section Heading Reveal
       gsap.fromTo(
-        ".interest-frontier-card",
-        { opacity: 0, y: 32 },
+        ".section-heading-reveal",
+        { opacity: 0, y: 36 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.65,
-          stagger: 0.08,
+          duration: 0.75,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 88%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
+
+      // Tier 1 Research Frontier Cards entrance
+      gsap.fromTo(
+        ".interest-frontier-card",
+        { opacity: 0, y: 50, scale: 0.96 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.11,
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".interest-frontier-grid",
@@ -150,12 +169,13 @@ export function Interests() {
       // Tier 2 Active Engineering Craft Cards entrance
       gsap.fromTo(
         ".interest-craft-card",
-        { opacity: 0, y: 24 },
+        { opacity: 0, y: 40, scale: 0.96 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.55,
-          stagger: 0.06,
+          scale: 1,
+          duration: 0.7,
+          stagger: 0.08,
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".interest-craft-grid",
