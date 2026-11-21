@@ -384,31 +384,6 @@ export const projects: Project[] = [
     github: "https://github.com/thevoid404",
   },
   {
-    id: "nexus-studio",
-    slug: "nexus-studio",
-    title: "Nexus Studio",
-    tagline: "High-Craft Digital Product & Web Agency Platform",
-    description:
-      "High-craft digital agency platform designed with responsive layouts and fluid motion.",
-    longDescription:
-      "Nexus Studio is our digital product studio web platform engineered to demonstrate high-craft interactive web engineering. The application leverages Next.js, React, and Tailwind CSS along with advanced GSAP timeline orchestration and scroll-triggered animations to deliver tactile, cinematic browsing without sacrificing Lighthouse performance or accessibility.",
-    role: "Co-Founder & Frontend Engineer",
-    year: "2024",
-    featuredSpan: "medium",
-    glowColor: "rgba(52, 211, 153, 0.25)",
-    previewImage: "/images/projects/nexus-studio.png",
-    tags: ["Next.js", "Tailwind CSS", "GSAP", "React"],
-    metrics: [
-      { label: "Motion Engine", value: "GSAP" },
-      { label: "Design Craft", value: "Fluid Motion" },
-      { label: "Performance", value: "Optimized" },
-    ],
-    gradient: "from-emerald-950/80 via-teal-950/40 to-charcoal-950",
-    accent: "#10b981",
-    link: "https://digital-agency-gamma-lac.vercel.app/",
-    github: "https://github.com/thevoid404",
-  },
-  {
     id: "creators-vault",
     slug: "creators-vault",
     title: "Creators Vault",
@@ -432,6 +407,31 @@ export const projects: Project[] = [
     accent: "#f59e0b",
     link: "https://creators-vault-storage.vercel.app/",
     github: "https://github.com/thevoid404/Creators-vault",
+  },
+  {
+    id: "nexus-studio",
+    slug: "nexus-studio",
+    title: "Nexus Studio",
+    tagline: "High-Craft Digital Product & Web Agency Platform",
+    description:
+      "High-craft digital agency platform designed with responsive layouts and fluid motion.",
+    longDescription:
+      "Nexus Studio is our digital product studio web platform engineered to demonstrate high-craft interactive web engineering. The application leverages Next.js, React, and Tailwind CSS along with advanced GSAP timeline orchestration and scroll-triggered animations to deliver tactile, cinematic browsing without sacrificing Lighthouse performance or accessibility.",
+    role: "Co-Founder & Frontend Engineer",
+    year: "2024",
+    featuredSpan: "medium",
+    glowColor: "rgba(52, 211, 153, 0.25)",
+    previewImage: "/images/projects/nexus-studio.png",
+    tags: ["Next.js", "Tailwind CSS", "GSAP", "React"],
+    metrics: [
+      { label: "Motion Engine", value: "GSAP" },
+      { label: "Design Craft", value: "Fluid Motion" },
+      { label: "Performance", value: "Optimized" },
+    ],
+    gradient: "from-emerald-950/80 via-teal-950/40 to-charcoal-950",
+    accent: "#10b981",
+    link: "https://digital-agency-gamma-lac.vercel.app/",
+    github: "https://github.com/thevoid404",
   },
   /* =========================================================================
    * TEMPLATE: To add project 4 or 5 later, uncomment and fill in below:

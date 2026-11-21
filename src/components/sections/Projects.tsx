@@ -420,7 +420,7 @@ export function Projects() {
             </article>
           )}
 
-          {/* Bottom Row: AudioLux, Nexus Studio, Creators Vault (Equal-Height Cards) */}
+          {/* Bottom Row: AudioLux, Creators Vault, Nexus Studio (Equal-Height Cards) */}
           <div className="project-bottom-row mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
             {supporting.map((project) => {
               const theme =
