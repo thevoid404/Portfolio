@@ -114,7 +114,7 @@ export function Profile() {
           <SectionHeading
             label="Profile"
             title="Meet the developer behind the work"
-            description="Engineering scalable web products, agentic AI workflows, and resilient distributed backends."
+            description="Building clean web applications, practical AI tools, and dependable backends."
             accent
           />
         </div>

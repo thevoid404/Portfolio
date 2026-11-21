@@ -61,7 +61,7 @@ export type ResearchFrontier = {
   status: "Exploring" | "Deep Curiosity";
   summary: string;
   centralQuestion: string;
-  motif: "chip" | "constellation" | "quantum";
+  motif: "chip" | "constellation" | "quantum" | "embedded";
 };
 
 export type EngineeringCraft = {
@@ -101,7 +101,7 @@ export const siteConfig = {
   activeVentures: [
     {
       name: "Aria",
-      role: "Co-Founder · Autonomous AI & Commerce Ops",
+      role: "Co-Founder · AI Support & Store Operations",
       accent: "#10b981",
       dotColor: "bg-emerald-400",
       link: "https://aria-autonomous-agent-puce.vercel.app/",
@@ -119,7 +119,7 @@ export const siteConfig = {
     image: "/profile.jpg",
     alt: "Ashraf Uddin Anas — Full Stack & Applied AI Engineer",
     tagline: "Full-Stack & Applied AI Engineer",
-    bio: "Final-year CSE student building full-stack web products and AI agent systems. Focused on software architecture, resilient backends, and reliable autonomous workflows.",
+    bio: "Final-year CSE student building full-stack web apps and AI tools. Focused on clean code, dependable backends, and practical workflows.",
     highlights: [
       "Full-Stack & AI Systems",
       "Open to engineering roles",
@@ -212,6 +212,11 @@ export const siteConfig = {
     github: "https://github.com/thevoid404",
     linkedin: "https://www.linkedin.com/in/ashraf-uddin-ahmed-anas/",
     twitter: "https://x.com/anas_ahmes4484",
+    x: "https://x.com/anas_ahmes4484",
+    facebook: "https://www.facebook.com/ahmed.anas.682117/",
+    instagram: "https://www.instagram.com/_anas__ahmed_0/",
+    discord: "https://discord.com/users/1334867033577357347",
+    whatsapp: "https://wa.me/8801533174536",
   },
 
   resume: {
@@ -245,14 +250,14 @@ export const siteConfig = {
         motif: "constellation",
       },
       {
-        id: "quantum-physics",
-        title: "Quantum Physics",
-        status: "Deep Curiosity",
+        id: "embedded-systems",
+        title: "Embedded Systems",
+        status: "Exploring",
         summary:
-          "Studying superposition, entanglement, and how quantum principles reshape our limits of computation.",
+          "Connecting computers to the physical world through sensors, vision, and AI. Currently building a vision-controlled robotic arm assistant in a university lab project.",
         centralQuestion:
-          "What happens to algorithmic complexity when computation leaves classical bits behind?",
-        motif: "quantum",
+          "How can we build machines that can see, understand, and interact with the physical world?",
+        motif: "embedded",
       },
     ] as ResearchFrontier[],
     crafts: [
@@ -261,14 +266,14 @@ export const siteConfig = {
         title: "Agentic AI & LLM Orchestration",
         status: "Active Practice",
         description:
-          "LangChain, LangGraph, LangSmith, and deterministic tool-calling workflows built for real operations.",
+          "LangChain, LangGraph, and dependable tool-calling workflows built for real operations.",
       },
       {
         id: "real-time-systems",
         title: "Real-Time Backend Systems",
         status: "Active Practice",
         description:
-          "Resilient, event-driven architectures powered by NestJS, Socket.io, Redis, Docker, and PostgreSQL.",
+          "Solid, event-driven backends powered by NestJS, Socket.io, Redis, Docker, and PostgreSQL.",
       },
       {
         id: "interactive-web",
@@ -322,11 +327,11 @@ export const projects: Project[] = [
     id: "aria",
     slug: "aria",
     title: "Aria",
-    tagline: "Autonomous AI Customer Support & Commerce Ops",
+    tagline: "AI Customer Support & Order Management",
     description:
-      "Autonomous AI support and commerce operations platform engineered with real-time WebSockets and deterministic order validation.",
+      "An AI support and store management platform built with live real-time chat and dependable order verification.",
     longDescription:
-      "Aria is an autonomous agentic system built to handle end-to-end customer support and commerce operations with deterministic reliability. Built on Next.js and NestJS, Aria combines real-time bidirectional WebSocket event streams with multi-agent orchestration powered by LangChain, LangGraph, and LangSmith. The system uses Redis for real-time state caching, PostgreSQL for persistent operational data, and containerized Docker environments for reproducible multi-service execution.",
+      "Aria is an AI assistant built to handle everyday customer support and store orders with dependable accuracy. Built on Next.js and NestJS, Aria connects live real-time chat with multi-step AI agents using LangChain and LangGraph. It uses Redis for fast session memory, PostgreSQL for customer and order records, and Docker for smooth, reproducible execution.",
     role: "Co-Founder & Full-Stack Engineer",
     year: "2025",
     featuredSpan: "wide",
@@ -462,15 +467,15 @@ export const experiences: Milestone[] = [
   {
     id: "1",
     role: "Co-Founder & Full-Stack Engineer — Aria",
-    company: "Active Venture · Autonomous AI & Commerce Operations",
+    company: "Active Venture · AI Support & Store Operations",
     period: "2024 — Present",
     location: "Dhaka, Bangladesh",
     status: "Active",
     accent: "#10b981",
     description:
-      "Architecting autonomous AI customer support and commerce operations across Next.js frontend, NestJS backend, Redis state caching, and LangGraph agent orchestration.",
+      "Building an AI support platform that handles customer inquiries and automates store orders from frontend to database.",
     highlights: [
-      "Architected multi-agent tool execution pipelines with LangGraph and deterministic validation",
+      "Built multi-step AI agent workflows with LangGraph and dependable order verification",
       "Engineered real-time bidirectional WebSocket event streams with Socket.io and Redis cache",
       "Built containerized Docker microservices paired with relational PostgreSQL schemas",
     ],

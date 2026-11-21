@@ -211,11 +211,11 @@ export function About() {
                 },
                 {
                   title: "AI agent workflows with LangGraph & structured validation",
-                  desc: "Reliable agent systems with deterministic tool calling, multi-step execution graphs, and trace evaluation.",
+                  desc: "Reliable agent systems with dependable tool calling, clear multi-step workflows, and live monitoring.",
                 },
                 {
                   title: "Real-time backends using Socket.io, Redis & Docker",
-                  desc: "Event-driven real-time services with pub/sub caching, containerized execution, and resilient APIs.",
+                  desc: "Event-driven real-time services with fast caching, containerized setups, and solid APIs.",
                 },
                 {
                   title: "Clean, responsive interfaces with thoughtful motion",

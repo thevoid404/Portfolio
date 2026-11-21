@@ -27,13 +27,13 @@ const experienceItems: ExperienceItem[] = [
     id: "aria",
     name: "Aria",
     role: "Full-Stack & AI Engineer · Co-Founder",
-    company: "Autonomous AI & Commerce Operations Platform",
+    company: "AI Customer Support & Order Management Platform",
     badge: "Ongoing",
     period: "2026 — Present",
     description:
-      "Architecting autonomous AI customer support and commerce operations across Next.js frontend, NestJS backend, Redis state caching, and LangGraph agent orchestration.",
+      "Building an AI support platform that handles customer inquiries and automates store orders from frontend to database.",
     bullets: [
-      "Multi-agent tool execution pipelines with LangGraph & deterministic validation",
+      "Built multi-step AI agent workflows with LangGraph & dependable order verification",
       "Real-time bidirectional WebSocket event streams with Socket.io & Redis cache",
       "Containerized Docker microservices paired with relational PostgreSQL schemas",
     ],

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ashraf Uddin Anas — Full Stack & Applied AI Engineer",
     description:
-      "Building scalable web systems and autonomous AI workflows with Next.js, NestJS, Redis, and LangGraph.",
+      "Building dependable web apps and practical AI tools with Next.js, NestJS, Redis, and LangGraph.",
     type: "website",
   },
   icons: {

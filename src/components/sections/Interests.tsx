@@ -109,12 +109,38 @@ function QuantumMotif({ className }: { className?: string }) {
   );
 }
 
+/**
+ * Robotic Articulation & Sensor Node SVG motif for Embedded Systems
+ */
+function EmbeddedMotif({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M12 40h24M18 40v-4h12v4" strokeWidth="1.4" />
+      <path d="M24 36L18 24L30 14" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="34" cy="11" r="5" strokeWidth="1.3" />
+      <circle cx="34" cy="11" r="2" fill="currentColor" fillOpacity="0.3" />
+      <path d="M41 8c2 2 2 4 0 6M44 6c3 3 3 7 0 10" strokeDasharray="1.5 1.5" />
+      <circle cx="24" cy="36" r="3" fill="currentColor" fillOpacity="0.2" strokeWidth="1.2" />
+      <circle cx="18" cy="24" r="2.5" fill="currentColor" fillOpacity="0.2" strokeWidth="1.2" />
+      <circle cx="30" cy="14" r="2" fill="currentColor" fillOpacity="0.2" strokeWidth="1.2" />
+    </svg>
+  );
+}
+
 function renderCornerMotif(motif: ResearchFrontier["motif"]) {
   const baseClass =
     "pointer-events-none absolute top-4 right-4 h-14 w-14 text-[#0E523D] transition-all duration-500 group-hover:scale-110 group-hover:opacity-[0.22] opacity-[0.07] dark:text-[#34A885] dark:opacity-[0.13] dark:group-hover:opacity-[0.26]";
 
   if (motif === "chip") return <ChipMotif className={baseClass} />;
   if (motif === "constellation") return <ConstellationMotif className={baseClass} />;
+  if (motif === "embedded") return <EmbeddedMotif className={baseClass} />;
   return <QuantumMotif className={baseClass} />;
 }
 
@@ -251,11 +277,11 @@ export function Interests() {
                     </p>
                   </div>
 
-                  {/* Bottom: Hairline Divider + Inquiry & Central Question */}
+                  {/* Bottom: Hairline Divider + Exploration & Central Question */}
                   <div className="mt-6 border-t border-[#E2EAE6] pt-4 dark:border-white/[0.06]">
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-[#063729]/75 dark:text-emerald-400/80">
-                        INQUIRY
+                        EXPLORATION
                       </span>
                     </div>
                     <p className="mt-1 font-sans text-[13px] italic leading-snug text-[#1A2E27] dark:text-zinc-300">
