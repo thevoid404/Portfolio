@@ -894,7 +894,7 @@ html.light textarea:focus {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .accent-label-gradient,
+    .accent-label-gradient,
   .hero-click-wave,
   .preloader-content {
     animation: none !important;
