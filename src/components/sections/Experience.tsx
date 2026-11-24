@@ -190,7 +190,7 @@ export function Experience() {
                 </div>
 
                 {/* Timeline Card */}
-                <article className="experience-timeline-card group relative overflow-hidden rounded-2xl border border-[#DCE5E0] bg-white/90 p-6 sm:p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#0E523D] dark:border-white/[0.10] dark:bg-[#101614]/95 dark:shadow-[inset_0_1px_0_0_rgba(52,211,153,0.12),0_12px_32px_-12px_rgba(0,0,0,0.75)] dark:hover:border-[#255C49]">
+                <article className="experience-timeline-card group relative overflow-hidden rounded-2xl border border-[#DCE5E0] bg-white/95 p-6 sm:p-8 transition-transform duration-300 ease-out hover:-translate-y-1 hover:border-[#0E523D] dark:border-white/[0.10] dark:bg-[#101614]/95 dark:shadow-[inset_0_1px_0_0_rgba(52,211,153,0.12),0_12px_32px_-12px_rgba(0,0,0,0.75)] dark:hover:border-[#255C49]">
                   {/* Top Hairline Highlight */}
                   <div className="pointer-events-none absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#0E5A42]/20 to-transparent dark:via-emerald-400/25" />
 
@@ -224,7 +224,7 @@ export function Experience() {
                       >
                         <span
                           className={cn(
-                            "h-1.5 w-1.5 rounded-full",
+                            "h-1.5 w-1.5 rounded-full will-change-[transform,opacity]",
                             item.isAmber
                               ? "bg-amber-500"
                               : "bg-[#115E47] dark:bg-[#146B51] animate-pulse"

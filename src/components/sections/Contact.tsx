@@ -112,7 +112,7 @@ export function Contact() {
       aria-labelledby="contact-heading"
     >
       <div className="section-padding section-container">
-        <div className="contact-reveal relative overflow-hidden rounded-2xl border border-[#0A3D2E]/35 bg-white/90 p-8 shadow-[0_14px_40px_-12px_rgba(6,45,34,0.12)] backdrop-blur-xl sm:p-12 lg:p-16 dark:border-[#0F523E]/80 dark:bg-[#070B0A]/90 dark:shadow-[0_0_40px_-14px_rgba(11,74,55,0.45),inset_0_1px_0_0_rgba(20,105,79,0.35)]">
+        <div className="contact-reveal relative overflow-hidden rounded-2xl border border-[#0A3D2E]/35 bg-white/95 p-8 shadow-[0_14px_40px_-12px_rgba(6,45,34,0.12)] sm:p-12 lg:p-16 dark:border-[#0F523E]/80 dark:bg-[#101614]/95 dark:shadow-[0_0_40px_-14px_rgba(11,74,55,0.45),inset_0_1px_0_0_rgba(20,105,79,0.35)]">
           {/* Top Hairline Highlight */}
           <div className="pointer-events-none absolute top-0 left-12 right-12 h-px bg-gradient-to-r from-transparent via-[#0D4A38]/30 to-transparent dark:via-[#146B51]/40" />
 

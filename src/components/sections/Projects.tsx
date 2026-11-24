@@ -318,7 +318,7 @@ export function Projects() {
         <div>
           {/* Top Flagship Card: Aria (Full-Width Horizontal Split) */}
           {flagship && (
-            <article className="project-flagship-card group relative overflow-hidden rounded-2xl border border-[#DCE5E0] bg-white/85 shadow-[0_10px_35px_-12px_rgba(12,24,20,0.08)] backdrop-blur-xl transition-all duration-300 hover:border-[#0E4D3A]/30 dark:border-white/[0.10] dark:bg-[#0F1219]/90 dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_12px_40px_-12px_rgba(0,0,0,0.7)] dark:hover:border-emerald-400/30">
+            <article className="project-flagship-card group relative overflow-hidden rounded-2xl border border-[#DCE5E0] bg-white/95 shadow-[0_10px_35px_-12px_rgba(12,24,20,0.08)] transition-transform duration-300 ease-out hover:border-[#0E4D3A]/30 dark:border-white/[0.10] dark:bg-[#101614]/95 dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_12px_40px_-12px_rgba(0,0,0,0.7)] dark:hover:border-emerald-400/30">
               {/* Top Hairline Highlight */}
               <div className="pointer-events-none absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#0E5A42]/20 to-transparent dark:via-emerald-400/25" />
 
@@ -429,7 +429,7 @@ export function Projects() {
               return (
                 <article
                   key={project.id}
-                  className="project-bottom-card group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[#DCE5E0] bg-white/85 shadow-[0_10px_35px_-12px_rgba(12,24,20,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0E4D3A]/30 dark:border-white/[0.10] dark:bg-[#0F1219]/90 dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_12px_40px_-12px_rgba(0,0,0,0.7)] dark:hover:border-emerald-400/30"
+                  className="project-bottom-card group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[#DCE5E0] bg-white/95 shadow-[0_10px_35px_-12px_rgba(12,24,20,0.08)] transition-transform duration-300 ease-out hover:-translate-y-1.5 hover:border-[#0E4D3A]/30 dark:border-white/[0.10] dark:bg-[#101614]/95 dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_12px_40px_-12px_rgba(0,0,0,0.7)] dark:hover:border-emerald-400/30"
                 >
                   {/* Top Hairline Highlight */}
                   <div className="pointer-events-none absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#0E5A42]/20 to-transparent dark:via-emerald-400/25" />

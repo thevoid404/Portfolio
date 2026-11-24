@@ -75,7 +75,7 @@ export function Academics() {
         />
 
         {/* Focused Single Academic Card */}
-        <article className="academics-card relative mt-6 overflow-hidden rounded-2xl border border-[#D4E2DC] bg-white/90 p-6 shadow-[0_12px_36px_-14px_rgba(6,45,34,0.09)] backdrop-blur-xl transition-all duration-300 hover:border-[#0E523D] sm:p-8 lg:p-10 dark:border-[#1E3B31]/80 dark:bg-[#101614]/95 dark:shadow-[inset_0_1px_0_0_rgba(52,211,153,0.12),0_12px_32px_-12px_rgba(0,0,0,0.75)] dark:hover:border-[#255C49]">
+        <article className="academics-card relative mt-6 overflow-hidden rounded-2xl border border-[#D4E2DC] bg-white/95 p-6 shadow-[0_12px_36px_-14px_rgba(6,45,34,0.09)] transition-transform duration-300 ease-out hover:border-[#0E523D] sm:p-8 lg:p-10 dark:border-[#1E3B31]/80 dark:bg-[#101614]/95 dark:shadow-[inset_0_1px_0_0_rgba(52,211,153,0.12),0_12px_32px_-12px_rgba(0,0,0,0.75)] dark:hover:border-[#255C49]">
           {/* Top Hairline Highlight */}
           <div className="pointer-events-none absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#0E5A42]/20 to-transparent dark:via-emerald-400/25" />
 

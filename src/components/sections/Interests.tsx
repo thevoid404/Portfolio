@@ -242,7 +242,7 @@ export function Interests() {
                   key={frontier.id}
                   className={cn(
                     "interest-frontier-card group relative flex flex-col justify-between overflow-hidden rounded-2xl p-6 sm:p-7",
-                    "bg-white/90 backdrop-blur-xl transition-all duration-300",
+                    "bg-white/95 transition-transform duration-300 ease-out",
                     "border border-[#D4E2DC] shadow-[0_8px_30px_-10px_rgba(12,24,20,0.06)] hover:-translate-y-1 hover:border-[#0E523D]",
                     "dark:border-[#1E3B31]/80 dark:bg-[#101614]/95 dark:shadow-[inset_0_1px_0_0_rgba(52,211,153,0.12),0_12px_32px_-12px_rgba(0,0,0,0.75)] dark:hover:border-[#255C49]"
                   )}
@@ -308,7 +308,7 @@ export function Interests() {
                   key={craft.id}
                   className={cn(
                     "interest-craft-card group relative flex flex-col justify-between overflow-hidden rounded-xl p-5",
-                    "bg-white/75 backdrop-blur-sm transition-all duration-300",
+                    "bg-white/95 transition-transform duration-300 ease-out",
                     "border border-[#DCE6E1] hover:-translate-y-1 hover:border-[#0E523D]/40",
                     "dark:border-[#1E3B31]/80 dark:bg-[#101614]/95 dark:shadow-[inset_0_1px_0_0_rgba(52,211,153,0.12),0_12px_32px_-12px_rgba(0,0,0,0.75)] dark:hover:border-[#255C49]"
                   )}
@@ -319,7 +319,7 @@ export function Interests() {
                   <div>
                     {/* Status Dot + Tag */}
                     <div className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[#063729] dark:text-[#34A885]">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#0E5A42] animate-pulse dark:bg-emerald-400" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#0E5A42] animate-pulse dark:bg-emerald-400 will-change-[transform,opacity]" />
                       <span>{craft.status}</span>
                     </div>
 

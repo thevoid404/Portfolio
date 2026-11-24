@@ -155,7 +155,7 @@ export function About() {
             <div className="mt-auto border-t border-[#E3ECE8] pt-4 dark:border-white/[0.08]">
               <div className="rounded-xl border border-[#0D4A38]/20 bg-[#EDF5F1] px-4 py-3 dark:border-[#165E48]/50 dark:bg-[#091F18]/80">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#0E5A42] animate-pulse dark:bg-emerald-400" />
+                  <span className="h-2 w-2 rounded-full bg-[#0E5A42] animate-pulse dark:bg-emerald-400 will-change-[transform,opacity]" />
                   <span className="font-sans text-[13.5px] font-semibold text-[#073326] dark:text-emerald-300">
                     {siteConfig.about.availability.status}
                   </span>

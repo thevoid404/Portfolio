@@ -23,6 +23,7 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
       wheelMultiplier: 1,
       touchMultiplier: 2,
       infinite: false,
+      autoRaf: false,
     });
 
     lenisRef.current = lenis;

@@ -77,10 +77,10 @@ export function Header() {
       {/* Floating Translucent Glass Capsule */}
       <div
         className={cn(
-          "pointer-events-auto flex items-center justify-between rounded-full backdrop-blur-xl transition-all duration-300 ease-out",
+          "pointer-events-auto flex items-center justify-between rounded-full backdrop-blur-md transition-all duration-300 ease-out",
           scrolled
-            ? "w-full max-w-[980px] px-5 py-2 bg-white/85 border border-[#0A3D2E]/[0.18] shadow-[0_12px_36px_-8px_rgba(6,45,34,0.14)] dark:bg-[#0B100E]/88 dark:border-[#244D3F]/85 dark:shadow-[0_14px_40px_-8px_rgba(0,0,0,0.8)]"
-            : "w-full max-w-[1300px] px-7 py-3.5 bg-white/65 border border-[#0A3D2E]/[0.12] shadow-[0_8px_30px_-10px_rgba(6,45,34,0.08)] dark:bg-[#0B100E]/65 dark:border-[#1E3B31]/70 dark:shadow-[0_10px_32px_-10px_rgba(0,0,0,0.65)]"
+            ? "w-full max-w-[980px] px-5 py-2 bg-white/88 border border-[#0A3D2E]/[0.18] shadow-[0_12px_36px_-8px_rgba(6,45,34,0.14)] dark:bg-[#0B100E]/88 dark:border-[#244D3F]/85 dark:shadow-[0_14px_40px_-8px_rgba(0,0,0,0.8)]"
+            : "w-full max-w-[1300px] px-7 py-3.5 bg-white/88 border border-[#0A3D2E]/[0.12] shadow-[0_8px_30px_-10px_rgba(6,45,34,0.08)] dark:bg-[#0B100E]/88 dark:border-[#1E3B31]/70 dark:shadow-[0_10px_32px_-10px_rgba(0,0,0,0.65)]"
         )}
       >
         {/* Brand / Logo */}
@@ -171,7 +171,7 @@ export function Header() {
       {/* Mobile Floating Dropdown Card */}
       <div
         className={cn(
-          "pointer-events-auto fixed inset-x-4 z-50 mx-auto flex max-w-[420px] flex-col gap-4 rounded-2xl border border-[#0A3D2E]/[0.15] bg-white/95 p-6 shadow-2xl backdrop-blur-2xl transition-all duration-300 md:hidden dark:border-[#1E3B31]/80 dark:bg-[#0B100E]/95",
+          "pointer-events-auto fixed inset-x-4 z-50 mx-auto flex max-w-[420px] flex-col gap-4 rounded-2xl border border-[#0A3D2E]/[0.15] bg-white/95 p-6 shadow-2xl backdrop-blur-md transition-all duration-300 md:hidden dark:border-[#1E3B31]/80 dark:bg-[#0B100E]/95",
           scrolled ? "top-[64px]" : "top-[76px]",
           menuOpen
             ? "translate-y-0 opacity-100"
