@@ -104,7 +104,7 @@ export const siteConfig = {
       role: "Co-Founder · AI Support & Store Operations",
       accent: "#10b981",
       dotColor: "bg-emerald-400",
-      link: "https://aria-autonomous-agent-puce.vercel.app/",
+      link: "https://ariadesk.app/",
     },
     {
       name: "Nexus Studio",
