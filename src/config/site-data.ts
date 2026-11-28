@@ -355,7 +355,7 @@ export const projects: Project[] = [
     ],
     gradient: "from-emerald-950/80 via-teal-900/40 to-charcoal-950",
     accent: "#10b981",
-    link: "https://aria-autonomous-agent-puce.vercel.app/",
+    link: "https://ariadesk.app/",
     github: "https://github.com/thevoid404/Aria",
   },
   {
